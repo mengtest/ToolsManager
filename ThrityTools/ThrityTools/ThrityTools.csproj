@@ -63,6 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncTaskManager\AsyncTaskManager.cs" />
+    <Compile Include="AsyncTaskManager\DownLoadSys.cs" />
+    <Compile Include="AsyncTaskManager\TaskImp\BaseTaskImp.cs" />
+    <Compile Include="AsyncTaskManager\TaskImp\DecompressFileTaskImp.cs" />
+    <Compile Include="AsyncTaskManager\TaskImp\DownloadFileTaskImp.cs" />
+    <Compile Include="AsyncTaskManager\Task\BaseTask.cs" />
+    <Compile Include="AsyncTaskManager\Task\DecompressFileTask.cs" />
+    <Compile Include="AsyncTaskManager\Task\DownloadBigFileTask.cs" />
+    <Compile Include="AsyncTaskManager\Task\DownloadSmallFileTask.cs" />
+    <Compile Include="AsyncTaskManager\Task\ReadFileTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwiftFSM\Internal\Factory.cs" />
     <Compile Include="SwiftFSM\Internal\IFactory.cs" />

@@ -14,51 +14,52 @@ using System.Collections;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Collections.Generic;
 
+
 public class CUnzipFile
 {
-	public enum EnumUnzipStatus
-	{
-		EUS_NONE,				//解压缩中
-		EUS_SUCCESS,			//解压成功
-		EUS_FileNotFound,		//文件不存在
-		EUS_ERROR,				//未知错误
-		EUS_CANCELL,			//手动取消
-	}
+    public enum EnumUnzipStatus
+    {
+        EUS_NONE,               //解压缩中
+        EUS_SUCCESS,            //解压成功
+        EUS_FileNotFound,       //文件不存在
+        EUS_ERROR,              //未知错误
+        EUS_CANCELL,            //手动取消
+    }
 
-	public volatile EnumUnzipStatus m_unzipState = EnumUnzipStatus.EUS_NONE;
-	public float m_rate = 0f;
+    public volatile EnumUnzipStatus m_unzipState = EnumUnzipStatus.EUS_NONE;
+    public float m_rate = 0f;
     /// <summary>
     /// 这个size 取自CDownloadFile中下载下来的长度
     /// </summary>
     public long m_totalSize = 0;
-	
-	private string m_direc = "";
-	private string m_fileName = null;
-	private bool m_cancell = false;
+
+    public string m_direc = "";
+    private string m_fileName = null;
+    private bool m_cancell = false;
 
     public List<string> m_unpackFileList = new List<string>();
 
-	public CUnzipFile(string direc, string fileName, long unzipSize)
-	{
-		m_direc = direc;
-		m_fileName = fileName;
-		m_unzipState = EnumUnzipStatus.EUS_NONE;
-		m_rate = 0;
-		m_cancell = false;
+    public CUnzipFile(string direc, string fileName, long unzipSize)
+    {
+        m_direc = direc;
+        m_fileName = fileName;
+        m_unzipState = EnumUnzipStatus.EUS_NONE;
+        m_rate = 0;
+        m_cancell = false;
         m_totalSize = unzipSize;
     }
-	
-	public void BeginUnzip()
-	{
-		m_cancell = false;
-		m_unzipState = EnumUnzipStatus.EUS_NONE;
-		try
-		{
-			if(!File.Exists(m_fileName))
-			{
-				m_unzipState = EnumUnzipStatus.EUS_FileNotFound;
-				return;
-			}
+
+    public void BeginUnzip()
+    {
+        m_cancell = false;
+        m_unzipState = EnumUnzipStatus.EUS_NONE;
+        try
+        {
+            if (!File.Exists(m_fileName))
+            {
+                m_unzipState = EnumUnzipStatus.EUS_FileNotFound;
+                return;
+            }
             //这里不需要先读一遍了  这个size 取自CDownloadFile中下载下来的长度
             //FileStream tempMemory = new FileStream(m_fileName, FileMode.Open);
             //ZipInputStream zipS = new ZipInputStream(tempMemory);
@@ -75,20 +76,20 @@ public class CUnzipFile
             FileStream tempMemory = new FileStream(m_fileName, FileMode.Open);
             ZipInputStream zipS = new ZipInputStream(tempMemory);
             ZipEntry zipItem = zipS.GetNextEntry();
-			int unzipSize = 0;
-			while(zipItem != null && !m_cancell)
-			{
-				byte[] temp = new byte[1024*1024];
-				int len = 0;
-				DirectoryInfo dir = new DirectoryInfo(m_direc);
-				if(!dir.Exists)
-				{
-					dir.Create();
-				}
+            int unzipSize = 0;
+            while (zipItem != null && !m_cancell)
+            {
+                byte[] temp = new byte[1024 * 1024];
+                int len = 0;
+                DirectoryInfo dir = new DirectoryInfo(m_direc);
+                if (!dir.Exists)
+                {
+                    dir.Create();
+                }
 
                 //现在分目录了 新加创建目录
                 int findIndex = zipItem.Name.LastIndexOf("/");
-                if (findIndex != -1) 
+                if (findIndex != -1)
                 {
                     string newDirName = m_direc + "/" + zipItem.Name.Substring(0, findIndex);
                     dir = new DirectoryInfo(newDirName);
@@ -125,28 +126,28 @@ public class CUnzipFile
                 }
                 zipItem = zipS.GetNextEntry();
             }
-			
-			zipS.Close();
-			tempMemory.Close();
-			if(m_cancell)
-			{
-				m_unzipState = EnumUnzipStatus.EUS_CANCELL;
-			}
-			else
-			{
-				m_unzipState = EnumUnzipStatus.EUS_SUCCESS;
-				File.Delete(m_fileName);
-			}
-		}
-		catch(Exception e)
-		{
-			Debug.LogError("unzip save file:" + e.ToString());
-			m_unzipState = EnumUnzipStatus.EUS_ERROR;
-		}
-	}
 
-	public void Cancell()
-	{
-		m_cancell = true;
-	}
+            zipS.Close();
+            tempMemory.Close();
+            if (m_cancell)
+            {
+                m_unzipState = EnumUnzipStatus.EUS_CANCELL;
+            }
+            else
+            {
+                m_unzipState = EnumUnzipStatus.EUS_SUCCESS;
+                File.Delete(m_fileName);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("unzip save file:" + e.ToString());
+            m_unzipState = EnumUnzipStatus.EUS_ERROR;
+        }
+    }
+
+    public void Cancell()
+    {
+        m_cancell = true;
+    }
 }
