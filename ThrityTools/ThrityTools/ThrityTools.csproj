@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2417BCE-62F4-48C2-8916-DCF25F12976B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ThrityTools</RootNamespace>
+    <AssemblyName>ThrityTools</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DWNetCore">
+      <HintPath>..\..\..\trunk\app_10002\DWWork\Assets\Plugins\DWNetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="EZFunLibs">
+      <HintPath>..\..\..\trunk\app_10002\DWWork\Assets\Plugins\EZFunLibs.dll</HintPath>
+    </Reference>
+    <Reference Include="GameCore">
+      <HintPath>..\..\..\trunk\app_10002\DWWork\Assets\Plugins\GameCore.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\trunk\app_10002\DWWork\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\..\..\trunk\app_10002\DWWork\Assets\Plugins\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>D:\Soft\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>D:\Soft\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:\Soft\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwiftFSM\Internal\Factory.cs" />
+    <Compile Include="SwiftFSM\Internal\IFactory.cs" />
+    <Compile Include="SwiftFSM\Internal\IInnerState.cs" />
+    <Compile Include="SwiftFSM\Internal\InnerState.cs" />
+    <Compile Include="SwiftFSM\Internal\ITransition.cs" />
+    <Compile Include="SwiftFSM\Internal\StateDictionary.cs" />
+    <Compile Include="SwiftFSM\Internal\Transition.cs" />
+    <Compile Include="SwiftFSM\Internal\TransitionResult.cs" />
+    <Compile Include="SwiftFSM\IState.cs" />
+    <Compile Include="SwiftFSM\IStateMachine.cs" />
+    <Compile Include="SwiftFSM\StateMachine.cs" />
+    <Compile Include="SwiftFSM\Syntax\IInSyntax.cs" />
+    <Compile Include="SwiftFSM\Syntax\IOnSyntax.cs" />
+    <Compile Include="SwiftFSM\Syntax\StateBuilder.cs" />
+    <Compile Include="UpdateSys\CDownLoadFile.cs" />
+    <Compile Include="UpdateSys\CUnzipFile.cs" />
+    <Compile Include="UpdateSys\FileDownloader.cs" />
+    <Compile Include="UpdateSys\GameUpdateSys.cs" />
+    <Compile Include="UpdateSys\GlobalCrypto.cs" />
+    <Compile Include="UpdateSys\ResourceMd5Mgr.cs" />
+    <Compile Include="UpdateSys\UpdateChecker.cs" />
+    <Compile Include="UpdateSys\UpdateConfig.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\AssetsBundleUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\AudioUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\BaseUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\DLLUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\IUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\LuaUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\MapFileUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\TableUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateFilter.cs" />
+    <Compile Include="UpdateSys\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
