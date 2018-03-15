@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--EXPORTED BY TOOL, DON'T MODIFY IT!-->
+<metas version="5" language="cs">
+  <types>
+    <enumtype Type="BaseActorAIAgent::AI_State" DisplayName="AI_State" Desc="AI_State">
+      <enum NativeValue="BaseActorAIAgent::AS_StandBy" Value="AS_StandBy" DisplayName="AS_StandBy" Desc="AS_StandBy" />
+      <enum NativeValue="BaseActorAIAgent::AS_MoveToPosition" Value="AS_MoveToPosition" DisplayName="AS_MoveToPosition" Desc="AS_MoveToPosition" />
+      <enum NativeValue="BaseActorAIAgent::AS_AttackHero" Value="AS_AttackHero" DisplayName="AS_AttackHero" Desc="AS_AttackHero" />
+      <enum NativeValue="BaseActorAIAgent::AS_Escape" Value="AS_Escape" DisplayName="AS_Escape" Desc="AS_Escape" />
+      <enum NativeValue="BaseActorAIAgent::AS_IsChating" Value="AS_IsChating" DisplayName="AS_IsChating" Desc="AS_IsChating" />
+      <enum NativeValue="BaseActorAIAgent::AS_FollowHero" Value="AS_FollowHero" DisplayName="AS_FollowHero" Desc="AS_FollowHero" />
+      <enum NativeValue="BaseActorAIAgent::AS_Disapper" Value="AS_Disapper" DisplayName="AS_Disapper" Desc="AS_Disapper" />
+      <enum NativeValue="BaseActorAIAgent::AS_RandomAnimal" Value="AS_RandomAnimal" DisplayName="AS_RandomAnimal" Desc="AS_RandomAnimal" />
+      <enum NativeValue="BaseActorAIAgent::AS_VictoryAction" Value="AS_VictoryAction" DisplayName="AS_VictoryAction" Desc="AS_VictoryAction" />
+      <enum NativeValue="BaseActorAIAgent::AS_Patrol" Value="AS_Patrol" DisplayName="AS_Patrol" Desc="AS_Patrol" />
+    </enumtype>
+    <enumtype Type="behaviac::EBTStatus" DisplayName="" Desc="">
+      <enum NativeValue="behaviac::BT_INVALID" Value="BT_INVALID" DisplayName="BT_INVALID" Desc="BT_INVALID" />
+      <enum NativeValue="behaviac::BT_SUCCESS" Value="BT_SUCCESS" DisplayName="BT_SUCCESS" Desc="BT_SUCCESS" />
+      <enum NativeValue="behaviac::BT_FAILURE" Value="BT_FAILURE" DisplayName="BT_FAILURE" Desc="BT_FAILURE" />
+      <enum NativeValue="behaviac::BT_RUNNING" Value="BT_RUNNING" DisplayName="BT_RUNNING" Desc="BT_RUNNING" />
+    </enumtype>
+    <enumtype Type="RTMonsterAIAgent::PatrolStatus" DisplayName="PatrolStatus" Desc="PatrolStatus">
+      <enum NativeValue="RTMonsterAIAgent::Go" Value="Go" DisplayName="Go" Desc="Go" />
+      <enum NativeValue="RTMonsterAIAgent::Stand" Value="Stand" DisplayName="Stand" Desc="Stand" />
+    </enumtype>
+    <enumtype Type="NPCAIAgent::PatrolStatus" DisplayName="PatrolStatus" Desc="PatrolStatus">
+      <enum NativeValue="NPCAIAgent::None" Value="None" DisplayName="None" Desc="None" />
+      <enum NativeValue="NPCAIAgent::Idle" Value="Idle" DisplayName="Idle" Desc="Idle" />
+      <enum NativeValue="NPCAIAgent::Moving" Value="Moving" DisplayName="Moving" Desc="Moving" />
+      <enum NativeValue="NPCAIAgent::InAction" Value="InAction" DisplayName="InAction" Desc="InAction" />
+      <enum NativeValue="NPCAIAgent::Talking" Value="Talking" DisplayName="Talking" Desc="Talking" />
+    </enumtype>
+    <struct Type="System::Object" DisplayName="Object" Desc="Object" IsRefType="true" />
+    <struct Type="UnityEngine::Vector3" DisplayName="Vector3" Desc="Vector3" IsRefType="false">
+      <Member Name="kEpsilon" DisplayName="kEpsilon" Desc="kEpsilon" Type="float" Class="UnityEngine::Vector3" Readonly="true" Static="true" Public="true" />
+      <Member Name="x" DisplayName="x" Desc="x" Type="float" Class="UnityEngine::Vector3" Public="true" />
+      <Member Name="y" DisplayName="y" Desc="y" Type="float" Class="UnityEngine::Vector3" Public="true" />
+      <Member Name="z" DisplayName="z" Desc="z" Type="float" Class="UnityEngine::Vector3" Public="true" />
+    </struct>
+  </types>
+  <agents>
+    <agent classfullname="behaviac::Agent" DisplayName="behaviac.Agent" Desc="behaviac.Agent" IsRefType="true">
+      <Method Name="VectorLength" DisplayName="" Desc="" ReturnType="int" Class="behaviac::Agent" Static="true" Public="true">
+        <Param DisplayName="vector" Desc="vector" Type="System.Collections.IList" />
+      </Method>
+      <Method Name="VectorAdd" DisplayName="" Desc="" ReturnType="void" Class="behaviac::Agent" Static="true" Public="true">
+        <Param DisplayName="vector" Desc="vector" Type="System.Collections.IList" />
+        <Param DisplayName="element" Desc="element" Type="System::Object*" />
+      </Method>
+      <Method Name="VectorRemove" DisplayName="" Desc="" ReturnType="void" Class="behaviac::Agent" Static="true" Public="true">
+        <Param DisplayName="vector" Desc="vector" Type="System.Collections.IList" />
+        <Param DisplayName="element" Desc="element" Type="System::Object*" />
+      </Method>
+      <Method Name="VectorContains" DisplayName="" Desc="" ReturnType="bool" Class="behaviac::Agent" Static="true" Public="true">
+        <Param DisplayName="vector" Desc="vector" Type="System.Collections.IList" />
+        <Param DisplayName="element" Desc="element" Type="System::Object*" />
+      </Method>
+      <Method Name="VectorClear" DisplayName="" Desc="" ReturnType="void" Class="behaviac::Agent" Static="true" Public="true">
+        <Param DisplayName="vector" Desc="vector" Type="System.Collections.IList" />
+      </Method>
+    </agent>
+    <agent classfullname="BaseActorAIAgent" base="behaviac::Agent" DisplayName="BaseActorAIAgent" Desc="AI base Agent" IsRefType="true">
+      <Member Name="SAFE_DISTANCE" DisplayName="SAFE_DISTANCE" Desc="一个安全参数" Type="float" Class="BaseActorAIAgent" Readonly="true" Static="true" Public="true" />
+      <Member Name="m_isRanged" DisplayName="IsRanged" Desc="是否在范围内" Type="bool" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_offsetPoint" DisplayName="TargetOffsetPoint" Desc="与目标距离的偏移值" Type="UnityEngine::Vector3" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_attackNum" DisplayName="AttackNum" Desc="攻击别人次数" Type="int" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_attackedNum" DisplayName="AttackedNum" Desc="被攻击次数" Type="int" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_currentAiState" DisplayName="CurAiState" Desc="当前ai的状态" Type="BaseActorAIAgent::AI_State" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_nextStopBehaviourTime" DisplayName="NextStopBehaviourTime" Desc="下次才有有行动的时间" Type="float" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_curTime" DisplayName="CurTime" Desc="当前时间" Type="float" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_param1" DisplayName="M_Param1" Desc="AI中临时变量1，不要用BT的变量，消耗太大" Type="float" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_param2" DisplayName="M_Param2" Desc="AI中临时变量2，不要用BT的变量，消耗太大" Type="float" Class="BaseActorAIAgent" Public="true" />
+      <Member Name="m_param3" DisplayName="M_Param3" Desc="AI中临时变量3，不要用BT的变量，消耗太大" Type="float" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="HandleAttack" DisplayName="Attacking" Desc="攻击敌人" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="HandleStandBy" DisplayName="Idleing" Desc="攻击敌人" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="HandleMoveToPos" DisplayName="Moving" Desc="攻击敌人" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="HandleFollowing" DisplayName="Following" Desc="跟随敌人" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="HandlePatrol" DisplayName="Patroling" Desc="巡逻" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="ChangeAIState" DisplayName="SetAIState" Desc="设置ai状态机" ReturnType="void" Class="BaseActorAIAgent" Public="true">
+        <Param DisplayName="state" Desc="state" Type="BaseActorAIAgent::AI_State" />
+      </Method>
+      <Method Name="RefreshTarget" DisplayName="RefreshTarget" Desc="获取新的敌人" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="IsSkillState" DisplayName="IsSkillState" Desc="是否在技能状态" ReturnType="bool" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="IsMoveState" DisplayName="IsMoveState" Desc="是否在移动状态" ReturnType="bool" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="TargetExist" DisplayName="TargetExist" Desc="是否存在敌人" ReturnType="bool" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="GetDistanceToTarget" DisplayName="GetDistanceToTarget" Desc="获取与目标的距离(不包含偏移值)" ReturnType="float" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="GetDistanceToTargetWitOffset" DisplayName="GetDistanceToTargetWithOffset" Desc="获取与目标的距离(包含偏移值)" ReturnType="float" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="SetLookAtTarget" DisplayName="LookAtTarget" Desc="转向朝向目标" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="SetOffsetPoint" DisplayName="SetOffSet" Desc="设置offset" ReturnType="void" Class="BaseActorAIAgent" Public="true">
+        <Param DisplayName="offset" Desc="offset" Type="UnityEngine::Vector3" />
+      </Method>
+      <Method Name="RadiusWithTarget" DisplayName="RadiusWithTarget" Desc="敌人和自己碰撞体的距离" ReturnType="float" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="SetIdleState" DisplayName="SetIdle" Desc="切换休息状态" ReturnType="void" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="IsFirstAttack" DisplayName="IsFirstAttack" Desc="是第一次攻击嘛" ReturnType="bool" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="Random" DisplayName="Random(Max)" Desc="随机一个数字" ReturnType="int" Class="BaseActorAIAgent" Public="true">
+        <Param DisplayName="Max" Desc="Max" Type="int" />
+      </Method>
+      <Method Name="Randome" DisplayName="Random()" Desc="随机一个0~1的浮点数" ReturnType="float" Class="BaseActorAIAgent" Public="true" />
+      <Method Name="IsCollider" DisplayName="IsCollider" Desc="是否和边境碰撞" ReturnType="bool" Class="BaseActorAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="MonsterAIAgent" base="BaseActorAIAgent" DisplayName="MonsterAI" Desc="怪物基类" IsRefType="true">
+      <Method Name="GetAttackInitAttackDistance" DisplayName="InitAttackDistance" Desc="近战攻击的最短距离" ReturnType="float" Class="MonsterAIAgent" Public="true" />
+      <Method Name="GetAttackMinAttackDistance" DisplayName="MinAttackDistance" Desc="远程攻击的最短距离" ReturnType="float" Class="MonsterAIAgent" Public="true" />
+      <Method Name="GetAttackMaxAttackDistance" DisplayName="MaxAttackDistance" Desc="攻击的远距离" ReturnType="float" Class="MonsterAIAgent" Public="true" />
+      <Method Name="GetSafeAttackInitAttackDistance" DisplayName="SafeInitAttackDistance" Desc="近战攻击的最短距离*0.8" ReturnType="float" Class="MonsterAIAgent" Public="true" />
+      <Method Name="GetSafeAttackMinAttackDistance" DisplayName="SafeMinAttackDistance" Desc="远程攻击的最短距离*0.8" ReturnType="float" Class="MonsterAIAgent" Public="true" />
+      <Method Name="GetSafeAttackMaxAttackDistance" DisplayName="SafeMaxAttackDistance" Desc="攻击的远距离*0.8" ReturnType="float" Class="MonsterAIAgent" Public="true" />
+      <Method Name="MonsterType" DisplayName="MonsterType" Desc="怪物类型" ReturnType="int" Class="MonsterAIAgent" Public="true" />
+      <Method Name="ChooseMoveStyle" DisplayName="ChooseMovePos" Desc="去设置目标点" ReturnType="void" Class="MonsterAIAgent" Public="true">
+        <Param DisplayName="redius" Desc="redius" Type="float" />
+        <Param DisplayName="angel" Desc="angel" Type="float" />
+      </Method>
+    </agent>
+    <agent classfullname="BossAIAgent" base="MonsterAIAgent" DisplayName="BossAI" Desc="boss的ai" IsRefType="true" />
+    <agent classfullname="FollowAIAgent" base="MonsterAIAgent" DisplayName="FollowAI" Desc="跟随类的ai" IsRefType="true">
+      <Method Name="DistanceToParent" DisplayName="DistanceToParent(Following)" Desc="和召唤者的距离" ReturnType="float" Class="FollowAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="CardAIAgent" base="FollowAIAgent" DisplayName="CardAI" Desc="玩家召唤boss的ai" IsRefType="true">
+      <Member Name="m_followDistance" DisplayName="FollowDistance" Desc="跟随的距离" Type="float" Class="CardAIAgent" Public="true" />
+      <Member Name="m_followSafeDistance" DisplayName="FollowMinDistance" Desc="跟随不要太靠近了" Type="float" Class="CardAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="RTMonsterAIAgent" base="MonsterAIAgent" DisplayName="RTMonsterAI" Desc="野怪" IsRefType="true">
+      <Member Name="m_Patrolstatus" DisplayName="Patrolstatus" Desc="当前的巡逻状态" Type="RTMonsterAIAgent::PatrolStatus" Class="RTMonsterAIAgent" Public="true" />
+      <Member Name="m_isAttacked" DisplayName="IsAttacked" Desc="是否被击" Type="bool" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="OnUpdateStatusGo" DisplayName="OnUpdateStatusGo" Desc="巡逻状态为“GO”时" ReturnType="void" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="OnUpdateStatusStand" DisplayName="OnUpdateStatusStand" Desc="巡逻状态为“Stand”时" ReturnType="void" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="OutOfPatrolRange" DisplayName="OutOfPatrolRange" Desc="是否超出了追击范围" ReturnType="bool" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="SelectPotrolPos" DisplayName="SelectPotrolPos" Desc="选中目标点" ReturnType="void" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="GoToPotrolPos" DisplayName="GoToPotrolPosing" Desc="前往目标点" ReturnType="void" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="IsGoToPotrolPos" DisplayName="IsGoToPotrolPos" Desc="是否到达追击目标点" ReturnType="bool" Class="RTMonsterAIAgent" Public="true" />
+      <Method Name="GetRandomPotrolWaitTime" DisplayName="GetRandomPotrolWaitTime" Desc="获取一个随机的巡逻停顿时间" ReturnType="float" Class="RTMonsterAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="MeleeAIAgent" base="RTMonsterAIAgent" DisplayName="MeleeAI" Desc="普通小怪" IsRefType="true" />
+    <agent classfullname="NPCAIAgent" base="BaseActorAIAgent" DisplayName="NPCAIAgent" Desc="NPC AI" IsRefType="true">
+      <Member Name="m_CurrentPatrolStatus" DisplayName="CurrentPatrolStatus" Desc="当前的巡逻状态" Type="NPCAIAgent::PatrolStatus" Class="NPCAIAgent" Public="true" />
+      <Member Name="m_PreviousPatrolStatus" DisplayName="PreviousPatrolStatus" Desc="前一个巡逻状态" Type="NPCAIAgent::PatrolStatus" Class="NPCAIAgent" Public="true" />
+      <Member Name="m_NeedTalk" DisplayName="NeedTalk" Desc="是否需要对话" Type="bool" Class="NPCAIAgent" Public="true" />
+      <Member Name="m_curStandTime" DisplayName="CurStandTime" Desc="当前停留时间" Type="float" Class="NPCAIAgent" Public="true" />
+      <Method Name="PlayeAction" DisplayName="PlayeAction" Desc="执行动作" ReturnType="void" Class="NPCAIAgent" Public="true" />
+      <Method Name="ActionStateEnd" DisplayName="ActionStateEnd" Desc="播放动画完成" ReturnType="bool" Class="NPCAIAgent" Public="true" />
+      <Method Name="Move" DisplayName="GoMove" Desc="巡逻" ReturnType="void" Class="NPCAIAgent" Public="true" />
+      <Method Name="ReachedTargetPos" DisplayName="ReachedTargetPos" Desc="到达指定地点" ReturnType="bool" Class="NPCAIAgent" Public="true" />
+      <Method Name="TalkEndToAction" DisplayName="TalkEndToAction" Desc="谈话完成后执行动作" ReturnType="bool" Class="NPCAIAgent" Public="true" />
+      <Method Name="TalkEndToMove" DisplayName="TalkEndToMove" Desc="谈话完成后继续巡逻" ReturnType="bool" Class="NPCAIAgent" Public="true" />
+      <Method Name="TalkEndToIdle" DisplayName="TalkEndToIdle" Desc="谈话完成后休息" ReturnType="bool" Class="NPCAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="PlayerAIAgent" base="BaseActorAIAgent" DisplayName="PlayerBaseAI" Desc="玩家ai基类" IsRefType="true">
+      <Member Name="m_SkillInputInterval" DisplayName="SkillInputFrameInterval" Desc="技能输入间隔" Type="float" Class="PlayerAIAgent" Public="true" />
+      <Method Name="GetMaxAttackDistance" DisplayName="GetMaxAttackDistance" Desc="当前技能的最远攻击距离" ReturnType="float" Class="PlayerAIAgent" Public="true" />
+      <Method Name="RefreshSkill" DisplayName="RefreshSkill" Desc="刷新下一次要使用的技能" ReturnType="void" Class="PlayerAIAgent" Public="true" />
+      <Method Name="CanTakeNextMove" DisplayName="CanTakeNextMove" Desc="判断是否能发下一招" ReturnType="bool" Class="PlayerAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="PlayerFubenAIAgent" base="PlayerAIAgent" DisplayName="PlayerFubenAI" Desc="玩家副本自动战斗AI" IsRefType="true" />
+    <agent classfullname="RangedAIAgent" base="RTMonsterAIAgent" DisplayName="RangedAI" Desc="范围怪物" IsRefType="true">
+      <Member Name="MAX_ESCAPE_TIME" DisplayName="MAX_ESCAPE_TIME" Desc="最大逃跑时间" Type="float" Class="RangedAIAgent" Readonly="true" Static="true" Public="true" />
+      <Member Name="MIN_ESCAPE_TIME" DisplayName="MIN_ESCAPE_TIME" Desc="最小逃跑时间" Type="float" Class="RangedAIAgent" Readonly="true" Static="true" Public="true" />
+      <Member Name="m_startEscapeTime" DisplayName="StartEscapeTime" Desc="开始逃跑时间" Type="float" Class="RangedAIAgent" Public="true" />
+      <Member Name="m_hasEscape" DisplayName="HasEscape" Desc="是否在逃跑" Type="bool" Class="RangedAIAgent" Public="true" />
+      <Member Name="m_minAttackNum" DisplayName="MinAttackNum" Desc="攻击次数" Type="int" Class="RangedAIAgent" Public="true" />
+      <Member Name="m_thisEscapeTime" DisplayName="thisEscapeTime" Desc="这次逃跑的时间" Type="float" Class="RangedAIAgent" Public="true" />
+      <Member Name="m_thisMinDistanceAttNum" DisplayName="thisMinAttackNum" Desc="这个怪物最少的攻击次数" Type="int" Class="RangedAIAgent" Public="true" />
+      <Method Name="PreEscape" DisplayName="PreEscape" Desc="进入逃离前操作" ReturnType="void" Class="RangedAIAgent" Public="true" />
+      <Method Name="Escaping" DisplayName="Escaping" Desc="逃离" ReturnType="void" Class="RangedAIAgent" Public="true" />
+    </agent>
+    <agent classfullname="RTPlayerAIAgent" base="PlayerAIAgent" DisplayName="RTPlayerAI" Desc="����Ұ���Զ�ս��AI" IsRefType="true">
+      <Member Name="PotrolDistance" DisplayName="PotrolDistance" Desc="Ѳ�߰뾶" Type="float" Class="RTPlayerAIAgent" Readonly="true" Public="true" />
+      <Member Name="ChaseDistance" DisplayName="ChaseDistance" Desc="׷���뾶" Type="float" Class="RTPlayerAIAgent" Readonly="true" Public="true" />
+    </agent>
+    <agent classfullname="TrapAIAgent" base="MonsterAIAgent" DisplayName="TrapAIAgent" Desc="trap的ai" IsRefType="true">
+      <Member Name="m_attackInterval" DisplayName="AttackInterval" Desc="陷阱攻击间隔时间" Type="float" Class="TrapAIAgent" Public="true" />
+      <Method Name="HandleDead" DisplayName="Dead" Desc="死亡" ReturnType="void" Class="TrapAIAgent" Public="true" />
+      <Method Name="HandleAttack" DisplayName="TrapAttack" Desc="陷阱攻击" ReturnType="void" Class="TrapAIAgent" Public="true" />
+      <Method Name="isDead" DisplayName="isDead" Desc="是否死亡" ReturnType="bool" Class="TrapAIAgent" Public="true" />
+    </agent>
+  </agents>
+</metas>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null" >
+
+    <RelativeLayout
+        android:id="@+id/mContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/sjoy_white" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="35" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="530" >
+
+                    <ImageView
+                        android:id="@+id/exitdialog_starlogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/sjoy_exitgame_logo" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="85" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="140" >
+
+                                <ImageView
+                                    android:id="@+id/sjoy_exitdialog_firstgame_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scaleType="center" />
+
+                                <TextView
+                                    android:id="@+id/sjoy_exitdialog_firstgame_gamename"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sjoy_exitdialog_firstgame_icon"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="3dp"
+                                    android:text="游戏名称"
+                                    android:textColor="@color/sjoy_exitgame_gamename"
+                                    android:textSize="@dimen/sjoy_exitgame" />
+
+                                <TextView
+                                    android:id="@+id/sjoy_exitdialog_firstgame_gametype"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sjoy_exitdialog_firstgame_gamename"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="3dp"
+                                    android:text="游戏类型"
+                                    android:textColor="@color/sjoy_exitgame_text"
+                                    android:textSize="@dimen/sjoy_login_text_home_tips" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="55" />
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="140" >
+
+                                <ImageView
+                                    android:id="@+id/sjoy_exitdialog_secondgame_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scaleType="center" />
+
+                                <TextView
+                                    android:id="@+id/sjoy_exitdialog_secondgame_gamename"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sjoy_exitdialog_secondgame_icon"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="3dp"
+                                    android:text="游戏名称"
+                                    android:textColor="@color/sjoy_exitgame_gamename"
+                                    android:textSize="@dimen/sjoy_exitgame" />
+
+                                <TextView
+                                    android:id="@+id/sjoy_exitdialog_secondgame_gametype"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sjoy_exitdialog_secondgame_gamename"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="3dp"
+                                    android:text="游戏类型"
+                                    android:textColor="@color/sjoy_exitgame_text"
+                                    android:textSize="@dimen/sjoy_login_text_home_tips" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="55" />
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="140" >
+
+                                <ImageView
+                                    android:id="@+id/sjoy_exitdialog_thirdgame_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scaleType="center" />
+
+                                <TextView
+                                    android:id="@+id/sjoy_exitdialog_thirdgame_gamename"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sjoy_exitdialog_thirdgame_icon"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="3dp"
+                                    android:text="游戏名称"
+                                    android:textColor="@color/sjoy_exitgame_gamename"
+                                    android:textSize="@dimen/sjoy_exitgame" />
+
+                                <TextView
+                                    android:id="@+id/sjoy_exitdialog_thirdgame_gametype"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sjoy_exitdialog_thirdgame_gamename"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="3dp"
+                                    android:text="游戏类型"
+                                    android:textColor="@color/sjoy_exitgame_text"
+                                    android:textSize="@dimen/sjoy_login_text_home_tips" />
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="30" />
+
+                        <Button
+                            android:id="@+id/exitdialog_exitbtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="55"
+                            android:background="@drawable/sjoy_bg_exitgame_btn_exit"
+                            android:text="@string/sjoy_exit_exitbtn"
+                            android:textColor="@color/sjoy_exitgame_button_text"
+                            android:textSize="@dimen/sjoy_exitgame" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="25" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="35" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

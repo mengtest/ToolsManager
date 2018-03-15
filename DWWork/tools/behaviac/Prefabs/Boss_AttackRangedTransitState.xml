@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="BossAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Connector Identifier="GenericChildren">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="7" IsEndState="false" Method="&quot;&quot;" Name="AttackRangedTransitState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="896.8328" ScreenLocationY="151.2551">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="15" Operator="LessEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetSafeAttackInitAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="8" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="16" Operator="GreaterEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMinAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="9" />
+      </Node>
+    </Connector>
+  </Node>
+</Behavior>

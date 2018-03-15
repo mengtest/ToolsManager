@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="TrapAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Attachment Class="PluginBehaviac.Events.StartCondition" Enable="true" Id="0" PrefabAttachmentId="-1" TargetFSMNodeId="17" />
+    <FSMNodes ScreenLocationX="0" ScreenLocationY="0">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="&quot;&quot;" Name="PreAttackState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="398.5729" ScreenLocationY="123.4957">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="2" Operator="LessEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackInitAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="5" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="3" IsEndState="false" Method="Self.TrapAIAgent::HandleAttack()" Name="AttackState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="25.15559" ScreenLocationY="108.2766">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="9" Operator="Equal" Opl="Self.BaseActorAIAgent::IsSkillState()" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="13" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="13" IsEndState="false" Method="&quot;&quot;" Name="PreDeadState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="108.117" ScreenLocationY="246.0902">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="14" Operator="Equal" Opl="Self.TrapAIAgent::isDead()" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="15" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="4" PrefabAttachmentId="-1" TargetFSMNodeId="17" TransitionPhase="ETP_Always" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="15" IsEndState="false" Method="Self.TrapAIAgent::HandleDead()" Name="DeadState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="-4.796124" ScreenLocationY="381.5927">
+        <Comment Background="NoColor" Text="" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="17" IsEndState="false" Method="&quot;&quot;" Name="PreEnterState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="420.8264" ScreenLocationY="20.00085">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="21" Operator="Equal" Opl="Self.BaseActorAIAgent::TargetExist()" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="5" IsEndState="false" Method="&quot;&quot;" Name="IdleState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="393.1489" ScreenLocationY="232.5014">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="8" Operator="Add" Opl="float Self.BaseActorAIAgent::m_nextStopBehaviourTime" Opr1="float Self.BaseActorAIAgent::m_curTime" Opr2="float Self.TrapAIAgent::m_attackInterval" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="6" Operator="Invalid" Opl="Self.BaseActorAIAgent::SetIdleState()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="12" Operator="GreaterEqual" Opl="float Self.BaseActorAIAgent::m_curTime" Opr1="&quot;&quot;" Opr2="float Self.BaseActorAIAgent::m_nextStopBehaviourTime" PrefabAttachmentId="-1" TargetFSMNodeId="3" />
+      </Node>
+    </FSMNodes>
+  </Node>
+</Behavior>

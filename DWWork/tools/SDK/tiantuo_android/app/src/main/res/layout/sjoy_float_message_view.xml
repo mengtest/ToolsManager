@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"            
+        android:orientation="vertical"
+        android:background="@drawable/sjoy_floatbutton_message_left"
+        android:id="@+id/sjoy_float_message_layout">
+
+        <TextView
+            android:id="@+id/sjoy_float_message_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:inputType="textMultiLine"
+            android:text="你有新的消息！"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+        
+    </LinearLayout>  

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="sjoy_dialog_title_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/sjoy_dialog_title_height</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:background">@drawable/sjoy_bg_black_round</item>
+    </style>
+
+    <style name="sjoy_dialog_title_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textSize">@dimen/sjoy_dialog_title_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="sjoy_input_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/sjoy_edittext_height</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/sjoy_input_text_size</item>
+        <item name="android:textColor">@color/sjoy_black</item>
+        <item name="android:textColorHint">@color/sjoy_gray_light</item>
+    </style>
+
+    <style name="sjoy_textview_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/sjoy_edittext_height</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/sjoy_input_text_size</item>
+        <item name="android:textColor">@color/sjoy_black</item>
+        <item name="android:textColorHint">@color/sjoy_gray_light</item>
+    </style>
+
+    <style name="sjoy_button_getcode_style">
+        <item name="android:layout_width">110dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">5dip</item>
+        <item name="android:paddingRight">5dip</item>
+        <item name="android:text">@string/sjoy_common_getvcode</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/sjoy_bg_text_black</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="sjoy_button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/sjoy_button_height</item>
+        <item name="android:textSize">@dimen/sjoy_button_text_size</item>
+        <item name="android:textColor">@color/sjoy_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="sjoy_button_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="sjoy_linktext_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/sjoy_link_text_height</item>
+        <item name="android:textSize">@dimen/sjoy_link_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/sjoy_bg_text_white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="sjoy_dialog_imageview">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:contentDescription">@string/sjoy_imageview</item>
+    </style>
+
+    <style name="sjoy_tablerow_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dip</item>
+        <item name="android:padding">0dip</item>
+    </style>
+
+    <style name="sjoy_tablelayout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">0dip</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="sjoy_dialog_theme_main" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowFrame">@null</item> <!-- 边框 -->
+        <item name="android:windowIsTranslucent">false</item> <!-- 半透明 -->
+        <item name="android:windowBackground">@color/sjoy_transparent</item> <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item> <!-- 模糊 -->
+    </style>
+
+    <style name="sjoy_dialog_theme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item> <!-- 边框 -->
+        <item name="android:windowIsTranslucent">false</item> <!-- 半透明 -->
+        <item name="android:windowBackground">@color/sjoy_transparent</item> <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item> <!-- 模糊 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="sjoy_float_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/sjoy_white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="sjoy_logindialog_theme">
+        <item name="android:windowBackground">@color/sjoy_transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:windowIsFloating">false</item>
+        <!-- <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item> -->
+    </style>
+
+    <style name="sjoy_autodialog_theme_main" parent="android:Animation">
+        <item name="android:windowFrame">@null</item> <!-- 边框 -->
+        <item name="android:windowIsTranslucent">false</item> <!-- 半透明 -->
+        <item name="android:windowBackground">@color/sjoy_transparent</item> <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item> <!-- 模糊 -->
+        <!-- <item name="android:windowAnimationStyle">@+android:style/Animation.LockScreen</item> -->
+        <item name="android:windowEnterAnimation">@anim/sjoy_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/sjoy_dialog_exit</item>
+    </style>
+
+    <!-- 自定义dialog背景全透明无边框theme -->
+    <style name="sjoy_visitorLoginDialog" parent="android:style/Theme.Dialog">
+
+        <!-- 背景颜色及和透明程度 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否去除边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否模糊 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- 悬浮窗弹出框按钮样式 -->
+    <style name="sjoy_float_button_style">
+        <item name="android:layout_width">26dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- 悬浮窗弹出框按钮红点 -->
+    <style name="sjoy_float_button_red_style">
+        <item name="android:layout_width">8dp</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:src">@drawable/sjoy_floatbutton_red</item>
+    </style>
+
+    <!-- popwin右边弹出动画 -->
+    <style name="right_popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/sjoy_right_popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/sjoy_right_popup_exit</item>
+    </style>
+
+    <!-- popwin左边弹出动画 -->
+    <style name="left_popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/sjoy_left_popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/sjoy_left_popup_exit</item>
+    </style>
+
+    <!-- 悬浮窗导向diolog按钮 -->
+    <style name="sjoy_float_guide_button">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/sjoy_white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    
+    <!-- 客服系统activity样式 -->
+    <style name="Theme.CustomerService" parent="@android:style/Theme.Dialog">
+        <!-- 设置允许窗口半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 引用Android系统的动画半透明样式 -->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <!-- 设定窗口背景颜色 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 隐藏窗口标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 背景是否模糊显示 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>

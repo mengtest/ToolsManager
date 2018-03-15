@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--EXPORTED BY TOOL, DON'T MODIFY IT!-->
+<meta>
+  <types />
+  <agents>
+    <agent type="BaseActorAIAgent" base="behaviac::Agent" disp="BaseActorAIAgent" desc="AI base Agent">
+      <properties>
+        <property name="AI_BaseParam1" type="System.Single" classname="BaseActorAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_BaseParam1" desc="AI_BaseParam1" />
+        <property name="AI_BaseParam2" type="System.Single" classname="BaseActorAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_BaseParam2" desc="AI_BaseParam2" />
+        <property name="AI_BaseParam3" type="System.Single" classname="BaseActorAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_BaseParam3" desc="AI_BaseParam3" />
+      </properties>
+    </agent>
+    <agent type="MeleeAIAgent" base="RTMonsterAIAgent" disp="MeleeAI" desc="普通小怪">
+      <properties>
+        <property name="AI_distance" type="System.Single" classname="MeleeAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_distance" desc="AI_distance" />
+        <property name="AI_RadiusWithTarget" type="System.Single" classname="MeleeAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_RadiusWithTarget" desc="AI_RadiusWithTarget" />
+      </properties>
+    </agent>
+    <agent type="RangedAIAgent" base="RTMonsterAIAgent" disp="RangedAI" desc="范围怪物">
+      <properties>
+        <property name="AI_distanceWithOffset" type="System.Single" classname="RangedAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_distanceWithOffset" desc="AI_distanceWithOffset" />
+        <property name="AI_SafeDistance" type="System.Single" classname="RangedAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_SafeDistance" desc="AI_SafeDistance" />
+        <property name="AI_SafeTime" type="System.Single" classname="RangedAIAgent" defaultvalue="0" static="false" public="true" readonly="false" disp="AI_SafeTime" desc="AI_SafeTime" />
+      </properties>
+    </agent>
+  </agents>
+</meta>

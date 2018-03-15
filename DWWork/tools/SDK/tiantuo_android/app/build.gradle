@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'ezfunreleasekey'
+            keyPassword 'ezfun001'
+            storeFile file('../ezfun_release_key.keystore')
+            storePassword 'ezfun001'
+        }
+    }
+    
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId "com.ezfun.dfws2.sjoys"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0.0"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips","arm64-v8a","x86_64"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    
+     aaptOptions {
+        noCompress 'ezfunab','bytes', 'lua','mapFile','bytes','lbytes','json','lodData'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23+'
+    compile files('libs/sjoy_release_3.0.2_20170626.jar')
+    compile files('libs/unity-classes.jar')
+    compile files('libs/UPPayAssistEx.jar')
+    compile files('libs/UPPayPluginExPro.jar')
+    compile files('libs/bugly.jar')
+    compile files('libs/DataEye_Unity3d_v2.9.3.jar')
+    compile files('libs/EZfunWebView.jar')
+    compile files('libs/fmod.jar')
+    compile files('libs/TalkingData_AdTracking_SDK_Android.jar')
+    compile files('libs/buglyagent.jar')
+    compile files('libs/testinagent.jar')
+    compile files('libs/EZfunWebView.jar')
+    compile(name: 'BrightnessAdjuster', ext: 'aar')
+    compile(name: 'MemoryWarningReporter', ext: 'aar')
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/jg_filter_sdk_1.1.jar')
+    compile files('libs/mid-core-sdk-3.7.2.jar')
+    compile files('libs/wup-1.0.0.E-SNAPSHOT.jar')
+    compile files('libs/Xg_sdk_v3.1_20170417_0946.jar')
+}
+

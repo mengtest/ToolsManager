@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/float_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/sjoy_floatbutton_bg_view"
+    android:visibility="visible" >
+
+    <RelativeLayout
+        android:id="@+id/sjoy_float_user"
+        android:layout_width="26dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/sjoy_float_user_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_user" />
+
+        <ImageView
+            android:id="@+id/sjoy_float_user_red"
+            style="@style/sjoy_float_button_red_style" 
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+       	 android:id="@+id/sjoy_float_bbs"
+         style="@style/sjoy_float_button_style"
+         android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/sjoy_float_bbs_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_bbs" />
+        
+        <ImageView
+            android:id="@+id/sjoy_float_bbs_red"
+            style="@style/sjoy_float_button_red_style"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+    
+    
+
+    <RelativeLayout
+        android:id="@+id/sjoy_float_gift"
+        style="@style/sjoy_float_button_style"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/sjoy_float_gift_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_gift" />
+        
+        <ImageView
+            android:id="@+id/sjoy_float_gift_red"
+            style="@style/sjoy_float_button_red_style"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sjoy_float_cs"
+        style="@style/sjoy_float_button_style"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/sjoy_float_cs_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_cs" />
+        
+        <ImageView
+            android:id="@+id/sjoy_float_cs_red"
+            style="@style/sjoy_float_button_red_style"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/sjoy_float_changeuser"
+        style="@style/sjoy_float_button_style"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/sjoy_float_changeuser_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_change" />
+        
+        
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sjoy_float_other"
+        style="@style/sjoy_float_button_style"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/sjoy_float_other_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_activity1" />
+        
+        <ImageView
+            android:id="@+id/sjoy_float_other_red"
+            style="@style/sjoy_float_button_red_style" 
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/sjoy_float_other2"
+         style="@style/sjoy_float_button_style"
+        android:layout_marginRight="15dp"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/sjoy_float_other2_button"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sjoy_floatbutton_activity2" />
+        
+        <ImageView
+            android:id="@+id/sjoy_float_other_red2"
+            style="@style/sjoy_float_button_red_style"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

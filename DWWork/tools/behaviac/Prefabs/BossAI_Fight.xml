@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="BossAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Attachment Class="PluginBehaviac.Events.StartCondition" Enable="true" Id="0" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+    <FSMNodes ScreenLocationX="0" ScreenLocationY="0">
+      <Node Class="PluginBehaviac.Nodes.State" HasOwnPrefabData="false" Id="1" PrefabName="../Prefabs/Boss_Idle_State" PrefabNodeId="1">
+        <Comment Background="Gray" Text="Prefab[Boss_Idle_State]" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" HasOwnPrefabData="false" Id="3" PrefabName="../Prefabs/Boss_MoveState" PrefabNodeId="3">
+        <Comment Background="Gray" Text="Prefab[Boss_MoveState]" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" HasOwnPrefabData="false" Id="4" PrefabName="../Prefabs/Boss_AttackState_State" PrefabNodeId="4">
+        <Comment Background="Gray" Text="Prefab[Boss_AttackState_State]" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" HasOwnPrefabData="false" Id="7" PrefabName="../Prefabs/Boss_AttackRangedTransitState" PrefabNodeId="7">
+        <Comment Background="Gray" Text="Prefab[Boss_AttackRangedTransitState]" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" HasOwnPrefabData="false" Id="8" PrefabName="../Prefabs/Boss_Ranged_False" PrefabNodeId="8">
+        <Comment Background="Gray" Text="Prefab[Boss_Ranged_False]" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" HasOwnPrefabData="false" Id="9" PrefabName="../Prefabs/Boss_Ranged_True_State" PrefabNodeId="9">
+        <Comment Background="Gray" Text="Prefab[Boss_Ranged_True_State]" />
+      </Node>
+    </FSMNodes>
+  </Node>
+</Behavior>

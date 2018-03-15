@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sjoy_customer_content"
+    android:layout_width="400dp"
+    android:layout_height="270dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <ImageView 
+            android:id="@+id/sjoy_customer_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/sjoy_customer_title"/>
+        <ImageView 
+            android:id="@+id/sjoy_customer_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingTop="7.5dp"
+            android:paddingBottom="7.5dp"
+            android:paddingRight="14dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/sjoy_customer_close"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/sjoy_customer_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="7.5dp"
+        android:paddingRight="7.5dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/sjoy_customer_content_bg">
+        
+        
+    </RelativeLayout>
+    
+    
+    
+    
+
+
+</LinearLayout>

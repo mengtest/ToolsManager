@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="CardAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Attachment Class="PluginBehaviac.Events.StartCondition" Enable="true" Id="0" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+    <FSMNodes ScreenLocationX="0" ScreenLocationY="0">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="&quot;&quot;" Name="IdleState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="142.2327" ScreenLocationY="-85.12449">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="11" Operator="Invalid" Opl="Self.BaseActorAIAgent::SetIdleState()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="14" Operator="Invalid" Opl="Self.BaseActorAIAgent::RefreshTarget()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="5" Operator="Equal" Opl="Self.BaseActorAIAgent::TargetExist()" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="6" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="29" Operator="Greater" Opl="Self.FollowAIAgent::DistanceToParent()" Opr1="&quot;&quot;" Opr2="float Self.CardAIAgent::m_followDistance" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="Self.BaseActorAIAgent::HandleFollowing()" Name="FollowState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="394.981" ScreenLocationY="-187.2835">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="7" Operator="LessEqual" Opl="Self.FollowAIAgent::DistanceToParent()" Opr1="&quot;&quot;" Opr2="float Self.CardAIAgent::m_followSafeDistance" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="3" IsEndState="false" Method="Self.BaseActorAIAgent::HandleMoveToPos()" Name="MoveState2" PrefabName="" PrefabNodeId="-1" ScreenLocationX="421.5659" ScreenLocationY="267.4071">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="13" Operator="LessEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetSafeAttackInitAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="8" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="4" IsEndState="false" Method="" Name="AttackState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="682.7031" ScreenLocationY="-76.45571">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="16" Operator="Invalid" Opl="Self.BaseActorAIAgent::HandleAttack()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="15" Operator="Equal" Opl="Self.BaseActorAIAgent::IsSkillState()" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="17" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="6" IsEndState="false" Method="&quot;&quot;" Name="PreAttackState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="139.368" ScreenLocationY="111.3813">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="25" Operator="Greater" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMaxAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="26" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="10" Operator="Less" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackInitAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="8" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="28" Operator="GreaterEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMinAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="21" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="12" PrefabAttachmentId="-1" TargetFSMNodeId="3" TransitionPhase="ETP_Always" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="24" Operator="GreaterEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMinAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="-2147483648" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="17" IsEndState="false" Method="&quot;&quot;" Name="SleepState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="404.9424" ScreenLocationY="-108.7167">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="18" Operator="Add" Opl="float Self.BaseActorAIAgent::m_nextStopBehaviourTime" Opr1="float Self.BaseActorAIAgent::m_curTime" Opr2="const float 0.5" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="19" Operator="LessEqual" Opl="float Self.BaseActorAIAgent::m_nextStopBehaviourTime" Opr1="&quot;&quot;" Opr2="float Self.BaseActorAIAgent::m_curTime" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="8" IsEndState="false" Method="&quot;&quot;" Name="Attack_RangedFalse" PrefabName="" PrefabNodeId="-1" ScreenLocationX="445.7835" ScreenLocationY="-18.46753">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="9" Operator="Assign" Opl="bool Self.BaseActorAIAgent::m_isRanged" Opr1="&quot;&quot;" Opr2="const bool false" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="20" PrefabAttachmentId="-1" TargetFSMNodeId="4" TransitionPhase="ETP_Always" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="21" IsEndState="false" Method="&quot;&quot;" Name="Attack_RangedTrue" PrefabName="" PrefabNodeId="-1" ScreenLocationX="457.2777" ScreenLocationY="71.67129">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="22" Operator="Assign" Opl="bool Self.BaseActorAIAgent::m_isRanged" Opr1="&quot;&quot;" Opr2="const bool true" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="23" PrefabAttachmentId="-1" TargetFSMNodeId="4" TransitionPhase="ETP_Always" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="26" IsEndState="false" Method="Self.BaseActorAIAgent::HandleMoveToPos()" Name="MoveState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="460.3026" ScreenLocationY="187.2183">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="27" Operator="LessEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetSafeAttackMaxAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="21" />
+      </Node>
+    </FSMNodes>
+  </Node>
+</Behavior>

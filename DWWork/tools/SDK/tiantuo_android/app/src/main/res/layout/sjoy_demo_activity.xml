@@ -1,0 +1,194 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="必接接口"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                />  
+                
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="1.帐号登录/切换"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+				
+                <Button
+                    android:id="@+id/userLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="userLogin(登录)" />
+
+                <Button
+                    android:id="@+id/userSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="userSwitch(切换)" />
+                
+            </LinearLayout>
+
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="2.帐号充值"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/userPay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="userPay(定额)" />
+
+                <Button
+                    android:id="@+id/userPay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="userPay(不定额)" />
+                
+            </LinearLayout>
+
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="3.返回键退出游戏"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                />
+            
+            <Button
+                android:id="@+id/showExit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="doExitGame(退出游戏)" />
+            
+            
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="4.角色提交接口"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/creatRoleBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="创建角色" />
+
+                <Button
+                    android:id="@+id/submitDataBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="进入游戏" />
+
+                <Button
+                    android:id="@+id/upgradeDataBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="角色升级" />
+                
+                <Button
+                    android:id="@+id/updateDataBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="角色换名" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+            </LinearLayout>
+
+             
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="5.其他"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                />
+            
+            <Button
+                android:id="@+id/getConfig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获取游戏参数" />
+            
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:text="选接接口"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                />  
+                
+            
+            <Button
+                android:id="@+id/openCustomerServiceActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="打开客服中心" />
+            
+            
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

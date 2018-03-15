@@ -78,4 +78,39 @@ public class UpdateInfo
 
 
 
+public class LocalUpdateConfigInfo
+{
+    public LocalUpdateConfigInfo() { }
 
+    public List<LocalUpdateInfo> localUpdateInfo;
+
+
+    public class LocalUpdateInfo
+    {
+        public LocalUpdateInfo() { }
+        public int areaID;
+        public string localName;
+        public string baseVersion;
+
+        public List<LocalDynamicUpdateInfo> dynamicUpdateInfo;
+    }
+
+    public class LocalDynamicUpdateInfo
+    {
+        public LocalDynamicUpdateInfo() { }
+
+        public int basePlatform;
+        public string resVersion;
+        public List<LocalResInfo> resInfo;
+    }
+
+    public class LocalResInfo
+    {
+        public LocalResInfo() { }
+
+        public string type;
+        public int size;
+        public string md5;
+    }
+
+}

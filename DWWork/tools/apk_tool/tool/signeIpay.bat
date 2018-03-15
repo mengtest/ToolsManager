@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk1.8.0_20\bin\jarsigner.exe"  -verbose -keystore ezfun_release_key.keystore -signedjar DFWS_IPay_signed.apk -digestalg SHA1 -sigalg MD5withRSA DFWS_IPay_unsigned.apk ezfunreleasekey -storepass ezfun001

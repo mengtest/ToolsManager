@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null" >
+
+    <LinearLayout
+        android:id="@+id/activation_content"
+        android:layout_width="320dp"
+        android:layout_height="245dp"
+        android:background="@drawable/sjoy_bg_activation"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="121"
+            android:background="@drawable/sjoy_bg_activation_top"
+            android:gravity="center" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/activation_gamename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="超神学院"
+                    android:textColor="@color/sjoy_activation_black"
+                    android:textSize="@dimen/sjoy_activation_text_gamename" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activation_gamename"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/sjoy_activation_title"
+                    android:textColor="@color/sjoy_activation_text_gray_light"
+                    android:textSize="@dimen/sjoy_activation_text3" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="178"
+            android:orientation="horizontal"
+            android:weightSum="640" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="422"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="67" />
+
+                <EditText
+                    android:id="@+id/activation_edittext_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="50"
+                    android:background="@null"
+                    android:hint="@string/sjoy_activation_edittext_hint"
+                    android:paddingLeft="4dp"
+                    android:singleLine="true"
+                    android:textColor="@color/sjoy_activation_black"
+                    android:textColorHint="@color/sjoy_activation_text_gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10" />
+
+                <TextView
+                    android:id="@+id/activation_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/sjoy_activation_black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="70"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="10" />
+
+                    <TextView
+                        android:id="@+id/activation_text_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/sjoy_activation_edittext_tips"
+                        android:textColor="@color/sjoy_bg_btn_activation_red"
+                        android:textSize="@dimen/sjoy_activation_text1"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="22" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="157"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="46" />
+
+                <Button
+                    android:id="@+id/sjoy_activation_entergame"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="81"
+                    android:background="@drawable/sjoy_bg_activation_entergame"
+                    android:text="@string/sjoy_activation_btn_text1"
+                    android:textColor="@color/sjoy_activation_text_white"
+                    android:textSize="@dimen/sjoy_activation_text1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="51" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/sjoy_activation_line_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="191"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/sjoy_activation_text"
+                android:textColor="@color/sjoy_activation_text_gray_light"
+                android:textSize="@dimen/sjoy_activation_text2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="81"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="640" >
+
+                <LinearLayout
+                    android:id="@+id/sjoy_activation_getcode_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20" />
+
+                    <RelativeLayout
+                        android:id="@+id/sjoy_activation_getcode_web"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="285"
+                        android:background="@drawable/sjoy_bg_activation_getcode"
+                        android:clickable="true"
+                        android:gravity="center_horizontal" >
+
+                        <ImageView
+                            android:id="@+id/activation_getcode_web"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/sjoy_activation_web" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/activation_getcode_web"
+                            android:text="@string/sjoy_activation_btn_text2"
+                            android:textColor="@color/sjoy_activation_text_white"
+                            android:textSize="@dimen/sjoy_activation_text1" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20" />
+
+                    <RelativeLayout
+                        android:id="@+id/sjoy_activation_getcode_qq"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="285"
+                        android:background="@drawable/sjoy_bg_activation_getcode"
+                        android:clickable="true"
+                        android:gravity="center_horizontal" >
+
+                        <ImageView
+                            android:id="@+id/activation_getcode_qq"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/sjoy_activation_qq" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/activation_getcode_qq"
+                            android:text="@string/sjoy_activation_btn_text3"
+                            android:textColor="@color/sjoy_activation_text_white"
+                            android:textSize="@dimen/sjoy_activation_text1" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

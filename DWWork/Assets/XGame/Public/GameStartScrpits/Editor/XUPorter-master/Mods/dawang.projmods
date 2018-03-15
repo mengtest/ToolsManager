@@ -1,0 +1,29 @@
+{
+  "group": "dawang",
+  "libs": [
+    "libz.dylib",
+	"libsqlite3.dylib",
+	"libsqlite3.0.dylib",
+	"libstdc++.6.0.9.dylib"
+  ],
+  "frameworks": [
+    "StoreKit.framework",
+    "WebKit.framework",
+    "SafariServices.framework:weak",
+    "SystemConfiguration.framework",
+    "Security.framework",
+    "AdSupport.framework",
+    "CoreTelephony.framework",
+    "CoreMotion.framework",
+  ],
+  "headerpaths": [ ],
+  "movefolders": [ ],
+  "movefiles": [
+    "iOS/libulua.a"
+  ],
+  "files": [ ],
+  "folders": [ ],
+  "excludes": [ "^.*.meta$", "^.*.mdown$", "^.*.pdf$" ],
+  "compiler_flags": [ ],
+  "linker_flags": [ "-ObjC" ]
+}

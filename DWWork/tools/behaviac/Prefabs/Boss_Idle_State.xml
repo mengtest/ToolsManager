@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="BossAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Connector Identifier="GenericChildren">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="&quot;&quot;" Name="IdleState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="242.2695" ScreenLocationY="-7.803555">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="2" Operator="Invalid" Opl="Self.BaseActorAIAgent::SetIdleState()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="14" Operator="Greater" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMaxAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="3" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="17" Operator="Less" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackInitAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="8" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="18" Operator="GreaterEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMinAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="9" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="19" Operator="GreaterEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.MonsterAIAgent::GetAttackMinAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="3" />
+      </Node>
+    </Connector>
+  </Node>
+</Behavior>
