@@ -41,15 +41,6 @@ public class BuildDll  {
 		System.Diagnostics.Process.Start(path, dllName); 
     }
 
-	static void EnDLL()
-	{
-		string inputPath = Application.dataPath + "/XGame/Script/Lua";
-		ForeachFile(inputPath, (FileInfo f) => {
-            var b = DWFileUtil.ReadFile(f.FullName);
-			var cb = GlobalCrypto.Encrypte(b);
-			File.WriteAllBytes(Application.streamingAssetsPath + "/Lua/" + f.Name, cb);
-		});
-	}
 
 	static void ForeachFile(string path, Action<FileInfo> genFile)
 	{
