@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class AudioUpdateExecutor : BaseUpdateExecutor {
+public class AudioUpdateExecutor : ParentUpdateExecutor
+{
 
 	#region implemented abstract members of BaseUpdateExecutor
 

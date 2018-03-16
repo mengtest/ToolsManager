@@ -1,36 +1,87 @@
 /************************************************************
 //     文件名      : UpdateConfig.cs
-//     功能描述    : 
-//     负责人      : cai yang
+//     功能描述    : 定义母包和子包的更新信息结构
+//     负责人      : guoliang
 //     参考文档    : 无
-//     创建日期    : 05/11/2017
-//     Copyright  : Copyright 2017-2018 EZFun.
+//     创建日期    : 03/15/2018
+//     Copyright  : 
 **************************************************************/
 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
-public class UpdateInfo
+namespace UpdateDefineSpace
 {
-    public UpdateInfo() { }
-
-    public List<ServerInfo> serverInfo;
-    public List<PackageUpdateInfo> packageUpdateInfo;
-    public List<DynamicUpdateInfo> dynamicUpdateInfo;
-
-    public class ServerInfo
+    public enum ErrorCode : int
     {
-        public ServerInfo() { }
+        Success = 0,
+
+        NetworkError = 1,
+        TimeOut = 2,
+        FetchConfigFailed = 3,
+        InvalidConfig = 4,
+        DownloadResourceFailed = 5,
+
+
+        MAX
+    }
+
+    public enum State
+    {
+        Idle,
+        CheckUpgrade,
+        Upgrading,
+    }
+
+    public enum UpdateResult : int
+    {
+        Success = 0,
+        Failed = 1,
+        Skip = 2,
+        NeedRestart = 4,
+        FailedNetError = 8,
+    }
+
+
+    public class BaseUpdateConfigInfo { }
+    public class BaseUpdateConfigItem { }
+
+    //更新信息描述基类
+    public class BaseResInfo : BaseUpdateConfigItem
+    {
+        public BaseResInfo() { }
+
+        public string type;
+        public int size;
+        public string md5;
+    }
+
+
+
+    //母包更新配置描述结构
+    public class ParentUpdateConfigInfo : BaseUpdateConfigInfo
+    {
+        public ParentUpdateConfigInfo() { }
+
+        public List<ParentServerInfo> serverInfo;
+        public List<ParentPackageUpdateInfo> packageUpdateInfo;
+        public List<ParentDynamicUpdateInfo> dynamicUpdateInfo;
+    }
+
+    //母包服务端配置信息
+    public class ParentServerInfo : BaseUpdateConfigItem
+    {
+        public ParentServerInfo() { }
 
         public int platform;
         public string version;
     }
 
-    public class PackageUpdateInfo
+    //母包的整包版本更新信息
+    public class ParentPackageUpdateInfo : BaseUpdateConfigItem
     {
-        public PackageUpdateInfo() { }
+        public ParentPackageUpdateInfo() { }
 
         public int platform;
         public string version;
@@ -38,79 +89,76 @@ public class UpdateInfo
         public string updateUrl;
         public string updateDesc;
     }
-
-    public class DynamicUpdateInfo
+    //母包的动态增量更新信息
+    public class ParentDynamicUpdateInfo : BaseUpdateConfigItem
     {
-        public DynamicUpdateInfo() { }
+        public ParentDynamicUpdateInfo() { }
 
         public string baseVersion;
 
-        public List<ResVersionInfo> resVersionInfo;
+        public List<ParentResVersionInfo> resVersionInfo;
     }
 
-    public class ResVersionInfo
+    //母包的增量更新的版本描述
+    public class ParentResVersionInfo : BaseUpdateConfigItem
     {
-        public ResVersionInfo() { }
+        public ParentResVersionInfo() { }
 
         public int basePlatform;
         public int testSvrId;
         public string resVersion;
         public string appVersion;
         public bool forceUpdate;
-        public List<ResInfo> resInfo;
+        public List<ParentResInfo> resInfo;
 
 
         public string downloadVersion;
     }
-
-    public class ResInfo
+    //单个母包更新文件的描述
+    public class ParentResInfo : BaseResInfo
     {
-        public ResInfo() { }
-
-        public string type;
-        public int size;
-        public string md5;
+        public ParentResInfo() { }
         public string packageName;
-        public UpdateInfo.ResVersionInfo versionInfo;
+        public ParentResVersionInfo versionInfo;
     }
 
-}
-
-
-
-public class LocalUpdateConfigInfo
-{
-    public LocalUpdateConfigInfo() { }
-
-    public List<LocalUpdateInfo> localUpdateInfo;
-
-
-    public class LocalUpdateInfo
+    //单个子包更新文件的描述
+    public class ChildResInfo : BaseResInfo
     {
-        public LocalUpdateInfo() { }
+        public ChildResInfo() { }
+        public string packageName;
+        public ChildeDynamicUpdateInfo versionInfo;
+    }
+
+
+    //子包 更新配置描述结构
+    public class ChildeUpdateConfigInfo : BaseUpdateConfigInfo
+    {
+        public ChildeUpdateConfigInfo() { }
+
+        public List<ChildUpdateInfo> localUpdateInfo;
+
+
+    }
+
+    //子包更新集信息
+    public class ChildUpdateInfo : BaseUpdateConfigItem
+    {
+        public ChildUpdateInfo() { }
         public int areaID;
         public string localName;
         public string baseVersion;
 
-        public List<LocalDynamicUpdateInfo> dynamicUpdateInfo;
+        public List<ChildeDynamicUpdateInfo> dynamicUpdateInfo;
     }
-
-    public class LocalDynamicUpdateInfo
+    //单个子包更新信息
+    public class ChildeDynamicUpdateInfo : BaseUpdateConfigItem
     {
-        public LocalDynamicUpdateInfo() { }
+        public ChildeDynamicUpdateInfo() { }
 
         public int basePlatform;
         public string resVersion;
-        public List<LocalResInfo> resInfo;
+        public List<BaseResInfo> resInfo;
     }
-
-    public class LocalResInfo
-    {
-        public LocalResInfo() { }
-
-        public string type;
-        public int size;
-        public string md5;
-    }
-
 }
+

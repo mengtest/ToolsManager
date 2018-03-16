@@ -1,10 +1,10 @@
 /************************************************************
 //     文件名      : ResourceMd5Mgr.cs
 //     功能描述    : 
-//     负责人      : cai yang
+//     负责人      : guoliang
 //     参考文档    : 无
 //     创建日期    : 05/11/2017
-//     Copyright  : Copyright 2017-2018 EZFun.
+//     Copyright  : 
 **************************************************************/
 
 using UnityEngine;
@@ -12,6 +12,7 @@ using System.Collections;
 using System.IO;
 using LitJson;
 using System.Collections.Generic;
+using UpdateDefineSpace;
 
 public class ResourceMd5Mgr
 {
@@ -76,7 +77,7 @@ public class ResourceMd5Mgr
         }
     }
 
-    public void Set(UpdateInfo.ResInfo info, bool autoSave = true, List<string> fileList = null)
+    public void Set(BaseResInfo info, bool autoSave = true, List<string> fileList = null)
     {
         var key = GetKeyForRes(info);
 
@@ -104,7 +105,7 @@ public class ResourceMd5Mgr
     /// </summary>
     /// <param name="resInfo"></param>
     /// <returns></returns>
-	public bool IsResourceExisted(UpdateInfo.ResInfo resInfo)
+	public bool IsResourceExisted(BaseResInfo resInfo)
     {
         var key = GetKeyForRes(resInfo);
         var zipInfo = Get(key);
@@ -142,7 +143,7 @@ public class ResourceMd5Mgr
         return true;
     }
 
-    protected virtual string GetKeyForRes(UpdateInfo.ResInfo resInfo)
+    protected virtual string GetKeyForRes(BaseResInfo resInfo)
     {
         return resInfo.versionInfo.resVersion + "-" + resInfo.type;
     }

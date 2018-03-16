@@ -1,16 +1,17 @@
 /************************************************************
 //     文件名      : BaseUpdateExecutor.cs
 //     功能描述    : 
-//     负责人      : cai yang
+//     负责人      : guoliang
 //     参考文档    : 无
-//     创建日期    : 05/14/2017
-//     Copyright  : Copyright 2017-2018 EZFun.
+//     创建日期    : 03/15/2018
+//     Copyright  : 
 **************************************************************/
 
 using UnityEngine;
 using System.Collections;
 using System.Threading;
 using System.Collections.Generic;
+using UpdateDefineSpace;
 
 public abstract class BaseUpdateExecutor : IUpdateExecutor {
 
@@ -19,39 +20,13 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
 
     public abstract string GetUpdateType ();
 
-    protected virtual string GetDownloadUrl(UpdateInfo.ResInfo info, GameUpdateSys.UpdateContext context)
+    protected virtual string GetDownloadUrl(BaseResInfo info, BaseUpdateContext context)
     {
-        string version = context.BaseVersion;
-        if (info.versionInfo != null && !string.IsNullOrEmpty(info.versionInfo.resVersion))
-        {
-            version = info.versionInfo.downloadVersion;
-        }
-
-        var url = "";
-        if (!string.IsNullOrEmpty(info.packageName))
-        {
-            url = GameUpdateSys.UPDATE_URL + version + "/" + ((int)info.versionInfo.basePlatform) + "/" + info.versionInfo.resVersion + "/" + info.packageName + ".zip";
-        }
-        else 
-        {
-            url = GameUpdateSys.UPDATE_URL + version + "/" + ((int)info.versionInfo.basePlatform) + "/" + info.versionInfo.resVersion + "/" + info.type + ".zip";
-        }
-
-        if (!GameUpdateSys.RELEASE)
-            url += "?" + Random.Range(0, 9999999);
-  
-        return url;
+        return "";
     }
-    protected virtual string GetDownloadPath(UpdateInfo.ResInfo info, GameUpdateSys.UpdateContext context)
+    protected virtual string GetDownloadPath(BaseResInfo info, BaseUpdateContext context)
     {
-        if (!string.IsNullOrEmpty(info.packageName))
-        {
-            return DWTools.CachePath + "/" + info.packageName + ".zip";
-        }
-        else
-        {
-            return DWTools.CachePath + "/" + info.type + ".zip";
-        }
+        return "";
     }
 
     protected virtual string GetUnzipDir()
@@ -81,14 +56,14 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
 		}
 	}
 
-	public IEnumerator GetUpdateCoroutine (UpdateInfo.ResInfo info, GameUpdateSys.UpdateContext context, IUpdateExecutorDelegate del)
+	public IEnumerator GetUpdateCoroutine (BaseResInfo info, BaseUpdateContext context, IUpdateExecutorDelegate del)
 	{
 		Debug.LogWarning("begin update:" + GetUpdateType());
 
 		if (info == null)
 		{
 			Debug.LogError("info is null");
-			del.OnUpdateError(this, GameUpdateSys.ErrorCode.InvalidConfig, info);
+			del.OnUpdateError(this,ErrorCode.InvalidConfig, info);
 
 			yield break;
 		}
@@ -96,7 +71,7 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
 		if (string.IsNullOrEmpty(info.md5) || info.size <= 0)
 		{
 			Debug.LogError("invalid res update info");
-			del.OnUpdateError(this, GameUpdateSys.ErrorCode.InvalidConfig, info);
+			del.OnUpdateError(this,ErrorCode.InvalidConfig, info);
 		}
 
 		bool updateSucc = false;
@@ -135,7 +110,7 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
 				Debug.LogError("download error:" + downLoadFile.m_downLoadStatus);
 				if(retryCount >= context.DownloadRetryMaxCount)
 				{
-					del.OnUpdateError(this, GameUpdateSys.ErrorCode.DownloadResourceFailed, info);
+					del.OnUpdateError(this,ErrorCode.DownloadResourceFailed, info);
 					yield break;
 				}
 				else
@@ -194,7 +169,7 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
 		}
 		else
 		{
-			del.OnUpdateError(this, GameUpdateSys.ErrorCode.DownloadResourceFailed, info);
+			del.OnUpdateError(this,ErrorCode.DownloadResourceFailed, info);
 		}
 	}
 

@@ -1,65 +1,30 @@
 /************************************************************
-//     文件名      : UpdateChecker.cs
+//     文件名      : ChildUpdateExecutor.cs
 //     功能描述    : 
-//     负责人      : cai yang
+//     负责人      : guoliang
 //     参考文档    : 无
-//     创建日期    : 05/09/2017
-//     Copyright  : Copyright 2017-2018 EZFun.
+//     创建日期    : 03/15/2018
+//     Copyright  : Copyright
 **************************************************************/
 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
+using UpdateDefineSpace;
 
-public class UpdateCheckResult
-{
-    public bool Success;
-    public GameUpdateSys.ErrorCode ErrorCode;
-
-    public bool NeedUpdate
-    {
-        get
-        {
-            return IsPackageUpdateAvailable || IsResourceUpdateAvailable;
-        }
-    }
-    public bool IsPackageForceUpdate = false;
-    public bool IsPackageUpdateAvailable = false;
-    public bool IsResourceUpdateAvailable = false;
-    public bool IsResourceForceUpdate = false;
-
-
-    public string PackageUpdateUrl;
-    public string PackageUpdateDesc;
-
-    public string PublishedVersion;
-
-    public List<UpdateInfo.ResInfo> ResInfoList;
-
-    public void AddResInfo(UpdateInfo.ResInfo info)
-    {
-        if (ResInfoList == null)
-        {
-            ResInfoList = new List<UpdateInfo.ResInfo>();
-        }
-
-        ResInfoList.Add(info);
-    }
-}
 
 public class UpdateChecker
 {
 
-    private GameUpdateSys.UpdateContext m_context;
+    private BaseUpdateContext m_context;
 
     private IUpdateFilter m_filter;
 
-    public UpdateChecker(GameUpdateSys.UpdateContext context, IUpdateFilter filter)
+    public UpdateChecker(BaseUpdateContext context, IUpdateFilter filter)
     {
         m_context = context;
         m_filter = filter;
-        UpdateInfo info = new UpdateInfo();
     }
 
     private string GetUpdateConfigUrl()
@@ -86,7 +51,7 @@ public class UpdateChecker
     private IEnumerator GetVersionInfoFile(System.Action<UpdateCheckResult> callback)
     {
         var result = new UpdateCheckResult();
-        UpdateInfo cfg = null;
+        ParentUpdateConfigInfo cfg = null;
 
         var url = GetUpdateConfigUrl();
         bool isDownloadSuc = false;
@@ -119,7 +84,7 @@ public class UpdateChecker
                 isDownloadSuc = true;
                 Debug.Log("w.text:" + w.text);
                 //parse config
-                cfg = JsonMapper.ToObject<UpdateInfo>(w.text);
+                cfg = JsonMapper.ToObject<ParentUpdateConfigInfo>(w.text);
 
                 w.Dispose();
             }
@@ -140,7 +105,7 @@ public class UpdateChecker
             Debug.LogError("拉取更新失败！");
 
             result.Success = isDownloadSuc;
-            result.ErrorCode = GameUpdateSys.ErrorCode.FetchConfigFailed;
+            result.ErrorCode = ErrorCode.FetchConfigFailed;
 
             callback(result);
         }
@@ -148,7 +113,7 @@ public class UpdateChecker
     }
 
     //here is public for Unit Test
-    public UpdateCheckResult CheckIfNeedsUpdate(UpdateInfo cfg)
+    public UpdateCheckResult CheckIfNeedsUpdate(ParentUpdateConfigInfo cfg)
     {
         UpdateCheckResult result = new UpdateCheckResult();
 
@@ -157,7 +122,7 @@ public class UpdateChecker
             Debug.LogError("invalid cfg, cfg == null");
 
             result.Success = false;
-            result.ErrorCode = GameUpdateSys.ErrorCode.InvalidConfig;
+            result.ErrorCode = ErrorCode.InvalidConfig;
 
             return result;
 
@@ -247,7 +212,7 @@ public class UpdateChecker
             return result;
         }
         Queue<string> appQueue = new Queue<string>();
-        var versionInfoList = new List<UpdateInfo.ResVersionInfo>();
+        var versionInfoList = new List<ParentResVersionInfo>();
         appQueue.Enqueue(m_context.BaseVersion);
         while (appQueue.Count > 0)
         {
@@ -293,7 +258,7 @@ public class UpdateChecker
         }
 
         //collect res update info for all this baseVersion
-        List<UpdateInfo.ResInfo> tmpResInfoList = new List<UpdateInfo.ResInfo>();
+        List<BaseResInfo> tmpResInfoList = new List<BaseResInfo>();
         for (int i = 0; i < versionInfoList.Count; i++)
         {
             var info = versionInfoList[i];
@@ -332,7 +297,7 @@ public class UpdateChecker
         return result;
     }
 
-    private void AddResInfo(List<UpdateInfo.ResInfo> list, UpdateInfo.ResInfo info)
+    private void AddResInfo(List<BaseResInfo> list, BaseResInfo info)
     {
         //TODO Filter logic here
         if (m_filter != null)
@@ -345,7 +310,7 @@ public class UpdateChecker
         }
     }
 
-    private bool AddResVersionInfo(List<UpdateInfo.ResVersionInfo> list, UpdateInfo.ResVersionInfo platInfo)
+    private bool AddResVersionInfo(List<ParentResVersionInfo> list, ParentResVersionInfo platInfo)
     {
         //这里不要对比
         //var resVerNum = Version.GetVersionCode(m_context.ResVersion);
@@ -354,7 +319,7 @@ public class UpdateChecker
         //    return false;
         //}
 
-        var item = list.Find((UpdateInfo.ResVersionInfo findValue) =>
+        var item = list.Find((ParentResVersionInfo findValue) =>
         {
             return findValue.resVersion == platInfo.resVersion;
         });

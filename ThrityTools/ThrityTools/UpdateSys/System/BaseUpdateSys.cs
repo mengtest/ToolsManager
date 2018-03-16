@@ -1,79 +1,85 @@
-/************************************************************
+﻿/************************************************************
 //     文件名      : GameUpdateSys.cs
 //     功能描述    : 
-//     负责人      : cai yang
+//     负责人      : 
 //     参考文档    : 无
 //     创建日期    : 05/09/2017
-//     Copyright  : Copyright 2017-2018 EZFun.
+//     Copyright  : 
 **************************************************************/
 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UpdateDefineSpace;
 
 
 public delegate void UpdateFinishCallBack(VersionType type, string resVersion);
 
-public class GameUpdateSys : IUpdateExecutorDelegate
+public class BaseUpdateContext
+{
+    public string PackageVersion;
+    public string BaseVersion;  //C#代码 版本
+    public string ResVersion;   //资源版本
+
+    public ENUM_SDK_PLATFORM Platform;
+    public EnumAppName BasePlatform;
+
+    public int DownloadRetryMaxCount = 3;
+
+    public ResourceMd5Mgr ResMd5Mgr = new ResourceMd5Mgr();
+}
+
+
+public struct UpdateProgressInfo
+{
+    public enum Phase
+    {
+        Downloading,
+        Unpacking
+    }
+
+    public int totalCount;
+    public int curIndex;
+
+    public int totalSize;
+    public int curSize;
+
+    public BaseResInfo resInfo;
+
+    public Phase phase;
+}
+
+public interface IUpdateSysDelegate
+{
+    void OnCheckUpdateError(ErrorCode c);
+    void OnCheckUpdateSuccess(UpdateCheckResult result);
+
+    //	void On
+
+    void OnUpdateProgress(UpdateProgressInfo info);
+    void OnUpdateError(ErrorCode c);
+    void OnUpdateSuccessed(UpdateResult result, bool isNeedReload = false);
+}
+
+
+
+public class BaseUpdateSys : IUpdateExecutorDelegate
 {
     public static string UPDATE_URL = "";
     public static string UPDATE_CONFIG_FILE = "";
     public static bool RELEASE = true;
 
-    public enum ErrorCode : int
-    {
-        Success = 0,
 
-        NetworkError = 1,
-        TimeOut = 2,
-        FetchConfigFailed = 3,
-        InvalidConfig = 4,
-        DownloadResourceFailed = 5,
-
-
-        MAX
-    }
-
-    public enum State
-    {
-        Idle,
-        CheckUpgrade,
-        Upgrading,
-    }
-
-    public enum UpdateResult : int
-    {
-        Success = 0,
-        Failed = 1,
-        Skip = 2,
-        NeedRestart = 4,
-        FailedNetError = 8,
-    }
-
-
-
-    public GameUpdateSys(MonoBehaviour gb)
+    public BaseUpdateSys() { }
+    public BaseUpdateSys(MonoBehaviour gb)
     {
         m_CoroutineJobQueue = new CoroutineJobQueue(gb);
     }
 
-    public class UpdateContext
-    {
-        public string PackageVersion;
-        public string BaseVersion;  //C#代码 版本
-        public string ResVersion;   //资源版本
 
-        public ENUM_SDK_PLATFORM Platform;
-        public EnumAppName BasePlatform;
-
-        public int DownloadRetryMaxCount = 3;
-
-        public ResourceMd5Mgr ResMd5Mgr = new ResourceMd5Mgr();
-    }
-
-    private UpdateContext m_context;
-    private State m_state;
-    private void SetState(State s)
+    protected BaseUpdateContext m_context;
+    protected State m_state;
+    protected void SetState(State s)
     {
         m_state = s;
 
@@ -94,13 +100,13 @@ public class GameUpdateSys : IUpdateExecutorDelegate
     {
         SetState(State.Idle);
 
-        m_context = new UpdateContext();
+        m_context = new BaseUpdateContext();
         m_context.ResMd5Mgr.Load();
     }
 
     #endregion
 
-    private IDictionary<string, IUpdateExecutor> m_updaterDict =
+    protected IDictionary<string, IUpdateExecutor> m_updaterDict =
         new Dictionary<string, IUpdateExecutor>(8);
 
     public void RegisterUpdateExecutor(IUpdateExecutor exec)
@@ -115,7 +121,7 @@ public class GameUpdateSys : IUpdateExecutorDelegate
         m_updaterDict.Add(t, exec);
     }
 
-    private IUpdateExecutor GetUpdateExecutor(string type)
+    protected IUpdateExecutor GetUpdateExecutor(string type)
     {
         if (m_updaterDict == null)
         {
@@ -136,12 +142,12 @@ public class GameUpdateSys : IUpdateExecutorDelegate
 
     private Coroutine m_checkUpdateCor = null;
 
-    public void CheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono,UpdateContext updateContext)
+    public virtual void CheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
     {
         if (m_state != State.Idle)
             return;
 
-        if (mono != null) 
+        if (mono != null)
         {
             if (m_checkUpdateCor != null)
                 mono.StopCoroutine(m_checkUpdateCor);
@@ -150,7 +156,7 @@ public class GameUpdateSys : IUpdateExecutorDelegate
         }
     }
 
-    private IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono, UpdateContext updateContext)
+    protected virtual IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
     {
         SetState(State.CheckUpgrade);
 
@@ -164,7 +170,7 @@ public class GameUpdateSys : IUpdateExecutorDelegate
         m_context.Platform = updateContext.Platform;
 
 
-        Debug.LogError (" App.version:" + m_context.BaseVersion + " Res.Version:" + m_context.ResVersion + "  pack.Version:" + m_context.PackageVersion + " baseplatform:" + m_context.BasePlatform + " platform:" + m_context.Platform);
+        Debug.LogError(" App.version:" + m_context.BaseVersion + " Res.Version:" + m_context.ResVersion + "  pack.Version:" + m_context.PackageVersion + " baseplatform:" + m_context.BasePlatform + " platform:" + m_context.Platform);
         //do check
         //bool checkFinish = false;
 
@@ -195,7 +201,7 @@ public class GameUpdateSys : IUpdateExecutorDelegate
 
         //while (!checkFinish)
         //{
-           
+
         //}
         yield return null;
     }
@@ -209,25 +215,26 @@ public class GameUpdateSys : IUpdateExecutorDelegate
             var kvp = ite.Current;
             var executor = kvp.Value;
 
-			executor.CleanCachedResource();
+            executor.CleanCachedResource();
         }
 
         m_context.ResMd5Mgr.Clean();
     }
 
-    private CoroutineJobQueue m_CoroutineJobQueue;
+    protected CoroutineJobQueue m_CoroutineJobQueue;
 
-    internal class UpdateResourceParam
+    protected class UpdateResourceParam
     {
-        public UpdateInfo.ResInfo info;
-        public GameUpdateSys.UpdateContext context;
+        public BaseResInfo info;
+        public BaseUpdateContext context;
         public IUpdateExecutor executor;
     }
 
-    private IUpdateSysDelegate m_delegate;
-    private int m_updateCount = 0;
-    private int m_currIndex = 0;
-    public void StartResourceUpdate(UpdateCheckResult result, IUpdateSysDelegate del)
+    protected IUpdateSysDelegate m_delegate;
+    protected int m_updateCount = 0;
+    protected int m_currIndex = 0;
+
+    public virtual void StartResourceUpdate(UpdateCheckResult result, IUpdateSysDelegate del)
     {
         if (m_state == State.Upgrading)
         {
@@ -291,12 +298,12 @@ public class GameUpdateSys : IUpdateExecutorDelegate
         }
     }
 
-    private void _StartUpdate()
+    protected void _StartUpdate()
     {
         SetState(State.Upgrading);
     }
 
-    private void _UpdateFinished()
+    protected void _UpdateFinished()
     {
         m_updateCount = 0;
         m_currIndex = 0;
@@ -308,7 +315,7 @@ public class GameUpdateSys : IUpdateExecutorDelegate
 
     #region IUpdateExecutorDelegate implementation
 
-    public void UpdateStateNotice(UpdateInfo.ResInfo res, UpdateProgressInfo.Phase downloadState, int totalSize, int curSize)
+    public void UpdateStateNotice(BaseResInfo res, UpdateProgressInfo.Phase downloadState, int totalSize, int curSize)
     {
         var data = new UpdateProgressInfo();
         data.totalCount = m_updateCount;
@@ -321,74 +328,20 @@ public class GameUpdateSys : IUpdateExecutorDelegate
             m_delegate.OnUpdateProgress(data);
     }
 
-    public void OnUpdateError(IUpdateExecutor executor, ErrorCode errCode, UpdateInfo.ResInfo info)
+    public void OnUpdateError(IUpdateExecutor executor, ErrorCode errCode, BaseResInfo info)
     {
         m_delegate.OnUpdateError(errCode);
 
         _UpdateFinished();
 
     }
-    private bool m_isReload = false;
-    public void OnUpdateFinish(IUpdateExecutor executor, UpdateInfo.ResInfo info, List<string> fileList, bool isNeedReload = false)
+    protected bool m_isReload = false;
+    public virtual void OnUpdateFinish(IUpdateExecutor executor, BaseResInfo info, List<string> fileList, bool isNeedReload = false)
     {
-        Debug.Log("update " + info.type + " finished, progress:" + (m_currIndex + 1) + "/" + m_updateCount);
-        if (!m_isReload && isNeedReload)
-        {
-            m_isReload = true;
-        }
 
-
-        //flag file existed
-        m_context.ResMd5Mgr.Set(info, true, fileList);
-        m_currIndex++;
-        bool allFinished = ((m_currIndex) == m_updateCount);
-        if (allFinished)
-        {
-            //Version.Instance.SetVersion(VersionType.Resource, info.versionInfo.resVersion);
-
-            if(m_updatefinishCB != null)
-            {
-                m_updatefinishCB(VersionType.Resource, info.versionInfo.resVersion);
-            }
-
-            m_delegate.OnUpdateSuccessed(GameUpdateSys.UpdateResult.Success, m_isReload);
-
-            _UpdateFinished();
-        }
     }
 
     #endregion
 
-}
-
-public struct UpdateProgressInfo
-{
-    public enum Phase
-    {
-        Downloading,
-        Unpacking
-    }
-
-    public int totalCount;
-    public int curIndex;
-
-    public int totalSize;
-    public int curSize;
-
-    public UpdateInfo.ResInfo resInfo;
-
-    public Phase phase;
-}
-
-public interface IUpdateSysDelegate
-{
-    void OnCheckUpdateError(GameUpdateSys.ErrorCode c);
-    void OnCheckUpdateSuccess(UpdateCheckResult result);
-
-    //	void On
-
-    void OnUpdateProgress(UpdateProgressInfo info);
-    void OnUpdateError(GameUpdateSys.ErrorCode c);
-    void OnUpdateSuccessed(GameUpdateSys.UpdateResult result, bool isNeedReload = false);
 }
 

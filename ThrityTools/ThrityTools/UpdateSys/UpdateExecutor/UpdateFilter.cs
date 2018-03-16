@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UpdateDefineSpace;
 
 
 public class UpdateResFilter : IUpdateFilter
@@ -13,7 +14,7 @@ public class UpdateResFilter : IUpdateFilter
         this.m_executer = executer;
     }
 
-    public void CheckNeedUpdate(List<UpdateInfo.ResInfo> list, UpdateInfo.ResInfo info)
+    public void CheckNeedUpdate(List<BaseResInfo> list, BaseResInfo info)
     {
         if (string.IsNullOrEmpty(info.type))
         {
