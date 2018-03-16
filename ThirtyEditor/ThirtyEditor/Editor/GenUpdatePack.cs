@@ -593,7 +593,7 @@ public class GenUpdatePack : EditorWindow
 	static void CryFile(string path)
 	{
 		Debug.LogWarning("cry path =" + path);
-        var b = DWFileUtil.ReadFile(path);
+        var b = DWFileUtil.ReadFileStream(path);
 		var cb = GlobalCrypto.Encrypte(b);
 		File.WriteAllBytes(path, cb);
 	}
