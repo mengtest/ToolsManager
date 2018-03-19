@@ -594,7 +594,10 @@ public class GenUpdatePack : EditorWindow
 	{
 		Debug.LogWarning("cry path =" + path);
         var b = DWFileUtil.ReadFileStream(path);
+
+        GlobalCrypto.InitCry("dd7fd4a156d28bade96f816db1d18609", "dd7fd4a156d28bade96f816db1d18609");
 		var cb = GlobalCrypto.Encrypte(b);
+
 		File.WriteAllBytes(path, cb);
 	}
 }
