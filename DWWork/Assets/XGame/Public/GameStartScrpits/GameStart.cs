@@ -27,19 +27,6 @@ public class GameStart : MonoBehaviour
 
     void Start()
     {
-#if UNITY_ANDROID
-        try
-        {
-            AndroidJavaClass jc = new AndroidJavaClass("com.ezfun.main_activity.EZfunMainActivity");
-            AndroidJavaObject m_activity = jc.GetStatic<AndroidJavaObject>("mActivity");
-            m_activity.Call("onHideSplash");
-        }
-        catch (Exception ex)
-        {
-            Debug.LogException(ex);
-        }
-#endif
-
 #if UNITY_EDITOR
         Profiler.maxNumberOfSamplesPerFrame = -1;
 #endif

@@ -26,6 +26,27 @@ public class Constants
     public static string CryptoIV = "dd7fd4a156d28bade96f816db1d18609";
     public static string CryptoKey = "dd7fd4a156d28bade96f816db1d18609";
 
+    private static string _NowAreaName = ""; //当前选中的地区玩法
+    public static string NowAreaName
+    {
+        get
+        {
+            return _NowAreaName;
+        }
+        set
+        {
+            _NowAreaName = value;
+            if (string.IsNullOrEmpty(_NowAreaName))
+            {
+                ResourceManager.Instance.RemoveAreaAbDatas();
+            }
+            else 
+            {
+                ResourceManager.Instance.AddAreaAbDatas(_NowAreaName);
+            }
+         
+        }
+    }
 
     //发布的时候，必须设置为TRUE
 	public static bool RELEASE = true;
@@ -61,7 +82,7 @@ public class Constants
     public static bool M_IS_IOS_PRE = true;
 
     public static float SCREEN_HEIGHT = 640f;
-    public static bool FORCE_LOAD_AB = false;
+    public static bool FORCE_LOAD_AB = true;
     public static bool RUN_WITH_EN_LUA = false; //是否用加密lua
     public static bool FORCE_DEBUG_PLATFORM = false; //强制使用debug平台
     public static bool EnableIM = true; //是否开放语言聊天
