@@ -26,8 +26,27 @@ public class BaseUpdateContext
 
     public int DownloadRetryMaxCount = 3;
 
-    public ResourceMd5Mgr ResMd5Mgr = new ResourceMd5Mgr();
+    public BaseResourceMd5Mgr ResMd5Mgr;
 }
+
+public class ParentUpdateContext : BaseUpdateContext
+{
+    public ParentUpdateContext()
+    {
+        ResMd5Mgr = new ParentResourceMd5Mgr();
+    }
+}
+
+public class ChildUpdateContext : BaseUpdateContext
+{
+    public int areaID;
+    public string localName;
+    public ChildUpdateContext()
+    {
+        ResMd5Mgr = new ChildResourceMd5Mgr();
+    }
+}
+
 
 
 public struct UpdateProgressInfo
@@ -52,7 +71,7 @@ public struct UpdateProgressInfo
 public interface IUpdateSysDelegate
 {
     void OnCheckUpdateError(ErrorCode c);
-    void OnCheckUpdateSuccess(UpdateCheckResult result);
+    void OnCheckUpdateSuccess(BaseUpdateCheckResult result);
 
     //	void On
 
@@ -69,11 +88,15 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
     public static string UPDATE_CONFIG_FILE = "";
     public static bool RELEASE = true;
 
+    public BaseUpdateSys()
+    {
 
-    public BaseUpdateSys() { }
+    }
+
     public BaseUpdateSys(MonoBehaviour gb)
     {
         m_CoroutineJobQueue = new CoroutineJobQueue(gb);
+        m_context = new BaseUpdateContext();
     }
 
 
@@ -95,12 +118,17 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
     public UpdateFinishCallBack m_updatefinishCB = null;
 
 
+    public virtual void Init(MonoBehaviour gb)
+    {
+        m_CoroutineJobQueue = new CoroutineJobQueue(gb);
+        m_context = new BaseUpdateContext();
+    }
+
     #region IInitializeable implementation
     public void Initialize()
     {
         SetState(State.Idle);
 
-        m_context = new BaseUpdateContext();
         m_context.ResMd5Mgr.Load();
     }
 
@@ -142,7 +170,7 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
 
     private Coroutine m_checkUpdateCor = null;
 
-    public virtual void CheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
+    public virtual void CheckUpdate(IUpdateSysDelegate del, BaseUpdateResFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
     {
         if (m_state != State.Idle)
             return;
@@ -156,53 +184,9 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
         }
     }
 
-    protected virtual IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
+    protected virtual IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, BaseUpdateResFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
     {
         SetState(State.CheckUpgrade);
-
-        //set context
-
-        m_context.BaseVersion = updateContext.BaseVersion;
-        m_context.ResVersion = updateContext.ResVersion;
-        m_context.PackageVersion = updateContext.PackageVersion;
-
-        m_context.BasePlatform = updateContext.BasePlatform;
-        m_context.Platform = updateContext.Platform;
-
-
-        Debug.LogError(" App.version:" + m_context.BaseVersion + " Res.Version:" + m_context.ResVersion + "  pack.Version:" + m_context.PackageVersion + " baseplatform:" + m_context.BasePlatform + " platform:" + m_context.Platform);
-        //do check
-        //bool checkFinish = false;
-
-        UpdateChecker checker = new UpdateChecker(m_context, filter);
-        checker.StartCheck((result) =>
-        {
-            SetState(State.Idle);
-
-            //checkFinish = true;
-
-            if (!result.Success)
-            {
-                //notify error
-                if (del != null)
-                {
-                    del.OnCheckUpdateError(result.ErrorCode);
-                }
-            }
-            else
-            {
-                if (del != null)
-                {
-                    del.OnCheckUpdateSuccess(result);
-                }
-            }
-
-        }, mono);
-
-        //while (!checkFinish)
-        //{
-
-        //}
         yield return null;
     }
 
@@ -234,7 +218,7 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
     protected int m_updateCount = 0;
     protected int m_currIndex = 0;
 
-    public virtual void StartResourceUpdate(UpdateCheckResult result, IUpdateSysDelegate del)
+    public virtual void StartResourceUpdate(BaseUpdateCheckResult result, IUpdateSysDelegate del)
     {
         if (m_state == State.Upgrading)
         {

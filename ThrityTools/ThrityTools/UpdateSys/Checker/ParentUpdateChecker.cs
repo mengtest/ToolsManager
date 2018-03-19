@@ -14,43 +14,18 @@ using LitJson;
 using UpdateDefineSpace;
 
 
-public class UpdateChecker
+public class ParentUpdateChecker :BaseUpdateChecker
 {
-
-    private BaseUpdateContext m_context;
-
-    private IUpdateFilter m_filter;
-
-    public UpdateChecker(BaseUpdateContext context, IUpdateFilter filter)
+    public ParentUpdateChecker() { }
+    public ParentUpdateChecker(BaseUpdateContext context, BaseUpdateResFilter filter)
     {
         m_context = context;
         m_filter = filter;
     }
 
-    private string GetUpdateConfigUrl()
+    protected override IEnumerator GetVersionInfoFile(System.Action<BaseUpdateCheckResult> callback)
     {
-        string url = GameUpdateSys.UPDATE_URL + GameUpdateSys.UPDATE_CONFIG_FILE + "?" + Random.Range(0,9999999);
-        return url;
-    }
-
-    private Coroutine m_checkCor = null;
-
-    public void StartCheck(System.Action<UpdateCheckResult> callback, MonoBehaviour mono)
-    {
-        if (mono  != null)
-        {
-            if (m_checkCor != null)
-                mono.StopCoroutine(m_checkCor);
-
-            m_checkCor = mono.StartCoroutine(GetVersionInfoFile(callback));
-        }
-    }
-
-    //private int m_downloadRetryTimes = 0;
-    //private int m_downloadRetryMaxCount = 1;
-    private IEnumerator GetVersionInfoFile(System.Action<UpdateCheckResult> callback)
-    {
-        var result = new UpdateCheckResult();
+        var result = new BaseUpdateCheckResult();
         ParentUpdateConfigInfo cfg = null;
 
         var url = GetUpdateConfigUrl();
@@ -112,10 +87,12 @@ public class UpdateChecker
 
     }
 
+
     //here is public for Unit Test
-    public UpdateCheckResult CheckIfNeedsUpdate(ParentUpdateConfigInfo cfg)
+    public override BaseUpdateCheckResult CheckIfNeedsUpdate(BaseUpdateConfigInfo cfg_para)
     {
-        UpdateCheckResult result = new UpdateCheckResult();
+        ParentUpdateConfigInfo cfg = cfg_para as ParentUpdateConfigInfo;
+        ParentUpdateCheckResult result = new ParentUpdateCheckResult();
 
         if (cfg == null)
         {
@@ -258,7 +235,7 @@ public class UpdateChecker
         }
 
         //collect res update info for all this baseVersion
-        List<BaseResInfo> tmpResInfoList = new List<BaseResInfo>();
+        List<ParentResInfo> tmpResInfoList = new List<ParentResInfo>();
         for (int i = 0; i < versionInfoList.Count; i++)
         {
             var info = versionInfoList[i];
@@ -297,12 +274,12 @@ public class UpdateChecker
         return result;
     }
 
-    private void AddResInfo(List<BaseResInfo> list, BaseResInfo info)
+    protected void AddResInfo(List<ParentResInfo> list, ParentResInfo info)
     {
         //TODO Filter logic here
-        if (m_filter != null)
+        if (m_filter is ParentUpdateResFilter)
         {
-            m_filter.CheckNeedUpdate(list, info);
+            (m_filter as ParentUpdateResFilter).CheckNeedUpdate(list, info);
         }
         else
         {
@@ -310,7 +287,8 @@ public class UpdateChecker
         }
     }
 
-    private bool AddResVersionInfo(List<ParentResVersionInfo> list, ParentResVersionInfo platInfo)
+
+    protected bool AddResVersionInfo(List<ParentResVersionInfo> list, ParentResVersionInfo platInfo)
     {
         //这里不要对比
         //var resVerNum = Version.GetVersionCode(m_context.ResVersion);
@@ -340,16 +318,5 @@ public class UpdateChecker
         }
 
         return true;
-    }
-
-    public static int GetVersionCode(string str)
-    {
-        if (string.IsNullOrEmpty(str))
-        {
-            return 0;
-        }
-        string[] strArray = str.Split('.');
-        int version = int.Parse(strArray[0]) * 10000 + int.Parse(strArray[1]) * 100 + int.Parse(strArray[2]);
-        return version;
     }
 }

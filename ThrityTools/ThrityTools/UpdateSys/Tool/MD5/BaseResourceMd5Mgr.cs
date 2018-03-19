@@ -14,12 +14,12 @@ using LitJson;
 using System.Collections.Generic;
 using UpdateDefineSpace;
 
-public class ResourceMd5Mgr
+public class BaseResourceMd5Mgr
 {
 
     private JsonData m_localMD5Json = null;
 
-    private string GetFilePath()
+    protected virtual string GetFilePath()
     {
         string path = Application.persistentDataPath + "/ress.cf";
         return path;
@@ -45,7 +45,7 @@ public class ResourceMd5Mgr
         }
     }
 
-    private JsonData Get(string key)
+    protected JsonData Get(string key)
     {
         if (m_localMD5Json == null)
             return null;
@@ -61,7 +61,7 @@ public class ResourceMd5Mgr
 
     }
 
-    private void Set(string key, string md5, bool autoSave = true, List<string> fileList = null)
+    protected void Set(string key, string md5, bool autoSave = true, List<string> fileList = null)
     {
         JsonData item = new JsonData();
         item["md5"] = md5;
@@ -145,7 +145,7 @@ public class ResourceMd5Mgr
 
     protected virtual string GetKeyForRes(BaseResInfo resInfo)
     {
-        return resInfo.versionInfo.resVersion + "-" + resInfo.type;
+        return "";
     }
 
     public void Clean()

@@ -35,8 +35,3 @@ public interface IUpdateExecutorDelegate
 	void OnUpdateFinish(IUpdateExecutor executor, BaseResInfo info, List<string> fileList, bool isNeedReload = false);
     void UpdateStateNotice(BaseResInfo res, UpdateProgressInfo.Phase updateState, int totalSize, int curSize);
 }
-
-public interface IUpdateFilter
-{
-    void CheckNeedUpdate(List<BaseResInfo> list, BaseResInfo info);
-}

@@ -7,12 +7,25 @@
 //     Copyright  : 
 **************************************************************/
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UpdateDefineSpace;
 
 public class ChildPackageUpdateSys : BaseUpdateSys
 {
-    protected override IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, IUpdateFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
+    public ChildPackageUpdateSys(MonoBehaviour gb)
+    {
+        m_CoroutineJobQueue = new CoroutineJobQueue(gb);
+        m_context = new ChildUpdateContext();
+    }
+
+    public override void Init(MonoBehaviour gb)
+    {
+        m_CoroutineJobQueue = new CoroutineJobQueue(gb);
+        m_context = new ChildUpdateContext();
+    }
+
+    protected override IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, BaseUpdateResFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
     {
         SetState(State.CheckUpgrade);
 
@@ -30,7 +43,7 @@ public class ChildPackageUpdateSys : BaseUpdateSys
         //do check
         //bool checkFinish = false;
 
-        UpdateChecker checker = new UpdateChecker(m_context, filter);
+        ChildPackageUpdateChecker checker = new ChildPackageUpdateChecker(m_context, filter);
         checker.StartCheck((result) =>
         {
             SetState(State.Idle);
@@ -60,56 +73,6 @@ public class ChildPackageUpdateSys : BaseUpdateSys
 
         //}
         yield return null;
-    }
-
-
-    public override void StartResourceUpdate(UpdateCheckResult result, IUpdateSysDelegate del)
-    {
-        if (m_state == State.Upgrading)
-        {
-            Debug.LogError("already in upgrading state");
-            return;
-        }
-
-        if (!result.NeedUpdate)
-        {
-            Debug.LogError("donot need update");
-            return;
-        }
-
-        var list = result.ResInfoList;
-        if (list == null || list.Count == 0)
-        {
-            Debug.LogError("empty res list");
-            return;
-        }
-
-        m_delegate = del;
-        _StartUpdate();
-
-        for (int i = 0; i < list.Count; i++)
-        {
-            var info = list[i];
-
-            IUpdateExecutor executor = GetUpdateExecutor(info.type);
-            if (executor != null)
-            {
-                //JobQueueCoroutine需要重构下更易用
-                UpdateResourceParam param = new UpdateResourceParam();
-                param.executor = executor;
-                param.info = info;
-                param.context = m_context;
-
-                m_updateCount++;
-                m_CoroutineJobQueue.PushJob(_UpdateResCoroutine, param);
-            }
-            else
-            {
-                Debug.LogError("UpdateExecutor not registered for type:" + info.type);
-            }
-        }
-
-        m_CoroutineJobQueue.StartJobCoroutine();
     }
 
 
