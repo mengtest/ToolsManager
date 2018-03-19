@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal" >
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="7.5dp"/>
+
+    <LinearLayout
+        android:id="@+id/mContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/sjoy_autologin_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="200" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/sjoy_autologin_icon"
+            android:scaleType="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20" />
+
+
+        <TextView
+            android:id="@+id/login_auto_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="小王子"
+            android:textColor="@color/sjoy_login_text_black"
+            android:textSize="@dimen/sjoy_input_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/sjoy_login_auto_welcome"
+            android:textColor="@color/sjoy_login_text_black"
+            android:textSize="@dimen/sjoy_input_text_size" />
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="130" />
+
+        <Button
+            android:id="@+id/login_auto_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/sjoy_autologin_switch"
+            android:text="@string/sjoy_login_auto_switch"
+            android:textColor="@color/sjoy_login_text_black"
+            android:textSize="@dimen/sjoy_input_text_size" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20" />
+    </LinearLayout>
+
+    <!--
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:background="@color/sjoy_bg_sdk" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/login_auto_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/sjoy_login_auto_welcome"
+                android:textColor="@color/sjoy_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/login_auto_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/login_auto_title"
+                android:textColor="@color/sjoy_orange_light"
+                android:text="小王子"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/login_auto_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:background="@color/sjoy_orange_light"
+            android:padding="2dip"
+            android:text="@string/sjoy_autologin_switch"
+            android:textColor="@color/sjoy_white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+    -->
+
+</LinearLayout>

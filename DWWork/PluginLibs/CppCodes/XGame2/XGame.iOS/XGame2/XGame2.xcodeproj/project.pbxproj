@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17D5D69D1E4426D100F95182 /* Bounds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17D5D6991E4426D100F95182 /* Bounds.cpp */; };
+		17D5D69E1E4426D100F95182 /* SceneNodeDistanceRefresh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17D5D69B1E4426D100F95182 /* SceneNodeDistanceRefresh.cpp */; };
+		17DEB99F1E25F0520032A635 /* EZFunBitCoverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17DEB99D1E25F0520032A635 /* EZFunBitCoverter.cpp */; };
+		189C33D31E011ADF00E6882D /* libXGame2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189C33C71E011ADF00E6882D /* libXGame2.a */; };
+		189C33ED1E011B3500E6882D /* ActorAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189C33E11E011B3500E6882D /* ActorAttribute.cpp */; };
+		189C33EE1E011B3500E6882D /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189C33E51E011B3500E6882D /* Main.cpp */; };
+		189C33EF1E011B3500E6882D /* tea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189C33E81E011B3500E6882D /* tea.cpp */; };
+		189C33F01E011B3500E6882D /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189C33EA1E011B3500E6882D /* Utilities.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		189C33D41E011ADF00E6882D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 189C33BF1E011ADF00E6882D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 189C33C61E011ADF00E6882D;
+			remoteInfo = XGame2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		189C33C51E011ADF00E6882D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		17D5D6991E4426D100F95182 /* Bounds.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bounds.cpp; path = ../../XGame2/Bounds.cpp; sourceTree = "<group>"; };
+		17D5D69A1E4426D100F95182 /* Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bounds.h; path = ../../XGame2/Bounds.h; sourceTree = "<group>"; };
+		17D5D69B1E4426D100F95182 /* SceneNodeDistanceRefresh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneNodeDistanceRefresh.cpp; path = ../../XGame2/SceneNodeDistanceRefresh.cpp; sourceTree = "<group>"; };
+		17D5D69C1E4426D100F95182 /* SceneNodeDistanceRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneNodeDistanceRefresh.h; path = ../../XGame2/SceneNodeDistanceRefresh.h; sourceTree = "<group>"; };
+		17DEB99D1E25F0520032A635 /* EZFunBitCoverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EZFunBitCoverter.cpp; path = ../../XGame2/EZFunBitCoverter.cpp; sourceTree = "<group>"; };
+		17DEB99E1E25F0520032A635 /* EZFunBitCoverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EZFunBitCoverter.h; path = ../../XGame2/EZFunBitCoverter.h; sourceTree = "<group>"; };
+		189C33C71E011ADF00E6882D /* libXGame2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXGame2.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		189C33D21E011ADF00E6882D /* XGame2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XGame2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		189C33D81E011ADF00E6882D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		189C33E11E011B3500E6882D /* ActorAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActorAttribute.cpp; path = ../../XGame2/ActorAttribute.cpp; sourceTree = "<group>"; };
+		189C33E21E011B3500E6882D /* ActorAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActorAttribute.h; path = ../../XGame2/ActorAttribute.h; sourceTree = "<group>"; };
+		189C33E31E011B3500E6882D /* FastEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastEvent.h; path = ../../XGame2/FastEvent.h; sourceTree = "<group>"; };
+		189C33E41E011B3500E6882D /* FastEventImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastEventImplement.h; path = ../../XGame2/FastEventImplement.h; sourceTree = "<group>"; };
+		189C33E51E011B3500E6882D /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../XGame2/Main.cpp; sourceTree = "<group>"; };
+		189C33E61E011B3500E6882D /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Main.h; path = ../../XGame2/Main.h; sourceTree = "<group>"; };
+		189C33E71E011B3500E6882D /* PreInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreInclude.h; path = ../../XGame2/PreInclude.h; sourceTree = "<group>"; };
+		189C33E81E011B3500E6882D /* tea.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tea.cpp; path = ../../XGame2/tea.cpp; sourceTree = "<group>"; };
+		189C33E91E011B3500E6882D /* tea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tea.h; path = ../../XGame2/tea.h; sourceTree = "<group>"; };
+		189C33EA1E011B3500E6882D /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utilities.cpp; path = ../../XGame2/Utilities.cpp; sourceTree = "<group>"; };
+		189C33EB1E011B3500E6882D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = ../../XGame2/Utilities.h; sourceTree = "<group>"; };
+		189C33EC1E011B3500E6882D /* VariadicMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariadicMacros.h; path = ../../XGame2/VariadicMacros.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		189C33C41E011ADF00E6882D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		189C33CF1E011ADF00E6882D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189C33D31E011ADF00E6882D /* libXGame2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		189C33BE1E011ADF00E6882D = {
+			isa = PBXGroup;
+			children = (
+				17D5D6991E4426D100F95182 /* Bounds.cpp */,
+				17D5D69A1E4426D100F95182 /* Bounds.h */,
+				17D5D69B1E4426D100F95182 /* SceneNodeDistanceRefresh.cpp */,
+				17D5D69C1E4426D100F95182 /* SceneNodeDistanceRefresh.h */,
+				189C33E11E011B3500E6882D /* ActorAttribute.cpp */,
+				189C33E21E011B3500E6882D /* ActorAttribute.h */,
+				189C33E31E011B3500E6882D /* FastEvent.h */,
+				189C33E41E011B3500E6882D /* FastEventImplement.h */,
+				189C33E51E011B3500E6882D /* Main.cpp */,
+				189C33E61E011B3500E6882D /* Main.h */,
+				17DEB99D1E25F0520032A635 /* EZFunBitCoverter.cpp */,
+				17DEB99E1E25F0520032A635 /* EZFunBitCoverter.h */,
+				189C33E71E011B3500E6882D /* PreInclude.h */,
+				189C33E81E011B3500E6882D /* tea.cpp */,
+				189C33E91E011B3500E6882D /* tea.h */,
+				189C33EA1E011B3500E6882D /* Utilities.cpp */,
+				189C33EB1E011B3500E6882D /* Utilities.h */,
+				189C33EC1E011B3500E6882D /* VariadicMacros.h */,
+				189C33D61E011ADF00E6882D /* XGame2Tests */,
+				189C33C81E011ADF00E6882D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		189C33C81E011ADF00E6882D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				189C33C71E011ADF00E6882D /* libXGame2.a */,
+				189C33D21E011ADF00E6882D /* XGame2Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		189C33D61E011ADF00E6882D /* XGame2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				189C33D71E011ADF00E6882D /* Supporting Files */,
+			);
+			path = XGame2Tests;
+			sourceTree = "<group>";
+		};
+		189C33D71E011ADF00E6882D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				189C33D81E011ADF00E6882D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		189C33C61E011ADF00E6882D /* XGame2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 189C33DB1E011ADF00E6882D /* Build configuration list for PBXNativeTarget "XGame2" */;
+			buildPhases = (
+				189C33C31E011ADF00E6882D /* Sources */,
+				189C33C41E011ADF00E6882D /* Frameworks */,
+				189C33C51E011ADF00E6882D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XGame2;
+			productName = XGame2;
+			productReference = 189C33C71E011ADF00E6882D /* libXGame2.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		189C33D11E011ADF00E6882D /* XGame2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 189C33DE1E011ADF00E6882D /* Build configuration list for PBXNativeTarget "XGame2Tests" */;
+			buildPhases = (
+				189C33CE1E011ADF00E6882D /* Sources */,
+				189C33CF1E011ADF00E6882D /* Frameworks */,
+				189C33D01E011ADF00E6882D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				189C33D51E011ADF00E6882D /* PBXTargetDependency */,
+			);
+			name = XGame2Tests;
+			productName = XGame2Tests;
+			productReference = 189C33D21E011ADF00E6882D /* XGame2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		189C33BF1E011ADF00E6882D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = apple;
+				TargetAttributes = {
+					189C33C61E011ADF00E6882D = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					189C33D11E011ADF00E6882D = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 189C33C21E011ADF00E6882D /* Build configuration list for PBXProject "XGame2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 189C33BE1E011ADF00E6882D;
+			productRefGroup = 189C33C81E011ADF00E6882D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				189C33C61E011ADF00E6882D /* XGame2 */,
+				189C33D11E011ADF00E6882D /* XGame2Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		189C33D01E011ADF00E6882D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		189C33C31E011ADF00E6882D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17D5D69E1E4426D100F95182 /* SceneNodeDistanceRefresh.cpp in Sources */,
+				17D5D69D1E4426D100F95182 /* Bounds.cpp in Sources */,
+				189C33EF1E011B3500E6882D /* tea.cpp in Sources */,
+				189C33EE1E011B3500E6882D /* Main.cpp in Sources */,
+				189C33F01E011B3500E6882D /* Utilities.cpp in Sources */,
+				189C33ED1E011B3500E6882D /* ActorAttribute.cpp in Sources */,
+				17DEB99F1E25F0520032A635 /* EZFunBitCoverter.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		189C33CE1E011ADF00E6882D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		189C33D51E011ADF00E6882D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 189C33C61E011ADF00E6882D /* XGame2 */;
+			targetProxy = 189C33D41E011ADF00E6882D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		189C33D91E011ADF00E6882D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		189C33DA1E011ADF00E6882D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		189C33DC1E011ADF00E6882D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		189C33DD1E011ADF00E6882D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		189C33DF1E011ADF00E6882D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = XGame2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		189C33E01E011ADF00E6882D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = XGame2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		189C33C21E011ADF00E6882D /* Build configuration list for PBXProject "XGame2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189C33D91E011ADF00E6882D /* Debug */,
+				189C33DA1E011ADF00E6882D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		189C33DB1E011ADF00E6882D /* Build configuration list for PBXNativeTarget "XGame2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189C33DC1E011ADF00E6882D /* Debug */,
+				189C33DD1E011ADF00E6882D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		189C33DE1E011ADF00E6882D /* Build configuration list for PBXNativeTarget "XGame2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189C33DF1E011ADF00E6882D /* Debug */,
+				189C33E01E011ADF00E6882D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 189C33BF1E011ADF00E6882D /* Project object */;
+}

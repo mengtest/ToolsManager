@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/login_regist_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true" >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="7dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="3dp"
+            android:src="@drawable/sjoy_login_left" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/sjoy_login_margin"
+            android:layout_marginRight="@dimen/sjoy_login_margin"
+            android:layout_weight="60"
+            android:gravity="center" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" >
+
+                <RelativeLayout
+                    android:id="@+id/login_regist_rl_rl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="true" >
+
+                    <!-- android:layout_weight="134" -->
+
+                    <TextView
+                        android:id="@+id/login_regist_tvphone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center"
+                        android:text="@string/sjoy_login_regist_title1"
+                        android:textColor="@color/sjoy_login_text_black"
+                        android:textSize="@dimen/sjoy_login_regist_title" />
+
+                    <TextView
+                        android:id="@+id/login_regist_tvphone_line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0.5dp"
+                        android:layout_alignLeft="@id/login_regist_tvphone"
+                        android:layout_alignRight="@id/login_regist_tvphone"
+                        android:layout_below="@id/login_regist_tvphone"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/sjoy_login_line4" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/login_regist_rl_rl2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="75dp"
+                    android:layout_toRightOf="@id/login_regist_rl_rl"
+                    android:clickable="true" >
+
+                    <!-- android:layout_weight="134" -->
+
+                    <TextView
+                        android:id="@+id/login_regist_tvnormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/sjoy_login_regist_title2"
+                        android:textColor="@color/sjoy_login_text_gray_dark"
+                        android:textSize="@dimen/sjoy_login_regist_title" />
+
+                    <TextView
+                        android:id="@+id/login_regist_tvnormal_line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0.5dp"
+                        android:layout_alignLeft="@id/login_regist_tvnormal"
+                        android:layout_alignRight="@id/login_regist_tvnormal"
+                        android:layout_below="@id/login_regist_tvnormal"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/sjoy_login_line4"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/login_regist_phone_btn_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="350"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <!-- android:weightSum="425" -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="229"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/login_regist_phonenumber_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/sjoy_login_margin"
+                    android:layout_marginRight="@dimen/sjoy_login_margin"
+                    android:layout_weight="76" >
+
+                    <ImageView
+                        android:id="@+id/login_regist_phone"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/sjoy_login_phone" />
+
+                    <ImageView
+                        android:id="@+id/login_regist_phone_clear"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:src="@drawable/sjoy_login_clear"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/login_regist_phonenumber_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@id/login_regist_phone_clear"
+                        android:layout_toRightOf="@id/login_regist_phone"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/sjoy_login_regist_account"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/sjoy_login_text_black"
+                        android:textColorHint="@color/sjoy_login_text_grayse"
+                        android:textSize="@dimen/sjoy_login_edittext_hint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/sjoy_login_line1" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/login_regist_idcode_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/sjoy_login_margin"
+                    android:layout_marginRight="@dimen/sjoy_login_margin"
+                    android:layout_weight="77" >
+
+                    <ImageView
+                        android:id="@+id/login_regist_idcode"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/sjoy_login_check" />
+
+                    <TextView
+                        android:id="@+id/login_regist_idcode_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="@string/sjoy_login_regist_getcode"
+                        android:textColor="@color/sjoy_login_text_black"
+                        android:textSize="@dimen/sjoy_login_regist_getcode" />
+
+                    <EditText
+                        android:id="@+id/login_regist_idcode_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dip"
+                        android:layout_toLeftOf="@id/login_regist_idcode_tv"
+                        android:layout_toRightOf="@id/login_regist_idcode"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/sjoy_login_regist_checkcode"
+                        android:singleLine="true"
+                        android:textColor="@color/sjoy_login_text_black"
+                        android:textColorHint="@color/sjoy_login_text_grayse"
+                        android:textSize="@dimen/sjoy_login_edittext_hint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/sjoy_login_line1" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/login_regist_password_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/sjoy_login_margin"
+                    android:layout_marginRight="@dimen/sjoy_login_margin"
+                    android:layout_weight="76" >
+
+                    <ImageView
+                        android:id="@+id/login_regist_lock"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/sjoy_login_lock" />
+
+                    <ImageView
+                        android:id="@+id/login_regist_phone_eye"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:src="@drawable/sjoy_login_eye_open" />
+
+                    <EditText
+                        android:id="@+id/login_regist_password_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@id/login_regist_phone_eye"
+                        android:layout_toRightOf="@id/login_regist_lock"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/sjoy_login_regist_password"
+                        android:singleLine="true"
+                        android:textColor="@color/sjoy_login_text_black"
+                        android:textColorHint="@color/sjoy_login_text_grayse"
+                        android:textSize="@dimen/sjoy_login_edittext_hint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/sjoy_login_line1" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+
+            <ImageButton
+                android:id="@+id/login_regist_entergame"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/sjoy_login_margin"
+                android:layout_marginRight="@dimen/sjoy_login_margin"
+                android:layout_weight="75"
+                android:background="@drawable/sjoy_btn_home_green_entergame" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="11" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/sjoy_login_margin" >
+
+                <ImageView
+                    android:id="@+id/login_regist_checkBox"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="5.5dp"
+                    android:paddingRight="6dp"
+                    android:paddingTop="5.5dp"
+                    android:src="@drawable/sjoy_agreement_checked" />
+
+                <TextView
+                    android:id="@+id/login_regist_agreement_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6dp"
+                    android:layout_toRightOf="@id/login_regist_checkBox"
+                    android:text="@string/sjoy_agreement_text"
+                    android:textColor="@color/sjoy_regist_agreement_text"
+                    android:textSize="@dimen/sjoy_login_text_home_tips" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="15" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/login_regist_normal_btn_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="350"
+            android:orientation="vertical"
+            android:visibility="gone" >
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="229"
+                android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/login_regist_normal_rl"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/sjoy_login_margin"
+                android:layout_marginRight="@dimen/sjoy_login_margin"
+                android:layout_weight="76" >
+
+                <ImageView
+                    android:id="@+id/login_regist_normal_phone"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/sjoy_login_user" />
+
+                <ImageView
+                    android:id="@+id/login_regist_normal_phone_clear"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:src="@drawable/sjoy_login_clear"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/login_regist_normalaccount_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@id/login_regist_normal_phone_clear"
+                    android:layout_toRightOf="@id/login_regist_normal_phone"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/sjoy_login_regist_account"
+                    android:singleLine="true"
+                    android:textColor="@color/sjoy_login_text_black"
+                    android:textColorHint="@color/sjoy_login_text_grayse"
+                    android:textSize="@dimen/sjoy_login_edittext_hint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/sjoy_login_line3" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25" />
+
+            <TextView
+                android:id="@+id/login_regist_normal_texttips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/sjoy_login_regist_tips"
+                android:textColor="@color/sjoy_login_text_black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10" />
+
+            <RelativeLayout
+                android:id="@+id/login_regist_normal_rl2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/sjoy_login_margin"
+                android:layout_marginRight="@dimen/sjoy_login_margin"
+                android:layout_weight="76" >
+
+                <ImageView
+                    android:id="@+id/login_regist_normal_password"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/sjoy_login_lock" />
+
+                <ImageView
+                    android:id="@+id/login_regist_normal_eye"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:src="@drawable/sjoy_login_eye_open" />
+
+                <EditText
+                    android:id="@+id/login_regist_normalpassword_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@id/login_regist_normal_eye"
+                    android:layout_toRightOf="@id/login_regist_normal_password"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/sjoy_login_regist_password"
+                    android:singleLine="true"
+                    android:textColor="@color/sjoy_login_text_black"
+                    android:textColorHint="@color/sjoy_login_text_grayse"
+                    android:textSize="@dimen/sjoy_login_edittext_hint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/sjoy_login_line3" />
+            </RelativeLayout>
+            
+           </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+
+            <ImageButton
+                android:id="@+id/login_regist_normal_entergame"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/sjoy_login_margin"
+                android:layout_marginRight="@dimen/sjoy_login_margin"
+                android:layout_weight="75"
+                android:background="@drawable/sjoy_btn_home_green_entergame" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="11" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/sjoy_login_margin" >
+
+                <ImageView
+                    android:id="@+id/login_regist_normal_checkBox"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="5.5dp"
+                    android:paddingRight="6dp"
+                    android:paddingTop="5.5dp"
+                    android:src="@drawable/sjoy_agreement_checked" />
+
+                <TextView
+                    android:id="@+id/login_regist_agreement_tips2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6dp"
+                    android:layout_toRightOf="@id/login_regist_normal_checkBox"
+                    android:text="@string/sjoy_agreement_text"
+                    android:textColor="@color/sjoy_regist_agreement_text"
+                    android:textSize="@dimen/sjoy_login_text_home_tips" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="15" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

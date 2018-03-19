@@ -1,0 +1,162 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:weightSum="420" >
+
+    <TextView
+        android:id="@+id/sjoy_login_home_second_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15" />
+
+    <ImageView
+        android:id="@+id/login_home_second_logo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="65dp"
+        android:layout_weight="100"
+        android:scaleType="fitXY"
+        android:src="@drawable/sjoy_login_logo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="305"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="35" />
+
+            <RelativeLayout
+                android:id="@+id/login_home_second_input"
+                style="@style/sjoy_tablerow_style"
+                android:layout_marginLeft="@dimen/sjoy_login_margin"
+                android:layout_marginRight="@dimen/sjoy_login_margin"
+                android:layout_weight="100"
+                android:background="@drawable/sjoy_bg_rectangle" >
+
+                <ImageView
+                    android:id="@+id/login_home_second_usericon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/sjoy_login_user" />
+
+
+                <ImageView
+                    android:id="@+id/login_home_second_select_account"
+                    style="@style/sjoy_dialog_imageview"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginRight="15dip"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:src="@drawable/sjoy_login_down" />
+                <!-- android:layout_alignParentBottom="true" -->
+
+                <EditText
+                    android:id="@+id/login_home_second_loginphnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dip"
+                    android:layout_toLeftOf="@id/login_home_second_select_account"
+                    android:layout_toRightOf="@id/login_home_second_usericon"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:hint="@string/sjoy_login_account_account"
+                    android:singleLine="true"
+                    android:textColor="@color/sjoy_login_text_black"
+                    android:textColorHint="@color/sjoy_login_text_grayse"
+                    android:textSize="@dimen/sjoy_login_edittext_hint" />
+                <!-- android:layout_alignParentBottom="true" -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/sjoy_login_line1" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25" />
+
+            <ImageButton
+                android:id="@+id/login_home_second_enterGame"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/sjoy_login_margin"
+                android:layout_marginRight="@dimen/sjoy_login_margin"
+                android:layout_weight="100"
+                android:background="@drawable/sjoy_btn_home_green_entergame" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25" />
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dip"
+                android:background="@color/sjoy_login_line2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5" />
+
+            <RelativeLayout
+                android:id="@+id/login_home_second_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/login_home_second_text_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sjoy_login_tips2"
+                    android:textColor="@color/sjoy_login_text_gray_dark"
+                    android:textSize="@dimen/sjoy_login_edittext_hint" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/login_home_second_text_tips"
+                    android:layout_alignTop="@id/login_home_second_text_tips"
+                    android:layout_marginLeft="2.5dip"
+                    android:layout_toRightOf="@id/login_home_second_text_tips"
+                    android:padding="3dp"
+                    android:src="@drawable/sjoy_login_right" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

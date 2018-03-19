@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="PlayerFubenAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Attachment Class="PluginBehaviac.Events.StartCondition" Enable="true" Id="0" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+    <FSMNodes ScreenLocationX="0" ScreenLocationY="0">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="Self.BaseActorAIAgent::SetIdleState()" Name="IdleState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="291.3449" ScreenLocationY="94.64917">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="5" Operator="Equal" Opl="Self.BaseActorAIAgent::TargetExist()" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="12" PrefabAttachmentId="-1" TargetFSMNodeId="13" TransitionPhase="ETP_Always" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="&quot;&quot;" Name="PreAttack" PrefabName="" PrefabNodeId="-1" ScreenLocationX="517.7421" ScreenLocationY="20.72303">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="6" Operator="Invalid" Opl="Self.PlayerAIAgent::RefreshSkill()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="7" Operator="Equal" Opl="Self.BaseActorAIAgent::TargetExist()" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="8" Operator="LessEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.PlayerAIAgent::GetMaxAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="4" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="9" PrefabAttachmentId="-1" TargetFSMNodeId="3" TransitionPhase="ETP_Always" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="3" IsEndState="false" Method="&quot;&quot;" Name="ChaseState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="477.4307" ScreenLocationY="120.0664">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="22" Operator="Invalid" Opl="Self.BaseActorAIAgent::HandleMoveToPos()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Update" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="10" Operator="Equal" Opl="Self.BaseActorAIAgent::TargetExist()" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="11" Operator="LessEqual" Opl="Self.BaseActorAIAgent::GetDistanceToTarget()" Opr1="&quot;&quot;" Opr2="Self.PlayerAIAgent::GetMaxAttackDistance()" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="4" IsEndState="false" Method="&quot;&quot;" Name="AttackState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="835.8439" ScreenLocationY="140.5893">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="16" Operator="Invalid" Opl="Self.BaseActorAIAgent::HandleAttack()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="17" PrefabAttachmentId="-1" TargetFSMNodeId="18" TransitionPhase="ETP_Always" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="13" IsEndState="false" Method="&quot;&quot;" Name="MoveState" PrefabName="" PrefabNodeId="-1" ScreenLocationX="377.49" ScreenLocationY="-98.08275">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="14" Operator="Invalid" Opl="Self.BaseActorAIAgent::HandleMoveToPos()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="15" Operator="Equal" Opl="Self.BaseActorAIAgent::IsMoveState()" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="29" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="28" Operator="Equal" Opl="Self.BaseActorAIAgent::TargetExist()" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="25" IsEndState="false" Method="&quot;&quot;" Name="PostAttack" PrefabName="" PrefabNodeId="-1" ScreenLocationX="756.3286" ScreenLocationY="-22.82545">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="26" Operator="Equal" Opl="Self.PlayerAIAgent::CanTakeNextMove()" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.WaitFramesState" Enable="true" Frames="const int 2" HasOwnPrefabData="false" Id="29" IsEndState="false" Name="WaitMove" PrefabName="" PrefabNodeId="-1" ScreenLocationX="160.1926" ScreenLocationY="-76.02666">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.WaitTransition" Enable="true" Id="30" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="18" IsEndState="false" Method="&quot;&quot;" Name="WaitAttacking" PrefabName="" PrefabNodeId="-1" ScreenLocationX="806.694" ScreenLocationY="43.41971">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="19" Operator="Add" Opl="float Self.BaseActorAIAgent::m_nextStopBehaviourTime" Opr1="float Self.BaseActorAIAgent::m_curTime" Opr2="float Self.PlayerAIAgent::m_SkillInputInterval" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="20" Operator="Greater" Opl="float Self.BaseActorAIAgent::m_curTime" Opr1="&quot;&quot;" Opr2="float Self.BaseActorAIAgent::m_nextStopBehaviourTime" PrefabAttachmentId="-1" TargetFSMNodeId="25" />
+      </Node>
+    </FSMNodes>
+  </Node>
+</Behavior>

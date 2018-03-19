@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:weightSum="420">
+
+    <TextView
+        android:id="@+id/sjoy_login_new_home_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"/>
+
+    <ImageView
+        android:id="@+id/login_home_logo"
+       android:layout_width="match_parent"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="95"
+        android:scaleType="fitXY"
+        android:src="@drawable/sjoy_login_logo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:layout_weight="305" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+
+            <TextView
+                android:id="@+id/text_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/sjoy_login_tips"
+                android:textSize="@dimen/sjoy_login_text_home_tips" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20" />
+
+            <ImageButton
+                android:id="@+id/login_home_vlogin"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="37.5dip"
+                android:layout_marginRight="37.5dip"
+                android:layout_weight="80"
+                android:background="@drawable/sjoy_btn_home_green" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="37.5dip"
+                android:layout_marginRight="37.5dip"
+                android:layout_weight="80"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <RelativeLayout
+                    android:id="@+id/login_rl2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="6dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true" />
+
+                    <ImageButton
+                        android:id="@+id/login_home_quickregist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@id/tv"
+                        android:background="@drawable/sjoy_btn_home_blue" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/login_rl3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="6dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageButton
+                        android:id="@+id/login_home_starjoys_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@id/tv2"
+                        android:background="@drawable/sjoy_btn_home_orange" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

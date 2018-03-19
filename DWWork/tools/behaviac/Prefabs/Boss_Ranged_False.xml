@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="BossAIAgent" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Connector Identifier="GenericChildren">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="8" IsEndState="false" Method="&quot;&quot;" Name="Attack_RangedFalse" PrefabName="" PrefabNodeId="-1" ScreenLocationX="611.4838" ScreenLocationY="80.38499">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="11" Operator="Assign" Opl="bool Self.BaseActorAIAgent::m_isRanged" Opr1="&quot;&quot;" Opr2="const bool false" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.AlwaysTransition" Enable="true" Id="13" PrefabAttachmentId="-1" TargetFSMNodeId="4" TransitionPhase="ETP_Always" />
+      </Node>
+    </Connector>
+  </Node>
+</Behavior>

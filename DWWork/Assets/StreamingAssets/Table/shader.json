@@ -1,0 +1,428 @@
+{
+    "shaders": [
+        {
+            "name": "ProFlares/Textured Flare Shader",
+            "path": "assets/xgame/resources/shaders/proflareshader.shader"
+        },
+        {
+            "name": "EZFun/Particles/Additive",
+            "path": "assets/xgame/resources/shaders/additive/additive.shader"
+        },
+        {
+            "name": "EZFun/Particles/Additive_Cull_Z",
+            "path": "assets/xgame/resources/shaders/additive/additive_cull_z.shader"
+        },
+        {
+            "name": "EZFun/Particles/Additive_distort",
+            "path": "assets/xgame/resources/shaders/additive/add_distort.shader"
+        },
+        {
+            "name": "EZFun/Particles/AlphaBlend",
+            "path": "assets/xgame/resources/shaders/additive/alphablend.shader"
+        },
+        {
+            "name": "FastShadowReceiver/Receiver/Projector/Invisble",
+            "path": "assets/xgame/resources/shaders/fastshadowreceivershaders/invisble.shader"
+        },
+        {
+            "name": "FastShadowReceiver/Projector/Multiply Without Falloff",
+            "path": "assets/xgame/resources/shaders/fastshadowreceivershaders/projectormultiplywithoutfalloff.shader"
+        },
+        {
+            "name": "FastShadowReceiver/Projector/Visualize Receiver",
+            "path": "assets/xgame/resources/shaders/fastshadowreceivershaders/visualizereceiver.shader"
+        },
+        {
+            "name": "FastShadowReceiver/Receiver/Gizmo",
+            "path": "assets/xgame/resources/shaders/fastshadowreceivershaders/editor/receivergizmo.shader"
+        },
+        {
+            "name": "Hidden/FastBlur",
+            "path": "assets/xgame/resources/shaders/imageeffects/mobileblur.shader"
+        },
+        {
+            "name": "EZFun/ImageEffects/RadialBlur",
+            "path": "assets/xgame/resources/shaders/imageeffects/radialblur.shader"
+        },
+        {
+            "name": "EZFun/ImageEffects/UIRadialBlur",
+            "path": "assets/xgame/resources/shaders/imageeffects/uiradialblur.shader"
+        },
+        {
+            "name": "EZFun/Additive Mask",
+            "path": "assets/xgame/resources/shaders/legacy/add mask.shader"
+        },
+        {
+            "name": "EZFun/Alpha Blended Mask",
+            "path": "assets/xgame/resources/shaders/legacy/alpha blend mask.shader"
+        },
+        {
+            "name": "EZFun/EzfunGray",
+            "path": "assets/xgame/resources/shaders/legacy/ezfungray.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Premultiplied Colored 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - premultiplied colored 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Premultiplied Colored 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - premultiplied colored 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Premultiplied Colored 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - premultiplied colored 3.shader"
+        },
+        {
+            "name": "Unlit/Premultiplied Colored",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - premultiplied colored.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Text 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - text 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Text 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - text 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Text 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - text 3.shader"
+        },
+        {
+            "name": "Unlit/Text",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - text.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored (TextureClip)",
+            "path": "assets/xgame/resources/shaders/ngui/Unlit - transparent colored (textureclip).shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored 3.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored AlphaChannel(R(X) G(Y) B(Z)) (TextureClip)",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored alphachannel(r g b) (textureclip).shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored AlphaChannel(R(X) G(Y) B(Z)) 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored alphachannel(r g b) 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored AlphaChannel(R(X) G(Y) B(Z)) 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored alphachannel(r g b) 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored AlphaChannel(R(X) G(Y) B(Z)) 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored alphachannel(r g b) 3.shader"
+        },
+        {
+            "name": "Unlit/Transparent Colored AlphaChannel(R(X) G(Y) B(Z))",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored alphachannel(r g b).shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored Mask Texture 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored mask texture 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored Mask Texture 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored mask texture 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored Mask Texture 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored mask texture 3.shader"
+        },
+        {
+            "name": "Unlit/Transparent Colored Mask Texture",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored mask texture.shader"
+        },
+        {
+            "name": "Unlit/Transparent Colored",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent colored.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored Mask 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Colored Mask 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask 2.shader"
+        },
+        {
+            "name": "Hidden//Unlit/Transparent Colored Mask 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask 3.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Mask Colored 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask colored 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Mask Colored 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask colored 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Mask Colored 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask colored 3.shader"
+        },
+        {
+            "name": "Unlit/Transparent Mask Colored",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask colored.shader"
+        },
+        {
+            "name": "Unlit/Transparent Colored Mask",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent mask.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Packed 1",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent packed 1.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Packed 2",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent packed 2.shader"
+        },
+        {
+            "name": "Hidden/Unlit/Transparent Packed 3",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent packed 3.shader"
+        },
+        {
+            "name": "Unlit/Transparent Packed",
+            "path": "assets/xgame/resources/shaders/ngui/unlit - transparent packed.shader"
+        },
+        {
+            "name": "EZFun/Dissolution_Add",
+            "path": "assets/xgame/resources/shaders/particles/dissolution_add.shader"
+        },
+        {
+            "name": "EZFun/Dissolution_Blend",
+            "path": "assets/xgame/resources/shaders/particles/dissolution_blend.shader"
+        },
+        {
+            "name": "EZFun/Dissolve_Alpha_add",
+            "path": "assets/xgame/resources/shaders/particles/dissolve_alpha_add.shader"
+        },
+        {
+            "name": "EZFun/Dissolve_Alpha_Blend",
+            "path": "assets/xgame/resources/shaders/particles/dissolve_alpha_blend.shader"
+        },
+        {
+            "name": "EZFun/Dissolve_SelfIllum",
+            "path": "assets/xgame/resources/shaders/particles/dissolve_selfillum.shader"
+        },
+        {
+            "name": "EZFun/Particles/distortion",
+            "path": "assets/xgame/resources/shaders/particles/distortion.shader"
+        },
+        {
+            "name": "Shader Forge/fer",
+            "path": "assets/xgame/resources/shaders/particles/fer.shader"
+        },
+        {
+            "name": "Shader Forge/fer_add",
+            "path": "assets/xgame/resources/shaders/particles/fresnel_blended.shader"
+        },
+        {
+            "name": "ProFlares/Textured Flare Shader",
+            "path": "assets/xgame/resources/shaders/proflare/proflareshader.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/ScreenText",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/screentext.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/ScreenTextBG",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/screentextbg.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/ScreenTextBGNoDepthTest",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/screentextbgnodepthtest.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/ScreenText DropShadow",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/screentextdropshadow.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/ScreenTextNoDepthTest",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/screentextnodepthtest.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/Cull Back",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/unlit cull back.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/Dropshadow",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/unlit dropshadow.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/Dropshadow and Outline",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/unlit dropshadowandoutline.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/Flow Light And DropShadow",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/unlit flow light.shader"
+        },
+        {
+            "name": "Super Text Mesh/Unlit/Outline",
+            "path": "assets/xgame/resources/shaders/supertextmesh/unlit/unlit outline.shader"
+        },
+        {
+            "name": "XGame2/UIParticles/Additive",
+            "path": "assets/xgame/resources/shaders/ui particles/ui particle add.shader"
+        },
+        {
+            "name": "XGame2/UIParticles/Alpha Blended",
+            "path": "assets/xgame/resources/shaders/ui particles/ui particle alpha blend.shader"
+        },
+        {
+            "name": "XGame2/UIParticles/Blend",
+            "path": "assets/xgame/resources/shaders/ui particles/ui particle blend.shader"
+        },
+        {
+            "name": "XGame2/UIParticles/Multiply",
+            "path": "assets/xgame/resources/shaders/ui particles/ui particle multiply.shader"
+        },
+        {
+            "name": "EZFun/MaskUV",
+            "path": "assets/xgame/resources/shaders/uv/normal mask uv.shader"
+        },
+        {
+            "name": "XGame2/3DTextOrigin",
+            "path": "assets/xgame/resources/shaders/xgame2/3dtextorigin.shader"
+        },
+        {
+            "name": "XGame2/3DTextShadow",
+            "path": "assets/xgame/resources/shaders/xgame2/3dtextshadow.shader"
+        },
+        {
+            "name": "XGame2/Character_Low_Quality",
+            "path": "assets/xgame/resources/shaders/xgame2/character_low_quality.shader"
+        },
+        {
+            "name": "XGame2/Character_VeryHigh_Quality",
+            "path": "assets/xgame/resources/shaders/xgame2/character_veryhigh_quality.shader"
+        },
+        {
+            "name": "XGame2/Character_VeryHigh_Quality_Env",
+            "path": "assets/xgame/resources/shaders/xgame2/character_veryhigh_quality_env.shader"
+        },
+        {
+            "name": "XGame2/Character_VeryHigh_Quality_Env_Shadow",
+            "path": "assets/xgame/resources/shaders/xgame2/character_veryhigh_quality_env_shadow.shader"
+        },
+        {
+            "name": "XGame2/Grass",
+            "path": "assets/xgame/resources/shaders/xgame2/grass.shader"
+        },
+        {
+            "name": "XGame2/Hair",
+            "path": "assets/xgame/resources/shaders/xgame2/hairshading.shader"
+        },
+        {
+            "name": "XGame2/LightMapBumpSpec",
+            "path": "assets/xgame/resources/shaders/xgame2/lightmapbumpspec.shader"
+        },
+        {
+            "name": "XGame2/LightMapBumpSpecTransparent",
+            "path": "assets/xgame/resources/shaders/xgame2/lightmapbumpspectransparent.shader"
+        },
+        {
+            "name": "XGame2/LightMapSelfIllumDiffuse",
+            "path": "assets/xgame/resources/shaders/xgame2/lightmapselfillumdiffuse.shader"
+        },
+        {
+            "name": "Hidden/MobileUberPostProcess",
+            "path": "assets/xgame/resources/shaders/xgame2/mobileuberpostprocess.shader"
+        },
+        {
+            "name": "XGame2/RenderShadow",
+            "path": "assets/xgame/resources/shaders/xgame2/rendershadow.shader"
+        },
+        {
+            "name": "Hidden/Shadow_Mask",
+            "path": "assets/xgame/resources/shaders/xgame2/shadow_mask.shader"
+        },
+        {
+            "name": "Hidden/SimpleClear",
+            "path": "assets/xgame/resources/shaders/xgame2/simpleclear.shader"
+        },
+        {
+            "name": "XGame2/SkyMesh",
+            "path": "assets/xgame/resources/shaders/xgame2/skymesh.shader"
+        },
+        {
+            "name": "Hidden/SunShaftsComposite",
+            "path": "assets/xgame/resources/shaders/xgame2/sunshaftscomposite.shader"
+        },
+        {
+            "name": "XGame2/Terrain_4D",
+            "path": "assets/xgame/resources/shaders/xgame2/terrain_4d.shader"
+        },
+        {
+            "name": "XGame2/Terrain_4D4N",
+            "path": "assets/xgame/resources/shaders/xgame2/terrain_4d4n.shader"
+        },
+        {
+            "name": "XGame2/ViewLightMapBumpSpec",
+            "path": "assets/xgame/resources/shaders/xgame2/viewlightmapbumpspec.shader"
+        },
+        {
+            "name": "XGame2/Water_Pro",
+            "path": "assets/xgame/resources/shaders/xgame2/water_pro.shader"
+        },
+        {
+            "name": "XGame2/Water_Pro_Blend",
+            "path": "assets/xgame/resources/shaders/xgame2/water_pro_blend.shader"
+        },
+        {
+            "name": "Glow/Particles Separate Alpha/Additive",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle add sep.shader"
+        },
+        {
+            "name": "Glow/Particles/Additive",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle add.shader"
+        },
+        {
+            "name": "Glow/Particles Separate Alpha/Alpha Blended",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle alpha blend sep.shader"
+        },
+        {
+            "name": "Glow/Particles/Alpha Blended",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle alpha blend.shader"
+        },
+        {
+            "name": "Glow/Particles Separate Alpha/Blend",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle blend sep.shader"
+        },
+        {
+            "name": "Glow/Particles/Blend",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle blend.shader"
+        },
+        {
+            "name": "Glow/Particles Separate Alpha/Multiply",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle multiply sep.shader"
+        },
+        {
+            "name": "Glow/Particles/Multiply",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow particle multiply.shader"
+        },
+        {
+            "name": "Glow/Texture/Add",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow texture add.shader"
+        },
+        {
+            "name": "Glow/Texture/Multiply",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow texture multiply.shader"
+        },
+        {
+            "name": "Glow/Texture/Opaque",
+            "path": "assets/xgame/resources/shaders/xgame2/glow/glow texture opaque.shader"
+        }
+    ]
+}

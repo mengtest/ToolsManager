@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center" >
+
+    <LinearLayout
+        android:layout_width="@dimen/sjoy_dialog_confirm_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sjoy_bg_white_round"
+        android:orientation="vertical"
+        android:padding="3dip" 
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:padding="10dip"
+            android:text="@string/sjoy_tips_pay_input_money"
+            android:textColor="@color/sjoy_black"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:padding="10dip"
+            android:hint="@string/sjoy_tips_pay_money_limit"
+            android:textColor="@color/sjoy_gray_dark"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:inputType="number"
+            />
+                
+                
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal" 
+            android:layout_marginRight="20dip"
+            android:layout_marginBottom="10dip"
+            >
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sjoy_bg_confirm"
+                android:paddingTop="5dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingBottom="5dip"
+                android:text="@string/sjoy_dialog_cancel"
+                android:textColor="@color/sjoy_gray_light"
+                android:textSize="15sp" 
+                />
+
+            <Button
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sjoy_bg_confirm"
+                android:paddingTop="5dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingBottom="5dip"
+                android:text="@string/sjoy_dialog_confirm"
+                android:textColor="@color/sjoy_orange_dark"
+                android:textSize="15sp" 
+                />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

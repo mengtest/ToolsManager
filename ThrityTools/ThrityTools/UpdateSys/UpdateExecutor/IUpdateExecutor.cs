@@ -1,15 +1,16 @@
 /************************************************************
 //     文件名      : IUpdateExecutor.cs
 //     功能描述    : 
-//     负责人      : cai yang
+//     负责人      : guoliang
 //     参考文档    : 无
 //     创建日期    : 05/09/2017
-//     Copyright  : Copyright 2017-2018 EZFun.
+//     Copyright  : 
 **************************************************************/
 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UpdateDefineSpace;
 
 public interface IUpdateExecutor {
 
@@ -17,7 +18,7 @@ public interface IUpdateExecutor {
 
 	void CleanCachedResource();
 
-	IEnumerator GetUpdateCoroutine(UpdateInfo.ResInfo info, GameUpdateSys.UpdateContext context, IUpdateExecutorDelegate del);
+	IEnumerator GetUpdateCoroutine(BaseResInfo info, BaseUpdateContext context, IUpdateExecutorDelegate del);
 
 	//string GetPathForResource(UpdateConfig.ResInfo info);
 }
@@ -30,12 +31,12 @@ public enum DownloadState
 
 public interface IUpdateExecutorDelegate
 {
-	void OnUpdateError(IUpdateExecutor executor, GameUpdateSys.ErrorCode errCode, UpdateInfo.ResInfo info);
-	void OnUpdateFinish(IUpdateExecutor executor, UpdateInfo.ResInfo info, List<string> fileList, bool isNeedReload = false);
-    void UpdateStateNotice(UpdateInfo.ResInfo  res, UpdateProgressInfo.Phase updateState, int totalSize, int curSize);
+	void OnUpdateError(IUpdateExecutor executor, ErrorCode errCode, BaseResInfo info);
+	void OnUpdateFinish(IUpdateExecutor executor, BaseResInfo info, List<string> fileList, bool isNeedReload = false);
+    void UpdateStateNotice(BaseResInfo res, UpdateProgressInfo.Phase updateState, int totalSize, int curSize);
 }
 
 public interface IUpdateFilter
 {
-    void CheckNeedUpdate(List<UpdateInfo.ResInfo> list, UpdateInfo.ResInfo info);
+    void CheckNeedUpdate(List<BaseResInfo> list, BaseResInfo info);
 }

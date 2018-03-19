@@ -78,6 +78,7 @@
     <Compile Include="SwiftFSM\Syntax\IInSyntax.cs" />
     <Compile Include="SwiftFSM\Syntax\IOnSyntax.cs" />
     <Compile Include="SwiftFSM\Syntax\StateBuilder.cs" />
+    <Compile Include="UpdateSys\BaseUpdateSys.cs" />
     <Compile Include="UpdateSys\CDownLoadFile.cs" />
     <Compile Include="UpdateSys\CUnzipFile.cs" />
     <Compile Include="UpdateSys\FileDownloader.cs" />
@@ -86,14 +87,19 @@
     <Compile Include="UpdateSys\ResourceMd5Mgr.cs" />
     <Compile Include="UpdateSys\UpdateChecker.cs" />
     <Compile Include="UpdateSys\UpdateConfig.cs" />
-    <Compile Include="UpdateSys\UpdateExecutor\AssetsBundleUpdateExecutor.cs" />
-    <Compile Include="UpdateSys\UpdateExecutor\AudioUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\ChildUpdateExector.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Child\ChildAssetBundleUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Child\ChildAudioUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Child\ChildLuaUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Parent\AssetsBundleUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Parent\AudioUpdateExecutor.cs" />
     <Compile Include="UpdateSys\UpdateExecutor\BaseUpdateExecutor.cs" />
-    <Compile Include="UpdateSys\UpdateExecutor\DLLUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Parent\DLLUpdateExecutor.cs" />
     <Compile Include="UpdateSys\UpdateExecutor\IUpdateExecutor.cs" />
-    <Compile Include="UpdateSys\UpdateExecutor\LuaUpdateExecutor.cs" />
-    <Compile Include="UpdateSys\UpdateExecutor\MapFileUpdateExecutor.cs" />
-    <Compile Include="UpdateSys\UpdateExecutor\TableUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Parent\LuaUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Parent\MapFileUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\ParentUpdateExecutor.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\Parent\TableUpdateExecutor.cs" />
     <Compile Include="UpdateSys\UpdateFilter.cs" />
     <Compile Include="UpdateSys\Utility.cs" />
   </ItemGroup>
