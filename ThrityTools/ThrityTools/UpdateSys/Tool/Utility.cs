@@ -149,24 +149,6 @@ public class DWTools
     }
 
 
-    public static void HandleRendererState(GameObject gb, bool state)
-    {
-        if (gb == null)
-        {
-            return;
-        }
-        ParticleSystem[] particleSyss = gb.GetComponentsInParent<ParticleSystem>();
-        for (int i = 0; i < particleSyss.Length; i++)
-        {
-            particleSyss[i].enableEmission = state;
-        }
-        Renderer[] renderers = gb.GetComponentsInParent<Renderer>();
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            renderers[i].enabled = state;
-        }
-    }
-
     public static Vector2 ListToVect2(List<int> list)
     {
         Vector2 vect = Vector2.zero;

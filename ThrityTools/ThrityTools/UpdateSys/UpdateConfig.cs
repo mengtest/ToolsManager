@@ -132,9 +132,9 @@ namespace UpdateDefineSpace
 
 
     //子包 更新配置描述结构
-    public class ChildeUpdateConfigInfo : BaseUpdateConfigInfo
+    public class ChildUpdateConfigInfo : BaseUpdateConfigInfo
     {
-        public ChildeUpdateConfigInfo() { }
+        public ChildUpdateConfigInfo() { }
 
         public List<ChildUpdateInfo> localUpdateInfo;
 

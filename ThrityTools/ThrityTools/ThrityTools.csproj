@@ -78,14 +78,19 @@
     <Compile Include="SwiftFSM\Syntax\IInSyntax.cs" />
     <Compile Include="SwiftFSM\Syntax\IOnSyntax.cs" />
     <Compile Include="SwiftFSM\Syntax\StateBuilder.cs" />
-    <Compile Include="UpdateSys\BaseUpdateSys.cs" />
-    <Compile Include="UpdateSys\CDownLoadFile.cs" />
-    <Compile Include="UpdateSys\CUnzipFile.cs" />
-    <Compile Include="UpdateSys\FileDownloader.cs" />
-    <Compile Include="UpdateSys\GameUpdateSys.cs" />
-    <Compile Include="UpdateSys\GlobalCrypto.cs" />
-    <Compile Include="UpdateSys\ResourceMd5Mgr.cs" />
-    <Compile Include="UpdateSys\UpdateChecker.cs" />
+    <Compile Include="UpdateSys\Checker\BaseUpdateChecker.cs" />
+    <Compile Include="UpdateSys\Checker\ChildPackageUpdateChecker.cs" />
+    <Compile Include="UpdateSys\System\BaseUpdateSys.cs" />
+    <Compile Include="UpdateSys\System\ChildPackageUpdateSys.cs" />
+    <Compile Include="UpdateSys\Tool\CDownLoadFile.cs" />
+    <Compile Include="UpdateSys\Tool\CUnzipFile.cs" />
+    <Compile Include="UpdateSys\Tool\FileDownloader.cs" />
+    <Compile Include="UpdateSys\System\GameUpdateSys.cs" />
+    <Compile Include="UpdateSys\Tool\GlobalCrypto.cs" />
+    <Compile Include="UpdateSys\Tool\MD5\ChildResourceMd5Mgr.cs" />
+    <Compile Include="UpdateSys\Tool\MD5\ParentResourceMd5Mgr.cs" />
+    <Compile Include="UpdateSys\Tool\MD5\BaseResourceMd5Mgr.cs" />
+    <Compile Include="UpdateSys\Checker\ParentUpdateChecker.cs" />
     <Compile Include="UpdateSys\UpdateConfig.cs" />
     <Compile Include="UpdateSys\UpdateExecutor\ChildUpdateExector.cs" />
     <Compile Include="UpdateSys\UpdateExecutor\Child\ChildAssetBundleUpdateExecutor.cs" />
@@ -100,8 +105,8 @@
     <Compile Include="UpdateSys\UpdateExecutor\Parent\MapFileUpdateExecutor.cs" />
     <Compile Include="UpdateSys\UpdateExecutor\ParentUpdateExecutor.cs" />
     <Compile Include="UpdateSys\UpdateExecutor\Parent\TableUpdateExecutor.cs" />
-    <Compile Include="UpdateSys\UpdateFilter.cs" />
-    <Compile Include="UpdateSys\Utility.cs" />
+    <Compile Include="UpdateSys\UpdateExecutor\UpdateFilter.cs" />
+    <Compile Include="UpdateSys\Tool\Utility.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

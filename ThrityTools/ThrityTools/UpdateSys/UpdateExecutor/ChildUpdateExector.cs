@@ -29,14 +29,14 @@ public class ChildUpdateExecutor : BaseUpdateExecutor
         var url = "";
         if (!string.IsNullOrEmpty(pInfo.packageName))
         {
-            url = GameUpdateSys.UPDATE_URL + version + "/" + ((int)pInfo.versionInfo.basePlatform) + "/" + pInfo.versionInfo.resVersion + "/" + pInfo.packageName + ".zip";
+            url = ChildPackageUpdateSys.UPDATE_URL + pInfo + "/" + ((int)pInfo.versionInfo.basePlatform) + "/" + pInfo.versionInfo.resVersion + "/" + pInfo.packageName + ".zip";
         }
         else
         {
-            url = GameUpdateSys.UPDATE_URL + version + "/" + ((int)pInfo.versionInfo.basePlatform) + "/" + pInfo.versionInfo.resVersion + "/" + pInfo.type + ".zip";
+            url = ChildPackageUpdateSys.UPDATE_URL + version + "/" + ((int)pInfo.versionInfo.basePlatform) + "/" + pInfo.versionInfo.resVersion + "/" + pInfo.type + ".zip";
         }
 
-        if (!GameUpdateSys.RELEASE)
+        if (!ChildPackageUpdateSys.RELEASE)
             url += "?" + Random.Range(0, 9999999);
 
         return url;
