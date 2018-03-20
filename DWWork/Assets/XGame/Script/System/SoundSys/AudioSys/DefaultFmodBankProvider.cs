@@ -29,12 +29,21 @@ public class DefaultFmodBankProvider : IFmodBankProvider {
 	public string GetAvailablePath (string bankName)
 	{
 		var path = GetPath (m_persistPath, bankName);
-        //Debug.Log ("persistPath:" + path);
-		if (!File.Exists (path)) {
-			path = GetPath (m_streamAssets, bankName);
+		if (File.Exists (path)) 
+        {
+            return path;
 		}
 
-        //Debug.Log ("get bank available path:\n" + path);
+        if (!string.IsNullOrEmpty(AreaSys.NowAreaName)) 
+        {
+            path = m_persistPath + "/"  + AreaSys.AreaRootName + "/" + AreaSys.NowAreaName + "/" + BankFolder + bankName + BankExtension;
+            if (File.Exists(path))
+            {
+                return path;
+            }
+        }
+
+        path = GetPath(m_streamAssets, bankName);
 		return path;
 	}
 

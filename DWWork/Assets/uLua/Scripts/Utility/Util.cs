@@ -500,30 +500,44 @@ public class Util : MonoBehaviour
         }
         name += endWith;
 
-        var p = m_persistPath + Path.DirectorySeparatorChar;
-       // var p = EZFunTools.CachePath + Path.DirectorySeparatorChar;
-        p += subPath + Path.DirectorySeparatorChar + name;
+        //更新lua
+        var p = m_persistPath + Path.DirectorySeparatorChar + subPath + Path.DirectorySeparatorChar + name;
         if (File.Exists(p))
         {
             needCry = true;
+            return p;
+        }
+
+        //查看地区包
+        if (!string.IsNullOrEmpty(AreaSys.NowAreaName))
+        {
+            p = m_persistPath + Path.DirectorySeparatorChar
+                + AreaSys.AreaRootName + Path.DirectorySeparatorChar 
+                + AreaSys.NowAreaName + Path.DirectorySeparatorChar 
+                + subPath + Path.DirectorySeparatorChar 
+                + name;
+            if (File.Exists(p))
+            {
+                needCry = true;
+                return p;
+            }
+        }
+
+        if ((m_platformId == RuntimePlatform.OSXEditor || m_platformId == RuntimePlatform.WindowsEditor) && isXGame)
+        {
+            p = m_dataPath + Path.DirectorySeparatorChar +
+                "XGame" + Path.DirectorySeparatorChar +
+            "Script" + Path.DirectorySeparatorChar +
+            "Lua" + Path.DirectorySeparatorChar + name;
+            needCry = false;
         }
         else
         {
-            if ((m_platformId == RuntimePlatform.OSXEditor || m_platformId == RuntimePlatform.WindowsEditor) && isXGame)
-            {
-                p = m_dataPath + Path.DirectorySeparatorChar +
-                    "XGame" + Path.DirectorySeparatorChar +
-                "Script" + Path.DirectorySeparatorChar +
-                "Lua" + Path.DirectorySeparatorChar + name;
-                needCry = false;
-            }
-            else
-            {
-                p = m_streamPath + Path.DirectorySeparatorChar +
-                    subPath + Path.DirectorySeparatorChar + name;
-                needCry = true;
-            }
+            p = m_streamPath + Path.DirectorySeparatorChar +
+                subPath + Path.DirectorySeparatorChar + name;
+            needCry = true;
         }
+
         return p;
     }
 

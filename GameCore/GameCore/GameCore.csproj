@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBCEC836-E076-4656-A05F-CE08B0CE6B82}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameCore</RootNamespace>
+    <AssemblyName>GameCore</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\trunk\Assets\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BEHAVIAC_RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>BEHAVIAC_RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LitJson">
+      <HintPath>lib\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="nguiLib">
+      <HintPath>E:\DWWork\app_10002\DWWork\Assets\Plugins\nguiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEditor">
+      <HintPath>E:\DWWork\app_10002\DWWork\Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>E:\DWWork\app_10002\DWWork\Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\ActorCommandComponent.cs" />
+    <Compile Include="src\ActorComponent.cs" />
+    <Compile Include="src\ActorComponentToStateEvent.cs" />
+    <Compile Include="src\ActorManager.cs" />
+    <Compile Include="src\ActorState.cs" />
+    <Compile Include="src\ActorStateMachine.cs" />
+    <Compile Include="src\ActorStateMachineComponent.cs" />
+    <Compile Include="src\AssetBundleDescObject.cs" />
+    <Compile Include="src\CAssetBundleData.cs" />
+    <Compile Include="src\EmptyComponent.cs" />
+    <Compile Include="src\CoreSystem.cs" />
+    <Compile Include="src\CoroutineJobQueue.cs" />
+    <Compile Include="src\FastEvent.cs" />
+    <Compile Include="src\GameCoreUtils.cs" />
+    <Compile Include="src\InstancePool.cs" />
+    <Compile Include="src\Interpolator.cs" />
+    <Compile Include="src\KeyObjectPool.cs" />
+    <Compile Include="src\ObjectPool.cs" />
+    <Compile Include="src\PlayAudio.cs" />
+    <Compile Include="src\ResourceManager.cs" />
+    <Compile Include="src\BaseSceneActor.cs" />
+    <Compile Include="src\SystemManager.cs" />
+    <Compile Include="src\TimeProfiler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

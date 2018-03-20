@@ -61,7 +61,7 @@ public class Constants
     public static bool M_IS_IOS_PRE = true;
 
     public static float SCREEN_HEIGHT = 640f;
-    public static bool FORCE_LOAD_AB = false;
+    public static bool FORCE_LOAD_AB = true;
     public static bool RUN_WITH_EN_LUA = false; //是否用加密lua
     public static bool FORCE_DEBUG_PLATFORM = false; //强制使用debug平台
     public static bool EnableIM = true; //是否开放语言聊天

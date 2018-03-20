@@ -29,16 +29,19 @@ namespace ThirtyEditor.Editor.AreaAB
         private static int newVersion = 1000;
 
         private static string nowSelectPath = "";
+        private static string areaName = "";
 
-        [MenuItem("Assets/Area/BuildAssetBundleAndroid")]
+        [MenuItem("EZFun/Area/BuildAssetAndroid")]
         public static void BuildAssetBundleAndroid()
         {
+            nowSelectPath = EditorUtility.OpenFolderPanel("选择文件夹", "", "");
             CollectionAllAssets(BuildTarget.Android);
         }
 
-        [MenuItem("Assets/Area/BuildAssetIOS")]
+        [MenuItem("EZFun/Area/BuildAssetIOS")]
         public static void BuildAssetBundleIOS()
         {
+            nowSelectPath = EditorUtility.OpenFolderPanel("选择文件夹", "", "");
             CollectionAllAssets(BuildTarget.iOS);
         }
 
@@ -48,8 +51,10 @@ namespace ThirtyEditor.Editor.AreaAB
             m_dependsDic.Clear();
             m_currentCache = new ABAssetDataList();
             m_curretBundleID = new BundleID(newVersion, EnumAB.ui_ab);
-            nowSelectPath = AssetDatabase.GetAssetPath(Selection.activeObject);
-            nowSelectPath = nowSelectPath.Replace("Assets", "");
+            //nowSelectPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+            //nowSelectPath = nowSelectPath.Replace("Assets", "");
+            areaName = nowSelectPath.Substring(nowSelectPath.LastIndexOf("/") + 1);
+
             CollectFromDirectinfo(nowSelectPath);
             ProcessCacheDic();
             BuildAssetBuindles(buildTargetGroup);
@@ -156,8 +161,10 @@ namespace ThirtyEditor.Editor.AreaAB
                         sceneData.m_ressVersion = build.Value.bundleId.version;
                         structs.m_scenes.Add(sceneData);
                     }
-                    else if (fileName.EndsWith(".prefab") ||
-                        fileName.EndsWith("shader") || fileName.EndsWith("cginc")
+                    else if (
+                        fileName.EndsWith(".prefab")
+                        //|| fileName.EndsWith("shader") 
+                        || fileName.EndsWith("cginc")
                         || fileName.EndsWith("ttf")
                         || fileName.EndsWith("shadervariants")
                         || fileName.EndsWith("png"))
@@ -195,7 +202,7 @@ namespace ThirtyEditor.Editor.AreaAB
         static void CollectFromDirectinfo(string path)
         {
             DirectoryInfo direc;
-            direc = new DirectoryInfo(Application.dataPath + path);
+            direc = new DirectoryInfo(path);
             if (!direc.Exists)
             {
                 direc = new DirectoryInfo(path);
@@ -221,12 +228,13 @@ namespace ThirtyEditor.Editor.AreaAB
                     continue;
                 }
 
-                if (prefabName.EndsWith("shader")
-                    || prefabName.EndsWith("cginc")
+                if (prefabName.EndsWith("cginc")
                     || prefabName.EndsWith("ttf")
                     || prefabName.EndsWith("shadervariants")
                     || prefabName.EndsWith("png")
-                    || prefabName.EndsWith("prefab"))
+                    || prefabName.EndsWith("prefab")
+                    //||prefabName.EndsWith("shader")
+                    )
                 {
                     ColloectDependecies(prefabName);
                 }
@@ -296,7 +304,7 @@ namespace ThirtyEditor.Editor.AreaAB
 
         public static string PreOutPath(BuildTarget buildTargetGroup)
         {
-            var path = Application.dataPath + "/../Area/" + buildTargetGroup.ToString();
+            var path = Application.dataPath + "/../Area/" + areaName + "/" + buildTargetGroup.ToString();
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

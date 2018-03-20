@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8AED685A-47A8-066D-38B1-90A7A5AAF2C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile>Assets\smcs.rsp</CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>5.4.5f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_5;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE;BUILD_EXP;PLAt_SDK_DEBUG;UNITY;DW_Android;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_5;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE;BUILD_EXP;PLAt_SDK_DEBUG;UNITY;DW_Android;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DWNetCore">
+      <HintPath>Assets\Plugins\DWNetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="EZFunLibs">
+      <HintPath>Assets\Plugins\EZFunLibs.dll</HintPath>
+    </Reference>
+    <Reference Include="EZSDK">
+      <HintPath>Assets\Plugins\EZSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="GameCore">
+      <HintPath>Assets\Plugins\GameCore.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets\Plugins\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Plugins\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nguiLib">
+      <HintPath>Assets\Plugins\nguiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NSpeex">
+      <HintPath>Assets\Plugins\NSpeex.dll</HintPath>
+    </Reference>
+    <Reference Include="ThrityTools">
+      <HintPath>Assets\Plugins\ThrityTools.dll</HintPath>
+    </Reference>
+    <Reference Include="XGame2Util">
+      <HintPath>Assets\Plugins\XGame2Util.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DWWork.CSharp.Plugins.csproj">
+      <Project>{0DC2DF7E-537E-BE98-84F6-EB3951059696}</Project>
+      <Name>DWWork.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\ConsolePro\ConsoleProRemoteServer.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB2_TextureBakeResults.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB2_UpdateSkinnedMeshBoundsFromBones.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB2_UpdateSkinnedMeshBoundsFromBounds.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_BatchPrefabBaker.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_BoneWeightCopier.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_DisableHiddenAnimations.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_MBVersionConcrete.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_MeshBaker.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_MeshBakerCommon.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_MeshBakerGrouper.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_MeshBakerRoot.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_MultiMeshBaker.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\MB3_TextureBaker.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlender.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderFallback.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderLegacyBumpDiffuse.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderLegacyDiffuse.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderStandardMetallic.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderStandardSpecular.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\_testing\MB2_TestShowHide.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\_testing\MB2_TestUpdate.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\_testing\MB3_TestAddingRemovingSkinnedMeshes.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\_testing\MB3_TestBakeAllWithSameMaterial.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\_testing\MB3_TestRenderTextureTestHarness.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB2_Core.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB2_Log.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB2_MBVersion.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB2_TexturePacker.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_AtlasPackerRenderTexture.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_CopyBoneWeights.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_MeshCombiner.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_MeshCombinerSimple.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_MultiMeshCombiner.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_TextureCombiner.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB3_UVTransform.cs" />
+    <Compile Include="Assets\MeshBaker\scripts\core\MB_Utility.cs" />
+    <Compile Include="Assets\PerfAssist\PA_Common\UniqueString.cs" />
+    <Compile Include="Assets\PerfAssist\ResourceTracker\ResourceTracker.cs" />
+    <Compile Include="Assets\PerfAssist\ResourceTracker\ResourceTrackerUtil.cs" />
+    <Compile Include="Assets\T4M\Scripts\T4MBillBObjSC.cs" />
+    <Compile Include="Assets\T4M\Scripts\T4MLodObjSC.cs" />
+    <Compile Include="Assets\T4M\Scripts\T4MObjSC.cs" />
+    <Compile Include="Assets\T4M\Scripts\T4MPartSC.cs" />
+    <Compile Include="Assets\T4M\Scripts\T4MPlantObjSC.cs" />
+    <Compile Include="Assets\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
+    <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Reporter.cs" />
+    <Compile Include="Assets\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
+    <Compile Include="Assets\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
+    <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
+    <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\GameStart.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\PrefabScript\AutoDestory.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\PrefabScript\DWSpriteAnimation.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\PrefabScript\DelayDeactive.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\PrefabScript\RendererSortAdapt.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\PrefabScript\SpriteAnimator.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\PrefabScript\UIButtonDragMessage.cs" />
+    <Compile Include="Assets\XGame\Public\GameStartScrpits\TestConfig.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\Proto\CAssetBundleData.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\Proto\ezfun_resource.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\ProtobufSys.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\BclHelpers.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\BufferExtension.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\BufferPool.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\CallbackAttributes.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Compiler\CompilerContext.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Compiler\CompilerDelegates.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Compiler\Local.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\DataFormat.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Extensible.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ExtensibleUtil.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\GlobalSuppressions.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Helpers.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\IExtensible.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\IExtension.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ImplicitFields.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\KeyValuePairProxy.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\AttributeMap.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\BasicList.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\CallbackSet.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\MetaType.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\RuntimeTypeModel.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\SubType.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\TypeFormatEventArgs.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\TypeModel.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Meta\ValueMember.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\NetObjectCache.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\PrefixStyle.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoContractAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoConverterAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoEnumAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoException.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoIgnoreAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoIncludeAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoMemberAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoReader.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ProtoWriter.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\SerializationContext.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ArrayDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\BlobSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\BooleanSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ByteSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\CharSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\CompiledSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\DateTimeSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\DecimalSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\DefaultValueDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\DoubleSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\EnumSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\FieldDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\GuidSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\IProtoSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\IProtoTypeSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ISerializerProxy.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ImmutableCollectionDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\Int16Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\Int32Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\Int64Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\KeyValuePairDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ListDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\MemberSpecifiedDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\NetObjectSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\NullDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ParseableSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\PropertyDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\ProtoDecoratorBase.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\SByteSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\SingleSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\StringSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\SubItemSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\SurrogateSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\SystemTypeSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\TagDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\TimeSpanSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\TupleSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\TypeSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\UInt16Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\UInt32Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\UInt64Serializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Serializers\UriDecorator.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ServiceModel\ProtoBehaviorAttribute.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ServiceModel\ProtoBehaviorExtensionElement.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ServiceModel\ProtoEndpointBehavior.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ServiceModel\ProtoOperationBehavior.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\ServiceModel\XmlProtoSerializer.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\SubItemToken.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\WireType.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\PublicUtil.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\TableLoader.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\TextID\LocalPrefabData.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\TextID\TextID.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\Tool\ArtFollowCamera.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\Tool\EValue.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\Tool\EZFunFileUtil.cs" />
+    <Compile Include="Assets\XGame\Public\Scripts\Tool\XGame2DLL.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\Pool\AutoReturnObjectPool.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\Pool\Logger.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\Pool\ObjectPool.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\Pool\PoolManager.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\Pool\UnityPrefabObjectPool.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\UMeng\Social.cs" />
+    <Compile Include="Assets\XGame\Script\3rd\UMeng\UMengSys.cs" />
+    <Compile Include="Assets\XGame\Script\Core\GameRoot.cs" />
+    <Compile Include="Assets\XGame\Script\Core\Lua\LuaObj.cs" />
+    <Compile Include="Assets\XGame\Script\Core\Lua\LuaRootSys.cs" />
+    <Compile Include="Assets\XGame\Script\Core\SystemModuleMgr\ISystemModule.cs" />
+    <Compile Include="Assets\XGame\Script\Core\SystemModuleMgr\SystemModuleMgr.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\CLuaCallBack.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\ClickRoot.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunButtonGroup.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunDraggableCamera.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunDraggableCameraPage.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunDraggableCamraNumRow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunScollView.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunScrollNormal.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunSwitchBtnSprite.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunTab.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZFunUITools.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\EZfunLimitScrollView.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleBlackWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleCoverWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleErrTipsWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleErrorWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleLoadingWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleNetTimeOutWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleTimeErrorWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleUpdateWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\HandleWaitWindow.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\LuaSystemRoot.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\LuaWindowRoot.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\PopupWindowManager.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\ScrollView\EZFunCenterOnChild.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\ScrollView\EZFunCenterOnPage.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\SystemBaseLua.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\UITempDataPool.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Common\WindowBaseLua.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\BaseUI.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\ComponentBaseLua.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\EZFunWindowEnum.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\EZFunWindowLayerMgr.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\EZFunWindowMgr.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\LuaModule.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\ModuleInfo.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\ModuleRoot.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\ModuleType.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\TextureManager.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Core\WindowRoot.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\UnityGameObjectPool.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Util\EZFun3DView.cs" />
+    <Compile Include="Assets\XGame\Script\EZFunUI\Util\NGUITouch.cs" />
+    <Compile Include="Assets\XGame\Script\GameLogic\GameStateMgr.cs" />
+    <Compile Include="Assets\XGame\Script\GameLogic\NativeCode.cs" />
+    <Compile Include="Assets\XGame\Script\MemoryWarnReporter\MemoryWarnReporter.cs" />
+    <Compile Include="Assets\XGame\Script\ScreenBrightnessAdjuster\BrightnessAdjuster.cs" />
+    <Compile Include="Assets\XGame\Script\System\AreaSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\BuglySys\CBuglyPlugin.cs" />
+    <Compile Include="Assets\XGame\Script\System\CIAPSys\DWIAPLib.cs" />
+    <Compile Include="Assets\XGame\Script\System\CIAPSys\DWSDKRoot.cs" />
+    <Compile Include="Assets\XGame\Script\System\DaemonSys\DaemonSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\DaemonSys\DaemonTask.cs" />
+    <Compile Include="Assets\XGame\Script\System\EventSys\EEventType.cs" />
+    <Compile Include="Assets\XGame\Script\System\EventSys\EventMap.cs" />
+    <Compile Include="Assets\XGame\Script\System\EventSys\EventSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\GameState\BaseGameState.cs" />
+    <Compile Include="Assets\XGame\Script\System\GameState\GameState.cs" />
+    <Compile Include="Assets\XGame\Script\System\GameState\LoadingState.cs" />
+    <Compile Include="Assets\XGame\Script\System\GameState\LoginState.cs" />
+    <Compile Include="Assets\XGame\Script\System\GameState\MainCityState.cs" />
+    <Compile Include="Assets\XGame\Script\System\LocalSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\LuaSys\PBDll.cs" />
+    <Compile Include="Assets\XGame\Script\System\NetSys\NetStateConnect\CNetSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\NetSys\NetStateConnect\LogicNetStateConnect.cs" />
+    <Compile Include="Assets\XGame\Script\System\NetSys\NetStateConnect\NetStateConnectBase.cs" />
+    <Compile Include="Assets\XGame\Script\System\NetSys\NetStateConnect\WebSocketSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\PlatformInterface\DWPlatformInfo.cs" />
+    <Compile Include="Assets\XGame\Script\System\PlatformInterface\PlatInterface.cs" />
+    <Compile Include="Assets\XGame\Script\System\PlatformInterface\RBDViewController.cs" />
+    <Compile Include="Assets\XGame\Script\System\PlatformInterface\UserLocation.cs" />
+    <Compile Include="Assets\XGame\Script\System\ResourceMgr\CABLoadSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\ResourceMgr\CSceneRessLoadSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\ResourceMgr\CUIRessLoadSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\ResourceMgr\ResourceChecker.cs" />
+    <Compile Include="Assets\XGame\Script\System\ResourceMgr\ResourceMgr.cs" />
+    <Compile Include="Assets\XGame\Script\System\ResourceMgr\UnZipFloClass.cs" />
+    <Compile Include="Assets\XGame\Script\System\SDKSys\CSDKData.cs" />
+    <Compile Include="Assets\XGame\Script\System\ShowFPS.cs" />
+    <Compile Include="Assets\XGame\Script\System\SoundSys\AudioConstants.cs" />
+    <Compile Include="Assets\XGame\Script\System\SoundSys\AudioSys\AudioSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\SoundSys\AudioSys\DefaultFmodBankProvider.cs" />
+    <Compile Include="Assets\XGame\Script\System\SoundSys\AudioSys\FmodAudioSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\SoundSys\AudioUtil.cs" />
+    <Compile Include="Assets\XGame\Script\System\TimerSys\TimerInvokeMgr.cs" />
+    <Compile Include="Assets\XGame\Script\System\TimerSys\TimerSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\UpdateSys\X2UpdateSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\UserIdleDetectSys\UserIdleDetectSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\Version.cs" />
+    <Compile Include="Assets\XGame\Script\System\WrapSys\WrapSys.cs" />
+    <Compile Include="Assets\XGame\Script\TextData.cs" />
+    <Compile Include="Assets\XGame\Script\Util\Constants.cs" />
+    <Compile Include="Assets\XGame\Script\Util\DisableOnEnable.cs" />
+    <Compile Include="Assets\XGame\Script\Util\DragRotateObject.cs" />
+    <Compile Include="Assets\XGame\Script\Util\DwObject.cs" />
+    <Compile Include="Assets\XGame\Script\Util\EZFunCurveMotion.cs" />
+    <Compile Include="Assets\XGame\Script\Util\EZFunDictionary.cs" />
+    <Compile Include="Assets\XGame\Script\Util\EZFunString.cs" />
+    <Compile Include="Assets\XGame\Script\Util\EZRandom.cs" />
+    <Compile Include="Assets\XGame\Script\Util\FadeIn.cs" />
+    <Compile Include="Assets\XGame\Script\Util\FadeOut.cs" />
+    <Compile Include="Assets\XGame\Script\Util\FrameAnimationSerial.cs" />
+    <Compile Include="Assets\XGame\Script\Util\GMUI.cs" />
+    <Compile Include="Assets\XGame\Script\Util\MD5Util.cs" />
+    <Compile Include="Assets\XGame\Script\Util\NetLog.cs" />
+    <Compile Include="Assets\XGame\Script\Util\PlayerPrefsUtil.cs" />
+    <Compile Include="Assets\XGame\Script\Util\PortingForLua.cs" />
+    <Compile Include="Assets\XGame\Script\Util\PowerTime.cs" />
+    <Compile Include="Assets\XGame\Script\Util\ResourcePathConst.cs" />
+    <Compile Include="Assets\XGame\Script\Util\ShaderEntry.cs" />
+    <Compile Include="Assets\XGame\Script\Util\TimeCount.cs" />
+    <Compile Include="Assets\XGame\Script\Util\TimeValue.cs" />
+    <Compile Include="Assets\XGame\Script\Util\UIEventListenerExtends.cs" />
+    <Compile Include="Assets\XGame\Script\Util\UIShadowRender.cs" />
+    <Compile Include="Assets\XGame\Script\Util\Utility.cs" />
+    <Compile Include="Assets\XGame\Script\Util\iTween.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\ChatInterface.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWChatAudio.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWChatLogin.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWChatTalk.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWChatTeam.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWChatUtil.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWDump.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DWLoom.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\DwChatRecoredCircel.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\ImageAnimation.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\MonoBehaviourEx.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\SpriteAnimation.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\SpriteExtension.cs" />
+    <Compile Include="Assets\XGame\Script\nimChat\SpriteSequence.cs" />
+    <Compile Include="Assets\nim\Audio\NIMAudioAPI.cs" />
+    <Compile Include="Assets\nim\Audio\NIMAudioDef.cs" />
+    <Compile Include="Assets\nim\Audio\NIMAudioNativeMethods.cs" />
+    <Compile Include="Assets\nim\ChatRoom\CallbackBridge.cs" />
+    <Compile Include="Assets\nim\ChatRoom\ChatRoomApi.cs" />
+    <Compile Include="Assets\nim\ChatRoom\ChatRoomEnumDefine.cs" />
+    <Compile Include="Assets\nim\ChatRoom\ChatRoomInfo.cs" />
+    <Compile Include="Assets\nim\ChatRoom\ChatRoomNativeMethods.cs" />
+    <Compile Include="Assets\nim\ChatRoom\LoginData.cs" />
+    <Compile Include="Assets\nim\ChatRoom\MemberInfo.cs" />
+    <Compile Include="Assets\nim\ChatRoom\MemberProperty.cs" />
+    <Compile Include="Assets\nim\ChatRoom\Message.cs" />
+    <Compile Include="Assets\nim\ChatRoom\Notification.cs" />
+    <Compile Include="Assets\nim\ChatRoom\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\nim\Core\Plugin\ChatRoom.cs" />
+    <Compile Include="Assets\nim\Core\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\nim\Core\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\nim\Core\api\Core\Client\ClientNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\Core\Client\NIMClientAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Core\Client\NIMClientDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Core\Common\NIMGlobalAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Core\Common\NIMGlobalDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Core\Common\NIMGlobalNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\Core\NimException\SdkException.cs" />
+    <Compile Include="Assets\nim\Core\api\DataSync\DataSyncNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\DataSync\NIMDataSyncAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\DataSync\NIMDataSyncDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Device\DeviceNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\Device\NIMDeviceAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Device\NIMDeviceDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Friend\FriendNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\Friend\NIMFriendAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Friend\NIMFriendChangedInfo.cs" />
+    <Compile Include="Assets\nim\Core\api\Friend\NIMFriendDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageAttachmentFactory.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageFactory.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMAudioMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMBroadcastMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMCustomMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMFileMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMIMMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMImageMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMLocationMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMMessageAttachment.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMTeamNotificationMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMTextMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMTipMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMUnknownMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\MessageObject\NIMVedioMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\NIMMessageEnums.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\NIMReceivedMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\NIMTalkAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\RecallNotification.cs" />
+    <Compile Include="Assets\nim\Core\api\Message\TalkNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\MessageLog\MsgLogNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\MessageLog\NIMMsgLogAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\MessageLog\NIMMsgLogDef.cs" />
+    <Compile Include="Assets\nim\Core\api\NIMToolsAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\NIMToolsDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Nos\NIMNosAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Nos\NosNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\Session\NIMSessionAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Session\NIMSessionDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Session\SessionNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\SysMessage\NIMSysMessage.cs" />
+    <Compile Include="Assets\nim\Core\api\SysMessage\NIMSysMsgAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\SysMessage\NIMSysMsgDef.cs" />
+    <Compile Include="Assets\nim\Core\api\SysMessage\SysMsgNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\Team\NIMTeamAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\Team\NIMTeamDef.cs" />
+    <Compile Include="Assets\nim\Core\api\Team\NIMTeamEvent.cs" />
+    <Compile Include="Assets\nim\Core\api\Team\NIMTeamNotificationType.cs" />
+    <Compile Include="Assets\nim\Core\api\Team\TeamNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\User\NIMUserAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\User\NIMUserDef.cs" />
+    <Compile Include="Assets\nim\Core\api\User\UserNativeMethods.cs" />
+    <Compile Include="Assets\nim\Core\api\VChat\NIMVChatAPI.cs" />
+    <Compile Include="Assets\nim\Core\api\VChat\NIMVChatDef.cs" />
+    <Compile Include="Assets\nim\Core\api\VChat\VChatNativeMethods.cs" />
+    <Compile Include="Assets\nim\Utility\DateTimeConvert.cs" />
+    <Compile Include="Assets\nim\Utility\DelegateConverter.cs" />
+    <Compile Include="Assets\nim\Utility\Json\JsonBoolConverter.cs" />
+    <Compile Include="Assets\nim\Utility\Json\JsonExtension.cs" />
+    <Compile Include="Assets\nim\Utility\Json\JsonKeyValuePairConverter.cs" />
+    <Compile Include="Assets\nim\Utility\Json\JsonParser.cs" />
+    <Compile Include="Assets\nim\Utility\Log.cs" />
+    <Compile Include="Assets\nim\Utility\MonoPInvokeCallback.cs" />
+    <Compile Include="Assets\nim\Utility\NIMResponseCode.cs" />
+    <Compile Include="Assets\nim\Utility\NativeConfig.cs" />
+    <Compile Include="Assets\nim\Utility\NimConfig.cs" />
+    <Compile Include="Assets\nim\Utility\NimJsonObject.cs" />
+    <Compile Include="Assets\nim\Utility\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\nim\Utility\UTF8StringMarshaler.cs" />
+    <Compile Include="Assets\nim\Utility\Utilities.cs" />
+    <Compile Include="Assets\uLua\Base\Client.cs" />
+    <Compile Include="Assets\uLua\Base\Debugger.cs" />
+    <Compile Include="Assets\uLua\Base\LockFreeQueue.cs" />
+    <Compile Include="Assets\uLua\Base\LuaScriptMgr.cs" />
+    <Compile Include="Assets\uLua\Base\Timer.cs" />
+    <Compile Include="Assets\uLua\Core\CheckType.cs" />
+    <Compile Include="Assets\uLua\Core\GenerateEventAssembly.cs" />
+    <Compile Include="Assets\uLua\Core\Lua.cs" />
+    <Compile Include="Assets\uLua\Core\LuaBase.cs" />
+    <Compile Include="Assets\uLua\Core\LuaDLL.cs" />
+    <Compile Include="Assets\uLua\Core\LuaException.cs" />
+    <Compile Include="Assets\uLua\Core\LuaFunction.cs" />
+    <Compile Include="Assets\uLua\Core\LuaGlobalAttribute.cs" />
+    <Compile Include="Assets\uLua\Core\LuaHideAttribute.cs" />
+    <Compile Include="Assets\uLua\Core\LuaObjectMap.cs" />
+    <Compile Include="Assets\uLua\Core\LuaRegistrationHelper.cs" />
+    <Compile Include="Assets\uLua\Core\LuaScriptException.cs" />
+    <Compile Include="Assets\uLua\Core\LuaStatic.cs" />
+    <Compile Include="Assets\uLua\Core\LuaTable.cs" />
+    <Compile Include="Assets\uLua\Core\LuaUserData.cs" />
+    <Compile Include="Assets\uLua\Core\Metatables.cs" />
+    <Compile Include="Assets\uLua\Core\MethodWrapper.cs" />
+    <Compile Include="Assets\uLua\Core\ObjectTranslator.cs" />
+    <Compile Include="Assets\uLua\Core\ProxyType.cs" />
+    <Compile Include="Assets\uLua\Extends\LuaWrapAttribute.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\AdaptTypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Base\LuaBinder.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Base\LuaWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Base\NetObjectWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Base\ToLua.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Base\coroutineWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\BaseUIWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\BehaviourWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\BoxColliderWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\CLuaCallBackMgrWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\CharacterControllerWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ChatInterfaceWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ColliderWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ColorWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ComponentBaseLuaWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ComponentWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ConstantsWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\DebuggerWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\DelegateWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\DwObjectWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EEventTypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EGameStateTypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EZFunButtonGroupWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EZFunScollViewWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EZFunWindowEnumWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EZfunLimitScrollViewWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EnumTextWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EnumWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\EventSysWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\GameObjectWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\GamePackageWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\IEnumeratorWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\LimitScrollViewDirectionWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\LuaModuleWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\LuaWindowRootWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ModuleRootWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ModuleTypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\MonoBehaviourWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\MouseOrTouchWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\NGUITextWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\NGUIToolsWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ObjectWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\PlayerDataRefUtilWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\QuaternionWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\RessStorgeTypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\RessTypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\ScrollViewDirectionWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TestConfigWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TimeCountWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TimeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TimerSysWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TouchPhaseWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TransformWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\TypeWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UICameraWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UIDraggableCameraWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UIEventListenerWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UILabelWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UILuaExtendsWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UIRectWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\UtilWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Vector2Wrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Vector3Wrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\Vector4Wrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\VersionWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\WindowBaseLuaWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\WindowRootWrap.cs" />
+    <Compile Include="Assets\uLua\LuaBind\LuaWrap\WrapSysWrap.cs" />
+    <Compile Include="Assets\uLua\Scripts\Utility\Util.cs" />
+    <Compile Include="Assets\uiltlas.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\ConsolePro\Readme.txt" />
+    <None Include="Assets\MeshBaker\README.txt" />
+    <None Include="Assets\MeshBaker\Release Notes.txt" />
+    <None Include="Assets\MeshBaker\Resources\Shaders\AlbedoShader.shader" />
+    <None Include="Assets\MeshBaker\Resources\Shaders\NormalMapShader.shader" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\res\drawable\umeng_socialize_btn_bg.xml" />
+    <None Include="Assets\Plugins\Android\res\drawable\umeng_socialize_edit_bg.xml" />
+    <None Include="Assets\Plugins\Android\res\layout-sw550dp-large\umeng_socialize_oauth_dialog.xml" />
+    <None Include="Assets\Plugins\Android\res\layout\com_facebook_activity_layout.xml" />
+    <None Include="Assets\Plugins\Android\res\layout\com_facebook_login_fragment.xml" />
+    <None Include="Assets\Plugins\Android\res\layout\socialize_share_menu_item.xml" />
+    <None Include="Assets\Plugins\Android\res\layout\umeng_socialize_oauth_dialog.xml" />
+    <None Include="Assets\Plugins\Android\res\layout\umeng_socialize_share.xml" />
+    <None Include="Assets\Plugins\Android\res\values\facebook_strings.xml" />
+    <None Include="Assets\Plugins\Android\res\values\messenger_button_strings.xml" />
+    <None Include="Assets\Plugins\Android\res\values\umeng_socialize_colors.xml" />
+    <None Include="Assets\Plugins\Android\res\values\umeng_socialize_facebook_strings.xml" />
+    <None Include="Assets\Plugins\Android\res\values\umeng_socialize_shareview_strings.xml" />
+    <None Include="Assets\Plugins\Android\res\values\umeng_socialize_strings.xml" />
+    <None Include="Assets\Plugins\Android\res\values\umeng_socialize_style.xml" />
+    <None Include="Assets\Plugins\FMOD\LICENSE.TXT" />
+    <None Include="Assets\Plugins\UnityEngine.xml" />
+    <None Include="Assets\Plugins\ios\UMeng\UMSocial\SocialLibraries\WeChat\WechatSDK\README.txt" />
+    <None Include="Assets\StreamingAssets\build_info.txt" />
+    <None Include="Assets\T4M\READMEFIRST.txt" />
+    <None Include="Assets\T4M\Shaders\PreviewT4M.shader" />
+    <None Include="Assets\T4M\Shaders\PreviewT4M1.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel1\T4M 2 Textures Auto BeastLM 2DrawCall.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel1\T4M 2 Textures ManualAdd BeastLM_1DC.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel1\T4M 2 Textures ManualAdd CustoLM 1DC.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Bump\T4M 2 TexturesBumped Mobile.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Bump\T4M 2 TexturesBumped.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Bump\T4M 3 TexturesBumped Mobile.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Bump\T4M 3 TexturesBumped.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Bump\T4M 4 TexturesBumped.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\BumpSpec\T4M 2 TexturesBumpSpec Mobile.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\BumpSpec\T4M 2 TexturesBumpSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\BumpSpec\T4M 3 TexturesBumpSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Diffuse\T4M 2 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Diffuse\T4M 3 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Diffuse\T4M 5 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Diffuse\T4M 6 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Diffuse\T4M World Projection Shader.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\DirectionLM\T4M 2 TexturesBumped DLM mobile.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\DirectionLM\T4M 2 TexturesBumped DLM.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\DirectionLM\T4M 3 TexturesBumped DLM.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Specular\T4M 2 Textures Spec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Specular\T4M 3 Textures Spec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Specular\T4M 4 Textures Spec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Toon\T4M 2 Textures Toon.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Toon\T4M 3 Textures Toon.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Toon\T4M 4 Textures Toon.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unified\T4M 2 TexturesUnified.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unified\T4M 3 TexturesUnified.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unified\T4M 4 TexturesUnified.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\2TexturesUnlit.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\3TexturesUnlit.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\4TexturesUnlit.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\5TexturesUnlit.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\6TexturesUnlit.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\6TexturesUnlitNoLM.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel2\Unlit\T4M World Projection Shader Unlit+LM.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Bump\T4M 2 TexturesBump.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Bump\T4M 3 TexturesBump.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Bump\T4M 4 TexturesBump.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\BumpSpec\T4M 2 TexturesBumpSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\BumpSpec\T4M 3 TexturesBumpSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\BumpSpec\T4M 4 TexturesBumpSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Diffuse\T4M 2 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Diffuse\T4M 3 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Diffuse\T4M 4 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Diffuse\T4M 5 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Diffuse\T4M 6 Textures.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Specular\T4M 2 TexturesSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Specular\T4M 3 TexturesSpec.shader" />
+    <None Include="Assets\T4M\Shaders\ShaderModel3\Specular\T4M 4 TexturesSpec.shader" />
+    <None Include="Assets\XGame\Public\Editor\AssetsManager\README.txt" />
+    <None Include="Assets\XGame\Public\GameStartScrpits\Editor\XUPorter-master\Mods\GoogleConversionTrackingSDK-iOS\README.txt" />
+    <None Include="Assets\XGame\Public\Resources\Unlit - Transparent Colored.shader" />
+    <None Include="Assets\XGame\Public\Scripts\ProtobufSys\lib\Web\TODO.txt" />
+    <None Include="Assets\XGame\Resources\Shaders\Additive\Additive.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Additive\Additive_Cull_Z.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Additive\AlphaBlend.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Additive\add_distort.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Legacy\Add Mask.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Legacy\Alpha Blend Mask.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Legacy\EzfunGray.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Legacy\UIAdd Mask.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Premultiplied Colored 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Premultiplied Colored 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Premultiplied Colored 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Premultiplied Colored.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Text 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Text 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Text 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Text.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored (TextureClip).shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored AlphaChannel(R G B) (TextureClip).shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored AlphaChannel(R G B) 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored AlphaChannel(R G B) 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored AlphaChannel(R G B) 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored AlphaChannel(R G B).shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored Mask Texture 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored Mask Texture 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored Mask Texture 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored Mask Texture.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Colored.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask Colored 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask Colored 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask Colored 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask Colored.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Mask.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Packed 1.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Packed 2.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Packed 3.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\NGUI\Unlit - Transparent Packed.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\Dissolve_Alpha_Add.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\Dissolve_Alpha_Blend.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\Dissolve_SelfIllum.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\Fresnel_Blended.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\dissolution_add.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\dissolution_blend.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\distortion.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\Particles\fer.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\UI Particles\UI Particle Add.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\UI Particles\UI Particle Alpha Blend.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\UI Particles\UI Particle Blend.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\UI Particles\UI Particle Multiply.shader" />
+    <None Include="Assets\XGame\Resources\Shaders\UV\Normal Mask UV.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\nim\Core\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
+</Project>
