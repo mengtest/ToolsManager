@@ -26,27 +26,6 @@ public class Constants
     public static string CryptoIV = "dd7fd4a156d28bade96f816db1d18609";
     public static string CryptoKey = "dd7fd4a156d28bade96f816db1d18609";
 
-    private static string _NowAreaName = ""; //当前选中的地区玩法
-    public static string NowAreaName
-    {
-        get
-        {
-            return _NowAreaName;
-        }
-        set
-        {
-            _NowAreaName = value;
-            if (string.IsNullOrEmpty(_NowAreaName))
-            {
-                ResourceManager.Instance.RemoveAreaAbDatas();
-            }
-            else 
-            {
-                ResourceManager.Instance.AddAreaAbDatas(_NowAreaName);
-            }
-         
-        }
-    }
 
     //发布的时候，必须设置为TRUE
 	public static bool RELEASE = true;

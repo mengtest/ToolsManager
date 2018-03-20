@@ -509,9 +509,13 @@ public class Util : MonoBehaviour
         }
 
         //查看地区包
-        if (!string.IsNullOrEmpty(Constants.NowAreaName))
+        if (!string.IsNullOrEmpty(AreaSys.NowAreaName))
         {
-            p = m_persistPath + Path.DirectorySeparatorChar + Path.DirectorySeparatorChar + Constants.NowAreaName + subPath + Path.DirectorySeparatorChar + name;
+            p = m_persistPath + Path.DirectorySeparatorChar
+                + AreaSys.AreaRootName + Path.DirectorySeparatorChar 
+                + AreaSys.NowAreaName + Path.DirectorySeparatorChar 
+                + subPath + Path.DirectorySeparatorChar 
+                + name;
             if (File.Exists(p))
             {
                 needCry = true;

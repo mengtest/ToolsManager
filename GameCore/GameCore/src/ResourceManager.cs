@@ -425,7 +425,7 @@ public class ResourceManager
     /// </summary>
     public void AddAreaAbDatas(string AreaName)
     {
-        var abParentPersistentPath = Application.persistentDataPath + "/" + AreaName + "/AssetBundles/";
+        var abParentPersistentPath = Application.persistentDataPath + "/Area/" + AreaName + "/AssetBundles/";
         var dir = new DirectoryInfo(abParentPersistentPath);
         if (dir.Exists && m_readFileCallback != null)
         {
@@ -619,7 +619,7 @@ public class ResourceManager
             if (!string.IsNullOrEmpty(abd.m_areaName))
             {
                 ResourceManager.m_StringBuilder.Append(Application.persistentDataPath);
-                ResourceManager.m_StringBuilder.Append("/");
+                ResourceManager.m_StringBuilder.Append("/Area/");
                 ResourceManager.m_StringBuilder.Append(abd.m_areaName);
                 ResourceManager.m_StringBuilder.Append("/AssetBundles/");
 

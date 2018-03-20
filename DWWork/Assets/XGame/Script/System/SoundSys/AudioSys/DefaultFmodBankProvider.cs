@@ -34,9 +34,9 @@ public class DefaultFmodBankProvider : IFmodBankProvider {
             return path;
 		}
 
-        if (!string.IsNullOrEmpty(Constants.NowAreaName)) 
+        if (!string.IsNullOrEmpty(AreaSys.NowAreaName)) 
         {
-            path = m_persistPath + "/" + Constants.NowAreaName + "/" + BankFolder + bankName + BankExtension;
+            path = m_persistPath + "/"  + AreaSys.AreaRootName + "/" + AreaSys.NowAreaName + "/" + BankFolder + bankName + BankExtension;
             if (File.Exists(path))
             {
                 return path;
