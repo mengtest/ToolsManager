@@ -1,7 +1,7 @@
-/************************************************************
-//     文件名      : X2UpdateSys.cs
+﻿/************************************************************
+//     文件名      : AreaUpdateSys.cs
 //     功能描述    : 
-//     负责人      : shandong   shandong@ezfun.cn
+//     负责人      : guoliang
 //     参考文档    : 无
 //     创建日期    : 2017-05-19 17:40:12.
 //     Copyright   : Copyright 2016 EZFun Inc.
@@ -12,38 +12,8 @@ using System.Collections;
 using System;
 using LitJson;
 using UpdateDefineSpace;
-public enum UpdateType : int
-{
-    Table = 0,
-    AssetBundles,
-    DLL,
-    Lua,
-    MapFile,
-    Audio,
 
-    MAX,
-}
-
-public enum UpdateState
-{
-    PreState,
-    CheckState,
-    DownloadState,
-    FinishState,
-    ErrorState,
-}
-
-public enum UpdateEvent
-{
-    StartCheckEvent,
-    CheckFinishEvent,
-    DownLoadEvent,
-    ErrorEvent,
-    FinishEvent,
-}
-
-
-public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
+public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
 {
     public static bool m_isUpdating = false;
 
@@ -55,7 +25,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
 
     private static JsonData m_updateJson = null;
 
-    private GameUpdateSys m_updateSys = null;
+    private ChildPackageUpdateSys m_updateSys = null;
 
     private BaseUpdateExecutor m_reloadDLLExecutor = null;
 
@@ -68,21 +38,22 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     "lua",
     "mapFile"};
 
+    //设置地区玩法
+    public static void SetAreaPlay(int areaID,string localName)
+    {
+        PlayerPrefs.SetInt("localPackage_areaID", areaID);
+        PlayerPrefs.SetString("localPackage_localName",localName);
+    }
+
+
     public static void StartUpdate(Action<bool> aciton)
     {
         if (m_updateGb == null)
         {
-            m_updateGb = new GameObject("UpdateRoot");
+            m_updateGb = new GameObject("AreaUpdateRoot");
         }
-        ResourceManager.Instance.Init();
-        DWLoom.Initialize();
-        //在更新系统初始化之前 给系统可能的值修改
-        GameRoot.PrintConfig();
-        var updateSys = m_updateGb.AddComponent<X2UpdateSys>();
-        InitUpdateJson();
-        EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.update_ui_window, RessType.RT_LoadingUI, true);
-        //EZFunWindowMgr.Instance.InitWindowDic(EZFunWindowEnum.error_ui_window, RessType.RT_CommonWindow, RessStorgeType.RST_Always);
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        var updateSys = m_updateGb.AddComponent<AreaUpdateSys>();
+
         updateSys.InitUpdate(aciton);
     }
 
@@ -91,25 +62,24 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     {
         m_endAction = action;
         m_fsm = new StateMachine<UpdateState, UpdateEvent>();
-        m_updateSys = new GameUpdateSys(this);
+        m_updateSys = new ChildPackageUpdateSys(this);
         m_updateSys.Initialize();
-        m_updateSys.m_updatefinishCB = (VersionType type,string resVersion) => {
-            Version.Instance.SetVersion(VersionType.Resource, resVersion);
+        m_updateSys.m_updatefinishCB = (VersionType type, string resVersion) =>
+        {
+ //           Version.Instance.SetVersion(VersionType.Resource, resVersion);
+
         };
 
 
 
-        GameUpdateSys.UPDATE_URL = Constants.UPDATE_URL;
-        GameUpdateSys.UPDATE_CONFIG_FILE = Constants.UPDATE_CONFIG_FILE;
-        GameUpdateSys.RELEASE = Constants.RELEASE;
+        BaseUpdateSys.LOCAL_UPDATE_URL = Constants.LOCAL_UPDATE_URL;
+        BaseUpdateSys.LOCAL_UPDATE_CONFIG_FILE = Constants.UPDATE_CONFIG_FILE;
 
-    m_reloadDLLExecutor = new DLLUpdateExecutor();
-        m_updateSys.RegisterUpdateExecutor(m_reloadDLLExecutor);
+        m_reloadDLLExecutor = new DLLUpdateExecutor();
+
         m_updateSys.RegisterUpdateExecutor(new AssetsBundleUpdateExecutor());
-        m_updateSys.RegisterUpdateExecutor(new MapFileUpdateExecutor());
         m_updateSys.RegisterUpdateExecutor(new LuaUpdateExecutor());
-        m_updateSys.RegisterUpdateExecutor(new TableUpdateExecutor());
-		m_updateSys.RegisterUpdateExecutor(new AudioUpdateExecutor());
+        m_updateSys.RegisterUpdateExecutor(new AudioUpdateExecutor());
 
         m_fsm.In(UpdateState.PreState)
             .On(UpdateEvent.StartCheckEvent)
@@ -189,14 +159,13 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     {
         EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.wait_ui_window, true, 0);
         var ver = Version.Instance;
-        var context = new ParentUpdateContext();
-        context.BaseVersion = ver.GetVersion(VersionType.App);
-        context.ResVersion = ver.GetVersion(VersionType.Resource);
-        context.PackageVersion = ver.GetVersion(VersionType.PackageVersion);
-
+        var context = new ChildUpdateContext();
         context.BasePlatform = ver.GetAppNameEnum();
         context.Platform = ver.GetPublishSDKPlatform();
-        m_updateSys.CheckUpdate(this, new ParentUpdateResFilter(this.m_reloadDLLExecutor), this, context);
+        context.areaID = PlayerPrefs.GetInt("localPackage_areaID", 10002);
+        context.localName = PlayerPrefs.GetString("localPackage_localName","FuZhou");
+
+        m_updateSys.CheckUpdate(this, new ChildUpdateResFilter(this.m_reloadDLLExecutor), this, context);
         Debug.Log("EnterCheck");
     }
 
@@ -215,16 +184,10 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         HandleUpdateWindow.Instance.ShowUI(false);
         //HandleErrorWindow.m_contentStr = GetUpdateTxt(8);
         //EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, RessType.RT_CommonWindow, true, 2);
-
-        //开始检查小包更新
-        AreaUpdateSys.StartUpdate((bool needReload) =>
+        if (m_endAction != null)
         {
-            if (m_endAction != null)
-            {
-                m_endAction(m_isNeedReload);
-            }
-        });
-
+            m_endAction(m_isNeedReload);
+        }
     }
 
 
@@ -245,95 +208,28 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     public void OnCheckUpdateSuccess(BaseUpdateCheckResult result)
     {
         EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.wait_ui_window, false, 0);
-        var pResult = result as ParentUpdateCheckResult;
-        if (pResult.NeedUpdate)
+        if (result.NeedUpdate)
         {
-            if (pResult.IsPackageUpdateAvailable)
-            {
-                var desc = result.PackageUpdateDesc;
-                var packageUrl = result.PackageUpdateUrl;
-                //tip for download new package
-                if (pResult.IsPackageForceUpdate)
-                {
-                    // 弹框提示更新游戏
-                    if (string.IsNullOrEmpty(desc))
-                    {
-                        HandleErrorWindow.m_contentStr = GetUpdateTxt(5);
-                    }
-                    else
-                    {
-                        HandleErrorWindow.m_contentStr = desc;
-                    }
-                    HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
-                    {
-                        OpenGameUpdateURL(packageUrl);
-                    };
-                    EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, true, 0);
-                    HandleErrorWindow.m_needCloseWindow = false;
-                }
-                else
-                {
-                    if (string.IsNullOrEmpty(desc))
-                    {
-                        HandleErrorWindow.m_contentStr = GetUpdateTxt(6);
-                    }
-                    else
-                    {
-                        HandleErrorWindow.m_contentStr = desc;
-                    }
-                    HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
-                    {
-                        OpenGameUpdateURL(packageUrl);
-                    };
-                    HandleErrorWindow.m_noCallBack = (object p1, object p2) =>
-                    {
-                        HandleCheckResVersion(result);
-                    };
-                    EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, true, 1);
-                    HandleErrorWindow.m_needCloseWindow = false;
-                }
-
-            }
-            else
-            {
-                HandleCheckResVersion(result);
-            }
+           HandleCheckResVersion(result);
 
         }
         else
         {
             m_fsm.Fire(UpdateEvent.FinishEvent);
         }
-
-        //检测publishedVersion
-        var packageVer = Version.Instance.GetVersion(VersionType.PackageVersion);
-        Version.Instance.SetVersion(VersionType.PublishedAppVersion, result.PublishedVersion);
-        Version.Instance.SetNoticeURL();
-        if (Version.GetVersionCode(packageVer) > Version.GetVersionCode(result.PublishedVersion))
-        {
-            Debug.Log("此版本为正在提审的版本");
-        }
-
     }
 
-    private ParentUpdateCheckResult m_updateCheckResult;
+    private ChildUpdateCheckResult m_updateCheckResult;
 
     private void HandleCheckResVersion(BaseUpdateCheckResult result)
     {
-        m_updateCheckResult = result as ParentUpdateCheckResult;
+        m_updateCheckResult = result as ChildUpdateCheckResult;
         var m_updateMgrLs = m_updateCheckResult.ResInfoList;
         int totalSize = 0;
-        string maxVersion = "";
+        string maxVersion = m_updateCheckResult.PublishedVersion;
         for (int index = 0; m_updateMgrLs != null && index < m_updateMgrLs.Count; index++)
         {
-            var pInfo = m_updateMgrLs[index] as ParentResInfo;
-            totalSize += pInfo.size;
-
-            if (string.IsNullOrEmpty(maxVersion) ||
-            Version.GetVersion(pInfo.versionInfo.resVersion) > Version.GetVersion(maxVersion))
-            {
-                maxVersion = pInfo.versionInfo.resVersion;
-            }
+            totalSize += m_updateMgrLs[index].size;
         }
 
         float size = totalSize * 1f / 1024 / 1024;
@@ -343,38 +239,18 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         }
         string sizeTxt = size.ToString("0.00") + "MB";
 
-        if (m_updateCheckResult.IsResourceUpdateAvailable)
+        if (m_updateCheckResult.IsResourceForceUpdate)
         {
-            if (!m_updateCheckResult.IsResourceForceUpdate)
+            // 弹框提示更新资源
+            string str = GetUpdateTxt(2);
+            str = TextData.GetText(str, maxVersion, sizeTxt);
+            HandleErrorWindow.m_contentStr = str;
+            HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
             {
-                // 弹框提示是否更新资源
-                string str = GetUpdateTxt(3);
-                str = TextData.GetText(str, maxVersion, sizeTxt);
-                HandleErrorWindow.m_contentStr = str;
-                HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
-                {
-                    m_fsm.Fire(UpdateEvent.DownLoadEvent);
-                };
-                HandleErrorWindow.m_noCallBack = (object p1, object p2) =>
-                {
-                    //EndResUpdate();
-                    m_fsm.Fire(UpdateEvent.FinishEvent);
-                };
-                EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, true, 1);
-            }
-            else
-            {
-                // 弹框提示更新资源
-                string str = GetUpdateTxt(2);
-                str = TextData.GetText(str, maxVersion, sizeTxt);
-                HandleErrorWindow.m_contentStr = str;
-                HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
-                {
-                    //BeginResUpdate();
-                    m_fsm.Fire(UpdateEvent.DownLoadEvent);
-                };
-                EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, true, 0);
-            }
+                //BeginResUpdate();
+                m_fsm.Fire(UpdateEvent.DownLoadEvent);
+            };
+            EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, true, 0);
         }
         else
         {
@@ -453,31 +329,6 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     #endregion
 
     #region tools
-    private void OpenGameUpdateURL(string url)
-    {
-        if (!string.IsNullOrEmpty(url))
-        {
-            Application.OpenURL(url);
-        }
-    }
-
-
-    private static void InitUpdateJson()
-    {
-        string update_path = Application.persistentDataPath + "/Table/ResUpdateTxtList.json";
-        if (!System.IO.File.Exists(update_path))
-        {
-            update_path = EZFunTools.StreamPath + "/Table/ResUpdateTxtList.json";
-        }
-
-        byte[] b = EZFunTools.ReadFile(update_path);
-        if (b != null)
-        {
-            string str = System.Text.Encoding.UTF8.GetString(b);
-            Debug.Log(str);
-            m_updateJson = JsonMapper.ToObject(str)["list"];
-        }
-    }
 
     public static string GetUpdateTxt(int id)
     {

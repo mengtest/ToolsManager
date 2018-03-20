@@ -28,7 +28,7 @@ public class EZFunTools
         Shader shader = null;
         bool existsInCache = File.Exists(CachePath + "/Table/shader.json");
         //persist 和 cache目录file.exists可以工作 Application.streamingAssetsPath不行 会一直返回false
-        //if (m_shaderDic.Count == 0 && (existsInCache || File.Exists(Application.streamingAssetsPath + "/Table/shader.json")))
+        if (m_shaderDic.Count == 0 )
         {
             byte[] bytes = null;
             if (existsInCache)

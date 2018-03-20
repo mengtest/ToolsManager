@@ -101,7 +101,7 @@ public class GameUpdateSys : BaseUpdateSys
                 m_updatefinishCB(VersionType.Resource, pInfo.versionInfo.resVersion);
             }
 
-            m_delegate.OnUpdateSuccessed(UpdateResult.Success, m_isReload);
+            m_delegate.OnUpdateSuccessed(UpdateResultEnum.Success, m_isReload);
 
             _UpdateFinished();
         }

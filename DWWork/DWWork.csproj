@@ -94,11 +94,11 @@
     <Reference Include="NSpeex">
       <HintPath>Assets\Plugins\NSpeex.dll</HintPath>
     </Reference>
-    <Reference Include="XGame2Util">
-      <HintPath>Assets\Plugins\XGame2Util.dll</HintPath>
-    </Reference>
     <Reference Include="ThrityTools">
       <HintPath>Assets\Plugins\ThrityTools.dll</HintPath>
+    </Reference>
+    <Reference Include="XGame2Util">
+      <HintPath>Assets\Plugins\XGame2Util.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +366,7 @@
     <Compile Include="Assets\XGame\Script\System\SoundSys\AudioUtil.cs" />
     <Compile Include="Assets\XGame\Script\System\TimerSys\TimerInvokeMgr.cs" />
     <Compile Include="Assets\XGame\Script\System\TimerSys\TimerSys.cs" />
+    <Compile Include="Assets\XGame\Script\System\UpdateSys\AreaUpdateSys.cs" />
     <Compile Include="Assets\XGame\Script\System\UpdateSys\X2UpdateSys.cs" />
     <Compile Include="Assets\XGame\Script\System\UserIdleDetectSys\UserIdleDetectSys.cs" />
     <Compile Include="Assets\XGame\Script\System\Version.cs" />

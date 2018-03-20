@@ -15,11 +15,19 @@ using LitJson;
 
 public class ChildPackageUpdateChecker :BaseUpdateChecker
 {
+    private ChildUpdateContext m_childContext;
     public ChildPackageUpdateChecker() { }
     public ChildPackageUpdateChecker(BaseUpdateContext context, BaseUpdateResFilter filter)
     {
         m_context = context;
         m_filter = filter;
+        m_childContext = context as ChildUpdateContext;
+    }
+
+    protected override string GetUpdateConfigUrl()
+    {
+        string url = BaseUpdateSys.UPDATE_URL + m_childContext.areaID + "/"+ BaseUpdateSys.UPDATE_CONFIG_FILE + "?" + Random.Range(0, 9999999);
+        return url;
     }
 
     protected override IEnumerator GetVersionInfoFile(System.Action<BaseUpdateCheckResult> callback)
@@ -91,9 +99,10 @@ public class ChildPackageUpdateChecker :BaseUpdateChecker
     //here is public for Unit Test
     public override BaseUpdateCheckResult CheckIfNeedsUpdate(BaseUpdateConfigInfo cfg)
     {
-        BaseUpdateCheckResult result = new ChildUpdateCheckResult();
+        ChildUpdateCheckResult result = new ChildUpdateCheckResult();
+        ChildUpdateConfigInfo child_cfg = cfg as ChildUpdateConfigInfo;
 
-        if (cfg == null)
+        if (child_cfg == null)
         {
             Debug.LogError("invalid cfg, cfg == null");
 
@@ -103,10 +112,52 @@ public class ChildPackageUpdateChecker :BaseUpdateChecker
             return result;
 
         }
+
+
+        //collect dynamic update info
+
+        if (child_cfg.localUpdateInfo == null)
+        {
+            Debug.LogError("invalid cfg localUpdateInfo, localUpdateInfo == null");
+
+            result.Success = false;
+            result.ErrorCode = ErrorCode.InvalidConfig;
+
+            return result;
+        }
+        var tmpResInfoList = new List<ChildResInfo>();
+        for (int i = 0; i < child_cfg.localUpdateInfo.dynamicUpdateInfo.Count; i++)
+        {
+            var info = child_cfg.localUpdateInfo.dynamicUpdateInfo[i];
+            if (info.basePlatform == (int)m_context.BasePlatform || info.basePlatform == (int)EnumAppName.general)
+                for (int j = 0; j < info.resInfo.Count; j++)
+                {
+                    var versionInfo = info.resInfo[j];
+                    bool _added = AddResInfo(tmpResInfoList, versionInfo);
+                }
+        }
+
+        //check existing resource files, and filter them
+        for (int i = 0; i < tmpResInfoList.Count; i++)
+        {
+            var info = tmpResInfoList[i];
+
+            if (!m_context.ResMd5Mgr.IsResourceExisted(info))
+            {
+                result.AddResInfo(info);
+            }
+        }
+
+        if (result.ResInfoList != null && result.ResInfoList.Count > 0)
+        {
+            result.IsResourceForceUpdate = true;
+        }
+
+
         return result;
     }
 
-    protected void AddResInfo(List<ChildResInfo> list, ChildResInfo info)
+    protected bool AddResInfo(List<ChildResInfo> list, ChildResInfo info)
     {
         //TODO Filter logic here
         if (m_filter is ChildUpdateResFilter)
@@ -117,6 +168,7 @@ public class ChildPackageUpdateChecker :BaseUpdateChecker
         {
             list.Add(info);
         }
+        return true;
     }
 
 }

@@ -75,10 +75,9 @@ public class BaseUpdateChecker
         m_filter = filter;
     }
 
-    protected string GetUpdateConfigUrl()
+    protected virtual string GetUpdateConfigUrl()
     {
-        string url = BaseUpdateSys.UPDATE_URL + BaseUpdateSys.UPDATE_CONFIG_FILE + "?" + Random.Range(0, 9999999);
-        return url;
+        return "";
     }
 
     protected Coroutine m_checkCor = null;
