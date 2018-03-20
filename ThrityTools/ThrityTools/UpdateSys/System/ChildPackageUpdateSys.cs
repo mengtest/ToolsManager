@@ -30,20 +30,26 @@ public class ChildPackageUpdateSys : BaseUpdateSys
         SetState(State.CheckUpgrade);
 
         //set context
+        var ref_m_context = updateContext as ChildUpdateContext;
+        var childUpdateContext = updateContext as ChildUpdateContext;
 
-        m_context.BaseVersion = updateContext.BaseVersion;
-        m_context.ResVersion = updateContext.ResVersion;
-        m_context.PackageVersion = updateContext.PackageVersion;
+        ref_m_context.BaseVersion = childUpdateContext.BaseVersion;
+        ref_m_context.ResVersion = childUpdateContext.ResVersion;
+        ref_m_context.PackageVersion = childUpdateContext.PackageVersion;
 
-        m_context.BasePlatform = updateContext.BasePlatform;
-        m_context.Platform = updateContext.Platform;
+        ref_m_context.BasePlatform = childUpdateContext.BasePlatform;
+        ref_m_context.Platform = childUpdateContext.Platform;
+        ref_m_context.areaID = childUpdateContext.areaID;
+        ref_m_context.localName = childUpdateContext.localName;
 
 
-        Debug.LogError(" App.version:" + m_context.BaseVersion + " Res.Version:" + m_context.ResVersion + "  pack.Version:" + m_context.PackageVersion + " baseplatform:" + m_context.BasePlatform + " platform:" + m_context.Platform);
+
+
+        Debug.LogError("Res.areaID: " + ref_m_context.areaID + " Res.localName: " + ref_m_context.localName + "  pack.Version:" + ref_m_context.ResVersion + " baseplatform:" + ref_m_context.BasePlatform + " platform:" + ref_m_context.Platform);
         //do check
         //bool checkFinish = false;
 
-        ChildPackageUpdateChecker checker = new ChildPackageUpdateChecker(m_context, filter);
+        ChildPackageUpdateChecker checker = new ChildPackageUpdateChecker(ref_m_context, filter);
         checker.StartCheck((result) =>
         {
             SetState(State.Idle);
@@ -78,7 +84,7 @@ public class ChildPackageUpdateSys : BaseUpdateSys
 
     public override void OnUpdateFinish(IUpdateExecutor executor, BaseResInfo info, List<string> fileList, bool isNeedReload = false)
     {
-        var pInfo = info as ParentResInfo;
+        var pInfo = info as ChildResInfo;
         Debug.Log("update " + pInfo.type + " finished, progress:" + (m_currIndex + 1) + "/" + m_updateCount);
         if (!m_isReload && isNeedReload)
         {
@@ -99,7 +105,7 @@ public class ChildPackageUpdateSys : BaseUpdateSys
                 m_updatefinishCB(VersionType.Resource, pInfo.versionInfo.resVersion);
             }
 
-            m_delegate.OnUpdateSuccessed(UpdateResult.Success, m_isReload);
+            m_delegate.OnUpdateSuccessed(UpdateResultEnum.Success, m_isReload);
 
             _UpdateFinished();
         }

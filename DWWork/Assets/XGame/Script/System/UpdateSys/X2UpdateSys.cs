@@ -11,6 +11,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using LitJson;
+using UpdateDefineSpace;
 public enum UpdateType : int
 {
     Table = 0,
@@ -22,26 +23,29 @@ public enum UpdateType : int
 
     MAX,
 }
+
+public enum UpdateState
+{
+    PreState,
+    CheckState,
+    DownloadState,
+    FinishState,
+    ErrorState,
+}
+
+public enum UpdateEvent
+{
+    StartCheckEvent,
+    CheckFinishEvent,
+    DownLoadEvent,
+    ErrorEvent,
+    FinishEvent,
+}
+
+
 public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
 {
     public static bool m_isUpdating = false;
-    enum UpdateState
-    {
-        PreState,
-        CheckState,
-        DownloadState,
-        FinishState,
-        ErrorState,
-    }
-
-    enum UpdateEvent
-    {
-        StartCheckEvent,
-        CheckFinishEvent,
-        DownLoadEvent,
-        ErrorEvent,
-        FinishEvent,
-    }
 
     private static GameObject m_updateGb;
 
@@ -185,14 +189,14 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     {
         EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.wait_ui_window, true, 0);
         var ver = Version.Instance;
-        var context = new GameUpdateSys.UpdateContext();
+        var context = new ParentUpdateContext();
         context.BaseVersion = ver.GetVersion(VersionType.App);
         context.ResVersion = ver.GetVersion(VersionType.Resource);
         context.PackageVersion = ver.GetVersion(VersionType.PackageVersion);
 
         context.BasePlatform = ver.GetAppNameEnum();
         context.Platform = ver.GetPublishSDKPlatform();
-        m_updateSys.CheckUpdate(this, new UpdateResFilter(this.m_reloadDLLExecutor), this, context);
+        m_updateSys.CheckUpdate(this, new ParentUpdateResFilter(this.m_reloadDLLExecutor), this, context);
         Debug.Log("EnterCheck");
     }
 
@@ -211,10 +215,16 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         HandleUpdateWindow.Instance.ShowUI(false);
         //HandleErrorWindow.m_contentStr = GetUpdateTxt(8);
         //EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, RessType.RT_CommonWindow, true, 2);
-        if (m_endAction != null)
+
+        //开始检查小包更新
+        AreaUpdateSys.StartUpdate((bool needReload) =>
         {
-            m_endAction(m_isNeedReload);
-        }
+            if (m_endAction != null)
+            {
+                m_endAction(m_isNeedReload);
+            }
+        });
+
     }
 
 
@@ -227,22 +237,23 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     }
 
     #region IUpdateSysDelegate implementation
-    public void OnCheckUpdateError(GameUpdateSys.ErrorCode c)
+    public void OnCheckUpdateError(ErrorCode c)
     {
         m_fsm.Fire(UpdateEvent.ErrorEvent);
     }
 
-    public void OnCheckUpdateSuccess(UpdateCheckResult result)
+    public void OnCheckUpdateSuccess(BaseUpdateCheckResult result)
     {
         EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.wait_ui_window, false, 0);
-        if (result.NeedUpdate)
+        var pResult = result as ParentUpdateCheckResult;
+        if (pResult.NeedUpdate)
         {
-            if (result.IsPackageUpdateAvailable)
+            if (pResult.IsPackageUpdateAvailable)
             {
                 var desc = result.PackageUpdateDesc;
                 var packageUrl = result.PackageUpdateUrl;
                 //tip for download new package
-                if (result.IsPackageForceUpdate)
+                if (pResult.IsPackageForceUpdate)
                 {
                     // 弹框提示更新游戏
                     if (string.IsNullOrEmpty(desc))
@@ -305,21 +316,23 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
 
     }
 
-    private UpdateCheckResult m_updateCheckResult;
+    private ParentUpdateCheckResult m_updateCheckResult;
 
-    private void HandleCheckResVersion(UpdateCheckResult result)
+    private void HandleCheckResVersion(BaseUpdateCheckResult result)
     {
-        m_updateCheckResult = result;
+        m_updateCheckResult = result as ParentUpdateCheckResult;
         var m_updateMgrLs = m_updateCheckResult.ResInfoList;
         int totalSize = 0;
         string maxVersion = "";
         for (int index = 0; m_updateMgrLs != null && index < m_updateMgrLs.Count; index++)
         {
-            totalSize += m_updateMgrLs[index].size;
+            var pInfo = m_updateMgrLs[index] as ParentResInfo;
+            totalSize += pInfo.size;
+
             if (string.IsNullOrEmpty(maxVersion) ||
-            Version.GetVersion(m_updateMgrLs[index].versionInfo.resVersion) > Version.GetVersion(maxVersion))
+            Version.GetVersion(pInfo.versionInfo.resVersion) > Version.GetVersion(maxVersion))
             {
-                maxVersion = m_updateMgrLs[index].versionInfo.resVersion;
+                maxVersion = pInfo.versionInfo.resVersion;
             }
         }
 
@@ -330,9 +343,9 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         }
         string sizeTxt = size.ToString("0.00") + "MB";
 
-        if (result.IsResourceUpdateAvailable)
+        if (m_updateCheckResult.IsResourceUpdateAvailable)
         {
-            if (!result.IsResourceForceUpdate)
+            if (!m_updateCheckResult.IsResourceForceUpdate)
             {
                 // 弹框提示是否更新资源
                 string str = GetUpdateTxt(3);
@@ -412,7 +425,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         }
     }
 
-    public void OnUpdateError(GameUpdateSys.ErrorCode c)
+    public void OnUpdateError(ErrorCode c)
     {
         m_fsm.Fire(UpdateEvent.ErrorEvent);
         //m_fsm.Fire(LoadEvent.ErrorOccured);
@@ -431,7 +444,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
 
     }
 
-    public void OnUpdateSuccessed(GameUpdateSys.UpdateResult result, bool isNeedReload = false)
+    public void OnUpdateSuccessed(UpdateResultEnum result, bool isNeedReload = false)
     {
         m_isNeedReload = isNeedReload;
         m_fsm.Fire(UpdateEvent.FinishEvent);

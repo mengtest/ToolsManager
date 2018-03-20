@@ -66,6 +66,12 @@ public class Constants
     public static bool FORCE_DEBUG_PLATFORM = false; //强制使用debug平台
     public static bool EnableIM = true; //是否开放语言聊天
 
+    //地区包下载更新地址
+    public static string LOCAL_UPDATE_URL = "http://dl.dw7758.com/LocalPackage/Update/";
+    //地区包下载更新vu文件名
+    public static string LOCAL_UPDATE_CONFIG_FILE = "localUpdate_config.json";
+
+
 
     private static Dictionary<int, string> m_valueDic = new Dictionary<int, string>();
     private static void SetValue(int ID, ref bool ob)
@@ -138,6 +144,8 @@ public class Constants
                 SetValue(12, ref RUN_WITH_EN_LUA);
             }
             SetValue(13, ref FORCE_DEBUG_PLATFORM);
+            SetValue(14, ref UPDATE_URL);
+            SetValue(15, ref UPDATE_CONFIG_FILE);
         }
     }
     public static bool TEMP_CLOSE = true; // CGG临时关闭的功能开关

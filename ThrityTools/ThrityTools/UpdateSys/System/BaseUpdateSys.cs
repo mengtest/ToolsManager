@@ -77,7 +77,7 @@ public interface IUpdateSysDelegate
 
     void OnUpdateProgress(UpdateProgressInfo info);
     void OnUpdateError(ErrorCode c);
-    void OnUpdateSuccessed(UpdateResult result, bool isNeedReload = false);
+    void OnUpdateSuccessed(UpdateResultEnum result, bool isNeedReload = false);
 }
 
 
@@ -86,6 +86,9 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
 {
     public static string UPDATE_URL = "";
     public static string UPDATE_CONFIG_FILE = "";
+
+    public static string LOCAL_UPDATE_URL = "";
+    public static string LOCAL_UPDATE_CONFIG_FILE = "";
     public static bool RELEASE = true;
 
     public BaseUpdateSys()

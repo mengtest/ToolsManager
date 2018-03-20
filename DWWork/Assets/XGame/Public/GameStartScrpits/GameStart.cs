@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.IO;
+using UpdateDefineSpace;
+
 #if UNITY_5_6
 using UnityEngine.Profiling;
 #endif
@@ -180,12 +182,18 @@ public class GameStart : MonoBehaviour
 
     private void AddUpdateInfo() 
     {
-        UpdateInfo updateInfo = new UpdateInfo();
-        UpdateInfo.DynamicUpdateInfo DynamicUpdateInfo = new UpdateInfo.DynamicUpdateInfo();
-        UpdateInfo.PackageUpdateInfo PackageUpdateInfo = new UpdateInfo.PackageUpdateInfo();
-        UpdateInfo.ServerInfo serverInfo = new UpdateInfo.ServerInfo();
-        UpdateInfo.ResVersionInfo resVersionInfo = new UpdateInfo.ResVersionInfo();
-        UpdateInfo.ResInfo resInfo = new UpdateInfo.ResInfo();
+        ParentUpdateConfigInfo updateInfo = new ParentUpdateConfigInfo();
+        ParentDynamicUpdateInfo DynamicUpdateInfo = new ParentDynamicUpdateInfo();
+        ParentPackageUpdateInfo PackageUpdateInfo = new ParentPackageUpdateInfo();
+        ParentServerInfo serverInfo = new ParentServerInfo();
+        ParentResVersionInfo resVersionInfo = new ParentResVersionInfo();
+        ParentResInfo resInfo = new ParentResInfo();
+
+        ChildUpdateConfigInfo childUpdateConfigInfo = new ChildUpdateConfigInfo();
+        ChildUpdateInfo childUpdateInfo = new ChildUpdateInfo();
+        ChildResInfo childResInfo = new ChildResInfo();
+        ChildeDynamicUpdateInfo childDynamicInfo = new ChildeDynamicUpdateInfo();
+
     }
 
     private IEnumerator CheckUpdateByDLL()

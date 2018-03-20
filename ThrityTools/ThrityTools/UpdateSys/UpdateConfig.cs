@@ -34,7 +34,7 @@ namespace UpdateDefineSpace
         Upgrading,
     }
 
-    public enum UpdateResult : int
+    public enum UpdateResultEnum : int
     {
         Success = 0,
         Failed = 1,
@@ -136,7 +136,7 @@ namespace UpdateDefineSpace
     {
         public ChildUpdateConfigInfo() { }
 
-        public List<ChildUpdateInfo> localUpdateInfo;
+        public ChildUpdateInfo localUpdateInfo;
 
 
     }
@@ -158,7 +158,7 @@ namespace UpdateDefineSpace
 
         public int basePlatform;
         public string resVersion;
-        public List<BaseResInfo> resInfo;
+        public List<ChildResInfo> resInfo;
     }
 }
 
