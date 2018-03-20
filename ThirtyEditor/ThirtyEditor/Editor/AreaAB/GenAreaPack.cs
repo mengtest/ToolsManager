@@ -35,7 +35,7 @@ namespace ThirtyEditor.Editor.AreaAB
 
         void InitData()
         {
-            m_versionInfo = new ChildUpdateInfo();
+            //m_versionInfo = new ChildUpdateInfo();
         }
 
         void Save()
@@ -75,9 +75,28 @@ namespace ThirtyEditor.Editor.AreaAB
                 LoadVUFile(m_jsonFilePath);
             }
 
+            if (m_versionInfo == null) 
+            {
+                m_versionInfo = new ChildUpdateInfo();
+                m_versionInfo.dynamicUpdateInfo = new List<ChildeDynamicUpdateInfo>();
+                ChildeDynamicUpdateInfo childeDynamicUpdateInfo = new ChildeDynamicUpdateInfo();
+                childeDynamicUpdateInfo.resInfo = new List<ChildResInfo>();
+                m_versionInfo.dynamicUpdateInfo.Add(childeDynamicUpdateInfo);
+            }
+
             var s = new GUIStyle();
             s.richText = true;
             GUILayout.Label("");
+
+            int areaID;
+            if (int.TryParse(EditorGUILayout.TextField("    areaID:", m_versionInfo.areaID.ToString()), out areaID))
+            {
+                m_versionInfo.areaID = areaID;
+            }
+            m_versionInfo.localName = EditorGUILayout.TextField("  localName：", m_versionInfo.localName);
+            m_versionInfo.baseVersion = EditorGUILayout.TextField("  baseVersion：", m_versionInfo.baseVersion);
+
+            GUILayout.Label("---------更新包------------");
             var delGameVerIndex = new List<int>();
             for (int i = 0; m_versionInfo != null && m_versionInfo.dynamicUpdateInfo != null && i < m_versionInfo.dynamicUpdateInfo.Count; ++i)
             {
@@ -90,14 +109,14 @@ namespace ThirtyEditor.Editor.AreaAB
                     vui.basePlatform = platform;
                 }
 
-                for (int j = 0; j < vui.resInfo.Count; ++j)
+                //for (int j = 0; j < vui.resInfo.Count; ++j)
                 {
                     Action<string, string> ressCB = (string buttonName, string ressName) =>
                     {
                         EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb, GUILayout.ExpandWidth(true));
                         if (GUILayout.Button(buttonName, GUILayout.Width(120)))
                         {
-                            BaseResInfo fi = null;
+                            ChildResInfo fi = null;
                             switch (ressName)
                             {
                                 case "Table":
@@ -118,7 +137,7 @@ namespace ThirtyEditor.Editor.AreaAB
                                 AddUpdateInfo(ref vui, fi);
                             }
                         }
-                        BaseResInfo ressInfo = vui.resInfo.Find((BaseResInfo findvalue) =>
+                        ChildResInfo ressInfo = vui.resInfo.Find((ChildResInfo findvalue) =>
                         {
                             return findvalue.type == ressName;
                         });
@@ -154,9 +173,9 @@ namespace ThirtyEditor.Editor.AreaAB
             EditorGUILayout.EndScrollView();
         }
 
-        void AddUpdateInfo(ref ChildeDynamicUpdateInfo rv, BaseResInfo updateInfo)
+        void AddUpdateInfo(ref ChildeDynamicUpdateInfo rv, ChildResInfo updateInfo)
         {
-            BaseResInfo value = rv.resInfo.Find((BaseResInfo findValue) =>
+            ChildResInfo value = rv.resInfo.Find((ChildResInfo findValue) =>
             {
                 return findValue.type == updateInfo.type;
             });
@@ -191,37 +210,37 @@ namespace ThirtyEditor.Editor.AreaAB
         }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-        static BaseResInfo GenTableData()
+        static ChildResInfo GenTableData()
         {
             var targetPath = OpenFolderPanel("选择TableData文件夹", "", "");
             return GenFiles(targetPath, false);
         }
 
-        static BaseResInfo GenLua()
+        static ChildResInfo GenLua()
         {
             var targetPath = OpenFolderPanel("选择Lua文件夹", "", "");
             return GenFiles(targetPath, true);
         }
 
-        static BaseResInfo GenAudio()
+        static ChildResInfo GenAudio()
         {
             var targetPath = OpenFolderPanel("选择Audio文件夹", "", "");
             return GenFiles(targetPath, false);
         }
 
-        static BaseResInfo GenAssetsBundle()
+        static ChildResInfo GenAssetsBundle()
         {
             var targetPath = OpenFolderPanel("选择AssetsBundle文件夹", "", "");
             return GenFiles(targetPath, false);
         }
 
-        static BaseResInfo GenFiles(string inputPath, bool isCry)
+        static ChildResInfo GenFiles(string inputPath, bool isCry)
         {
             if (inputPath == null || inputPath.Equals(""))
             {
                 return null;
             }
-            var fi = new BaseResInfo();
+            var fi = new ChildResInfo();
             var dir = inputPath.Split('/');
             //压缩出来的文件加个随机数
             int randomNum = UnityEngine.Random.Range(0, 999999999);
