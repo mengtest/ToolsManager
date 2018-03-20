@@ -55,6 +55,7 @@ namespace UpdateDefineSpace
         public string type;
         public int size;
         public string md5;
+        public string packageName;  //新加别名 用于文件加随机数 防止运营商串包（目前移动踩到过）
     }
 
 
@@ -118,7 +119,6 @@ namespace UpdateDefineSpace
     public class ParentResInfo : BaseResInfo
     {
         public ParentResInfo() { }
-        public string packageName;
         public ParentResVersionInfo versionInfo;
     }
 
@@ -126,7 +126,6 @@ namespace UpdateDefineSpace
     public class ChildResInfo : BaseResInfo
     {
         public ChildResInfo() { }
-        public string packageName;
         public ChildeDynamicUpdateInfo versionInfo;
     }
 

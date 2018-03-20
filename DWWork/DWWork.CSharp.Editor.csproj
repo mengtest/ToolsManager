@@ -112,6 +112,9 @@
     <Reference Include="EZSDK">
       <HintPath>Assets\Plugins\EZSDK.dll</HintPath>
     </Reference>
+    <Reference Include="GameCore">
+      <HintPath>Assets\Plugins\GameCore.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -135,9 +138,6 @@
     </Reference>
     <Reference Include="ThirtyEditor">
       <HintPath>Assets\Plugins\Editor\ThirtyEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="GameCore">
-      <HintPath>Assets\Plugins\GameCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -306,7 +306,6 @@
     <Compile Include="Assets\T4M\Editor\T4MExtendsSC.cs" />
     <Compile Include="Assets\T4M\Editor\T4MSC.cs" />
     <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
-    <Compile Include="Assets\XGame\Editor\AreaAB\GenAreaPack.cs" />
     <Compile Include="Assets\XGame\Editor\AssetBundles\Window\X2AssetBundleWindow.cs" />
     <Compile Include="Assets\XGame\Editor\AssetBundles\Window\X2BundleDataControl.cs" />
     <Compile Include="Assets\XGame\Editor\AssetBundles\Window\X2BundleViewer.cs" />

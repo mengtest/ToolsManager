@@ -1,328 +1,329 @@
 ﻿/************************************************************
 //     文件名      : GenAreaPack.cs
-//     功能描述    : 地区小包AB包制作
+//     功能描述    : 地区小包制作
 //     负责人      : jianing
 //     参考文档    : 无
-//     创建日期    : 2018-03-15 16:28:28.
+//     创建日期    : 2018-03-20 16:28:28.
 //     Copyright   : Copyright 2018 DW Inc.
 **************************************************************/
 
 using UnityEngine;
-using System.Collections;
 using UnityEditor;
-using System.IO;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using Core.CAssetBundleData;
+using System.IO;
 using LitJson;
-using System.Security.Cryptography;
-using System.Text;
+using UpdateDefineSpace;
 
 namespace ThirtyEditor.Editor.AreaAB
 {
-    public class GenAreaPack
+    public class GenAreaPack : EditorWindow 
     {
-        private static ABAssetDataList m_currentCache;
-        private static BundleID m_curretBundleID;
-        private static Dictionary<BundleID, ABBundleInfo> m_abbuildDic = new Dictionary<BundleID, ABBundleInfo>();
-        private static Dictionary<string, ABAssetInfo> m_dependsDic = new Dictionary<string, ABAssetInfo>();
-        private static int newVersion = 1000;
+        private string m_jsonFilePath;
+        private ChildUpdateInfo m_versionInfo = null;
 
-        private static string nowSelectPath = "";
-        private static string areaName = "";
-
-        [MenuItem("EZFun/Area/BuildAssetAndroid")]
-        public static void BuildAssetBundleAndroid()
+        [MenuItem("EZFun/制作地区包")]
+        static void ShowWindow()
         {
-            nowSelectPath = EditorUtility.OpenFolderPanel("选择文件夹", "", "");
-            CollectionAllAssets(BuildTarget.Android);
+            var wr = new Rect(0, 0, 500, 500);
+            var w = (GenAreaPack)EditorWindow.GetWindow(typeof(GenAreaPack));
+            w.title = "制作地区包";
+            w.InitData();
+            w.Show();
         }
 
-        [MenuItem("EZFun/Area/BuildAssetIOS")]
-        public static void BuildAssetBundleIOS()
+        void InitData()
         {
-            nowSelectPath = EditorUtility.OpenFolderPanel("选择文件夹", "", "");
-            CollectionAllAssets(BuildTarget.iOS);
+            //m_versionInfo = new ChildUpdateInfo();
         }
 
-        public static void CollectionAllAssets(BuildTarget buildTargetGroup)
+        void Save()
         {
-            m_abbuildDic.Clear();
-            m_dependsDic.Clear();
-            m_currentCache = new ABAssetDataList();
-            m_curretBundleID = new BundleID(newVersion, EnumAB.ui_ab);
-            //nowSelectPath = AssetDatabase.GetAssetPath(Selection.activeObject);
-            //nowSelectPath = nowSelectPath.Replace("Assets", "");
-            areaName = nowSelectPath.Substring(nowSelectPath.LastIndexOf("/") + 1);
-
-            CollectFromDirectinfo(nowSelectPath);
-            ProcessCacheDic();
-            BuildAssetBuindles(buildTargetGroup);
-        }
-
-        public static void ProcessCacheDic(bool isUpdate = false)
-        {
-            List<ABAssetData> shaderlist = new List<ABAssetData>();
-
-            foreach (var keyvalue in m_abbuildDic)
+            var js = JsonMapper.ToJson(m_versionInfo);
+            if (string.IsNullOrEmpty(m_jsonFilePath))
             {
-                keyvalue.Value.fileList.Clear();
+                m_jsonFilePath = OpenFolderPanel("选择保存area_config.json文件路径", "", "");
+                m_jsonFilePath += "/area_config.json";
+            }
+            File.WriteAllText(m_jsonFilePath, js);
+        }
+
+        protected void LoadVUFile(string path)
+        {
+            try
+            {
+                var s = File.ReadAllText(path);
+                m_versionInfo = JsonMapper.ToObject<ChildUpdateInfo>(s);
+            }
+            catch (System.Exception)
+            {
+                m_versionInfo = new ChildUpdateInfo();
+            }
+        }
+
+        //绘制窗口时调用
+        Vector2 m_ScrollViewPos = Vector2.zero;
+        void OnGUI()
+        {
+            m_ScrollViewPos = EditorGUILayout.BeginScrollView(m_ScrollViewPos, false, false, GUILayout.Height(Screen.height - 30));
+
+            GUILayout.Label("当前游戏程序版本号:" + UnityEditor.PlayerSettings.bundleVersion);
+            if (GUILayout.Button("选择area_config文件路径"))
+            {
+                m_jsonFilePath = EditorUtility.OpenFilePanel("选择area_config文件路径", "", "json");
+                LoadVUFile(m_jsonFilePath);
             }
 
-            foreach (var keyvalue in m_dependsDic)
+            if (m_versionInfo == null) 
             {
-                if (m_abbuildDic.ContainsKey(keyvalue.Value.m_cacheData.bundleId))
+                m_versionInfo = new ChildUpdateInfo();
+                m_versionInfo.dynamicUpdateInfo = new List<ChildeDynamicUpdateInfo>();
+                ChildeDynamicUpdateInfo childeDynamicUpdateInfo = new ChildeDynamicUpdateInfo();
+                childeDynamicUpdateInfo.resInfo = new List<ChildResInfo>();
+                m_versionInfo.dynamicUpdateInfo.Add(childeDynamicUpdateInfo);
+            }
+
+            var s = new GUIStyle();
+            s.richText = true;
+            GUILayout.Label("");
+
+            int areaID;
+            if (int.TryParse(EditorGUILayout.TextField("    areaID:", m_versionInfo.areaID.ToString()), out areaID))
+            {
+                m_versionInfo.areaID = areaID;
+            }
+            m_versionInfo.localName = EditorGUILayout.TextField("  localName：", m_versionInfo.localName);
+            m_versionInfo.baseVersion = EditorGUILayout.TextField("  baseVersion：", m_versionInfo.baseVersion);
+
+            GUILayout.Label("---------更新包------------");
+            var delGameVerIndex = new List<int>();
+            for (int i = 0; m_versionInfo != null && m_versionInfo.dynamicUpdateInfo != null && i < m_versionInfo.dynamicUpdateInfo.Count; ++i)
+            {
+                var vui = m_versionInfo.dynamicUpdateInfo[i];
+     
+                int platform;
+                vui.resVersion = EditorGUILayout.TextField("  兼容资源版本：", vui.resVersion);
+                if (int.TryParse(EditorGUILayout.TextField("    平台:", vui.basePlatform.ToString()), out platform))
                 {
-                    var buildInfo = m_abbuildDic[keyvalue.Value.m_cacheData.bundleId];
-                    if (buildInfo != null)
+                    vui.basePlatform = platform;
+                }
+
+                //for (int j = 0; j < vui.resInfo.Count; ++j)
+                {
+                    Action<string, string> ressCB = (string buttonName, string ressName) =>
                     {
-                        AddAsset(buildInfo, keyvalue.Value.m_cacheData);
+                        EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb, GUILayout.ExpandWidth(true));
+                        if (GUILayout.Button(buttonName, GUILayout.Width(120)))
+                        {
+                            ChildResInfo fi = null;
+                            switch (ressName)
+                            {
+                                case "Table":
+                                    fi = GenTableData();
+                                    break;
+                                case "AssetBundles":
+                                    fi = GenAssetsBundle();
+                                    break;
+                                case "Lua":
+                                    fi = GenLua();
+                                    break;
+                                case "Audio":
+                                    fi = GenAudio();
+                                    break;
+                            }
+                            if (fi != null)
+                            {
+                                AddUpdateInfo(ref vui, fi);
+                            }
+                        }
+                        ChildResInfo ressInfo = vui.resInfo.Find((ChildResInfo findvalue) =>
+                        {
+                            return findvalue.type == ressName;
+                        });
+
+                        if (ressInfo != null)
+                        {
+                            ressInfo.md5 = EditorGUILayout.TextField("", ressInfo.md5);
+                            if (string.IsNullOrEmpty(ressInfo.md5))
+                            {
+                                vui.resInfo.Remove(ressInfo);
+                            }
+                        }
+                        else
+                        {
+                            EditorGUILayout.TextField("", "");
+                        }
+                        EditorGUILayout.EndHorizontal();
+                    };
+
+                    ressCB("选择TableData文件夹", "Table");
+                    ressCB("选择AssetBundles文件夹", "AssetBundles");
+                    ressCB("选择Lua文件夹", "Lua");
+                    ressCB("选择Audio文件夹", "Audio");
+                }
+            }
+
+            GUILayout.Label("");
+            if (GUILayout.Button("保存"))
+            {
+                Save();
+            }
+
+            EditorGUILayout.EndScrollView();
+        }
+
+        void AddUpdateInfo(ref ChildeDynamicUpdateInfo rv, ChildResInfo updateInfo)
+        {
+            ChildResInfo value = rv.resInfo.Find((ChildResInfo findValue) =>
+            {
+                return findValue.type == updateInfo.type;
+            });
+
+            if (value != null)
+            {
+                rv.resInfo.Remove(value);
+            }
+            rv.resInfo.Add(updateInfo);
+        }
+
+        void OnInspectorUpdate()
+        {
+            //Debug.Log("窗口面板的更新");
+            //这里开启窗口的重绘，不然窗口信息不会刷新
+            this.Repaint();
+        }
+
+        void OnSelectionChange()
+        {
+            //当窗口出去开启状态，并且在Hierarchy视图中选择某游戏对象时调用
+            foreach (Transform t in Selection.transforms)
+            {
+                //有可能是多选，这里开启一个循环打印选中游戏对象的名称
+                Debug.Log("OnSelectionChange" + t.name);
+            }
+        }
+
+        void OnDestroy()
+        {
+            Debug.Log("当窗口关闭时调用");
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+        static ChildResInfo GenTableData()
+        {
+            var targetPath = OpenFolderPanel("选择TableData文件夹", "", "");
+            return GenFiles(targetPath, false);
+        }
+
+        static ChildResInfo GenLua()
+        {
+            var targetPath = OpenFolderPanel("选择Lua文件夹", "", "");
+            return GenFiles(targetPath, true);
+        }
+
+        static ChildResInfo GenAudio()
+        {
+            var targetPath = OpenFolderPanel("选择Audio文件夹", "", "");
+            return GenFiles(targetPath, false);
+        }
+
+        static ChildResInfo GenAssetsBundle()
+        {
+            var targetPath = OpenFolderPanel("选择AssetsBundle文件夹", "", "");
+            return GenFiles(targetPath, false);
+        }
+
+        static ChildResInfo GenFiles(string inputPath, bool isCry)
+        {
+            if (inputPath == null || inputPath.Equals(""))
+            {
+                return null;
+            }
+            var fi = new ChildResInfo();
+            var dir = inputPath.Split('/');
+            //压缩出来的文件加个随机数
+            int randomNum = UnityEngine.Random.Range(0, 999999999);
+            fi.type = dir[dir.Length - 1];
+            fi.packageName = fi.type + "_" + randomNum;
+
+            ForeachFile(inputPath, (string f) =>
+            {
+                if (Path.GetExtension(f).Equals("meta"))
+                {
+                    File.Delete(f);
+                }
+                else
+                {
+                    if (isCry)
+                    {
+                        CryFile(f);
                     }
                 }
-            }
-            foreach (var keyvalue in m_dependsDic)
-            {
-                if (!m_abbuildDic.ContainsKey(keyvalue.Value.m_cacheData.bundleId))
-                {
-                    var ab = new ABBundleInfo();
-                    ab.bundleId = keyvalue.Value.m_cacheData.bundleId;
-                    m_abbuildDic.Add(keyvalue.Value.m_cacheData.bundleId, ab);
-                }
-                m_abbuildDic[keyvalue.Value.m_cacheData.bundleId].fileList.Add(keyvalue.Key);
+            });
 
+            var outPath = inputPath + "_" + randomNum + ".zip";
+            if (File.Exists(outPath))
+            {
+                File.Move(outPath, outPath);
             }
+
+            Debug.LogError("zipfile " + inputPath);
+            DWTools.FastZipCompress(inputPath, outPath);
+
+            fi.md5 = DWTools.GenMD5(outPath);
+            fi.size = GetFileLength(outPath);
+
+            return fi;
         }
 
-        private static void AddAsset(ABBundleInfo buildInfo, ABAssetData cacheData)
+        public static int GetFileLength(string filePath)
         {
-            if (buildInfo != null && cacheData != null
-                && buildInfo.bundleId.version >= cacheData.version)
-            {
-                cacheData.bundleId = buildInfo.bundleId;
-            }
+            var fileInfo = new FileInfo(filePath);
+            return (int)fileInfo.Length;
         }
 
-        public static void BuildAssetBuindles(BuildTarget buildTargetGroup)
+        public static void ForeachFile(string path, Action<string> genFile)
         {
-            List<AssetBundleBuild> buildsList = new List<AssetBundleBuild>();
-            foreach (var keyValue in m_abbuildDic)
-            {
-                buildsList.Add(keyValue.Value.GetBundleBuild());
-            }
-            BuildAssetBundleOptions m_options = BuildAssetBundleOptions.DeterministicAssetBundle | BuildAssetBundleOptions.ChunkBasedCompression;
-            var assetBundleManifest = BuildPipeline.BuildAssetBundles(PreOutPath(buildTargetGroup), buildsList.ToArray(),
-               m_options, buildTargetGroup);
-
-            ABDesc structs = new ABDesc();
-            AddResrouceToAbDataStruct(assetBundleManifest, structs);
-
-            m_currentCache.newVersion = newVersion;
-            ////1存储ResourceManager的描述文件，
-            SaveABDataFile(structs, buildTargetGroup);
-
-            m_currentCache.assetList.Clear();
-            foreach (var keyvalue in m_dependsDic)
-            {
-                m_currentCache.assetList.Add(keyvalue.Value.ToCacheData());
-            }
-            SaveAssetCache(buildTargetGroup, m_currentCache);
-        }
-
-        static void SaveABDataFile(ABDesc abData, BuildTarget buildTargetGroup)
-        {
-            string outPath = PreOutPath(buildTargetGroup);
-            string fileName = "ABDatabase";
-            Directory.CreateDirectory(outPath);
-            string path = outPath + "/" + fileName + ".abMap";
-            string json = JsonMapper.ToJson(abData);
-            var bytes = System.Text.Encoding.UTF8.GetBytes(json);
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
-            using (Stream file = File.Create(path))
-            {
-                file.Write(bytes, 0, bytes.Length);
-                file.Close();
-            }
-        }
-
-        private static void AddResrouceToAbDataStruct(AssetBundleManifest manifest, ABDesc structs)
-        {
-            foreach (var build in m_abbuildDic)
-            {
-                foreach (string fileName in build.Value.fileList)
-                {
-                    if (fileName.EndsWith("unity"))
-                    {
-                        ABSceneDesc sceneData = new ABSceneDesc();
-                        sceneData.m_sceneName = fileName;
-                        sceneData.m_bundleName = build.Value.BundleName;
-                        sceneData.m_ressVersion = build.Value.bundleId.version;
-                        structs.m_scenes.Add(sceneData);
-                    }
-                    else if (
-                        fileName.EndsWith(".prefab")
-                        //|| fileName.EndsWith("shader") 
-                        || fileName.EndsWith("cginc")
-                        || fileName.EndsWith("ttf")
-                        || fileName.EndsWith("shadervariants")
-                        || fileName.EndsWith("png"))
-                    {
-                        ABFileDesc sceneData = new ABFileDesc();
-                        sceneData.m_gbName = fileName;
-                        sceneData.m_bundleName = build.Value.BundleName;
-                        sceneData.m_ressVersion = build.Value.bundleId.version;
-                        structs.m_files.Add(sceneData);
-                    }
-                }
-            }
-            var data = manifest.GetAllAssetBundles();
-            for (int i = 0; i < data.Length; i++)
-            {
-                ABDependencies ad = new ABDependencies();
-                var abs = manifest.GetAllDependencies(data[i]);
-                ad.m_abName = data[i];
-                ad.m_ressVersion = newVersion;
-
-                for (int j = 0; j < abs.Length; j++)
-                {
-                    ad.m_dependenciesAb.Add(abs[j]);
-                }
-                structs.m_abDepends.Add(ad);
-            }
-        }
-
-        /// <summary>
-        /// 收集资源
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="isUpdate"></param>
-        /// <param name="endWith"></param>
-        static void CollectFromDirectinfo(string path)
-        {
-            DirectoryInfo direc;
-            direc = new DirectoryInfo(path);
-            if (!direc.Exists)
-            {
-                direc = new DirectoryInfo(path);
-                if (!direc.Exists)
-                {
-                    return;
-                }
-            }
-            FileInfo[] fileArray = direc.GetFiles("*.*", SearchOption.AllDirectories);
-            if (fileArray == null)
-            {
+            if (!Directory.Exists(path))
                 return;
-            }
 
-            for (int fileIndex = 0; fileIndex < fileArray.Length; fileIndex++)
+            foreach (var fileStr in Directory.GetFiles(path))
             {
-                FileInfo file = fileArray[fileIndex];
-                string fileName = file.FullName.Replace("\\", "/");
-                string prefabName = fileName.Substring(fileName.IndexOf("Assets"));
-                if (prefabName.Contains(".unity")
-                    || prefabName.EndsWith(".meta"))
+                if (fileStr.Substring(fileStr.Length - 4) == "meta")
                 {
+                    File.Delete(fileStr);
                     continue;
                 }
-
-                if (prefabName.EndsWith("cginc")
-                    || prefabName.EndsWith("ttf")
-                    || prefabName.EndsWith("shadervariants")
-                    || prefabName.EndsWith("png")
-                    || prefabName.EndsWith("prefab")
-                    //||prefabName.EndsWith("shader")
-                    )
+                genFile(fileStr);
+            }
+            foreach (var dirStr in Directory.GetDirectories(path))
+            {
+                if (Directory.Exists(dirStr))
                 {
-                    ColloectDependecies(prefabName);
+                    ForeachFile(dirStr, genFile);
                 }
             }
         }
 
-        private static ABAssetInfo ColloectDependecies(string prefabPath)
+        public static string OpenFolderPanel(string title, string folder, string defaultName)
         {
-            if (!m_abbuildDic.ContainsKey(m_curretBundleID))
+            var targetPath = EditorUtility.OpenFolderPanel(title, folder, defaultName);
+            if (string.IsNullOrEmpty(targetPath))
             {
-                ABBundleInfo buildInfo = new ABBundleInfo();
-                buildInfo.bundleId = m_curretBundleID;
-                buildInfo.firstVersion = newVersion;
-                m_abbuildDic.Add(m_curretBundleID, buildInfo);
+                return null;
             }
-
-            prefabPath = prefabPath.ToLower();
-            string[] depends = AssetDatabase.GetDependencies(prefabPath, false);
-
-            ABAssetInfo parentAssetInfo = null;
-            if (!m_dependsDic.ContainsKey(prefabPath))
-            {
-                parentAssetInfo = LoadAssetData(prefabPath);
-                m_dependsDic.Add(prefabPath, parentAssetInfo);
-                if (depends != null)
-                {
-                    for (int i = 0; i < depends.Length; i++)
-                    {
-                        depends[i] = depends[i].ToLower().Replace("\\", "/");
-                        if (!depends[i].EndsWith("dll") && !depends[i].EndsWith("cs") && !depends[i].EndsWith("js"))
-                        {
-                            var childAssetInfo = ColloectDependecies(depends[i]);
-                            parentAssetInfo.AddChild(childAssetInfo);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                parentAssetInfo = m_dependsDic[prefabPath];
-            }
-            return parentAssetInfo;
+            return targetPath;
         }
-
-        public static ABAssetInfo LoadAssetData(string prefabPath)
+        static void CryFile(string path)
         {
-            string[] depends = AssetDatabase.GetDependencies(prefabPath, true);
-            ABAssetData assetCache = new ABAssetData();
-            assetCache.filePath = prefabPath;
-            assetCache.fileHash = HashUtil.GetByPath(Application.dataPath + "/../" + prefabPath);
-            assetCache.depends = depends;
-            assetCache.bundleId = m_curretBundleID;
-            return new ABAssetInfo(assetCache);
-        }
+            Debug.LogWarning("cry path =" + path);
+            var b = DWFileUtil.ReadFileStream(path);
 
-        public static void BuildAllAssetBundle(BuildTarget buildTargetGroup)
-        {
-            List<AssetBundleBuild> buildsList = new List<AssetBundleBuild>();
-            foreach (var keyValue in m_abbuildDic)
-            {
-                buildsList.Add(keyValue.Value.GetBundleBuild());
-            }
-            BuildAssetBundleOptions m_options = BuildAssetBundleOptions.DeterministicAssetBundle | BuildAssetBundleOptions.ChunkBasedCompression;
-            var assetBundleManifest = BuildPipeline.BuildAssetBundles(PreOutPath(buildTargetGroup), buildsList.ToArray(),
-               m_options, buildTargetGroup);
-        }
+            GlobalCrypto.InitCry("dd7fd4a156d28bade96f816db1d18609", "dd7fd4a156d28bade96f816db1d18609");
+            var cb = GlobalCrypto.Encrypte(b);
 
-        public static string PreOutPath(BuildTarget buildTargetGroup)
-        {
-            var path = Application.dataPath + "/../Area/" + areaName + "/" + buildTargetGroup.ToString();
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            return path;
+            File.WriteAllBytes(path, cb);
         }
-
-        public static void SaveAssetCache(BuildTarget buildTarget, ABAssetDataList cache)
-        {
-            var data = LitJson.JsonMapper.ToJson(cache);
-            var path = PreOutPath(buildTarget);
-            using (Stream file = File.Create(path + "/AssetDatas.json"))
-            {
-                var bytes = System.Text.Encoding.UTF8.GetBytes(data);
-                file.Write(bytes, 0, bytes.Length);
-                file.Close();
-            }
-        }
-
     }
 }

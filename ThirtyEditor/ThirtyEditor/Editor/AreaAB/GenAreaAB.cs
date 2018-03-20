@@ -1,5 +1,5 @@
 ﻿/************************************************************
-//     文件名      : GenAreaPack.cs
+//     文件名      : GenAreaAB.cs
 //     功能描述    : 地区小包AB包制作
 //     负责人      : jianing
 //     参考文档    : 无
@@ -20,7 +20,7 @@ using System.Text;
 
 namespace ThirtyEditor.Editor.AreaAB
 {
-    public class GenAreaPack
+    public class GenAreaAB
     {
         private static ABAssetDataList m_currentCache;
         private static BundleID m_curretBundleID;
@@ -50,7 +50,7 @@ namespace ThirtyEditor.Editor.AreaAB
             m_abbuildDic.Clear();
             m_dependsDic.Clear();
             m_currentCache = new ABAssetDataList();
-            m_curretBundleID = new BundleID(newVersion, EnumAB.area_ab);
+            m_curretBundleID = new BundleID(newVersion, EnumAB.ui_ab);
             //nowSelectPath = AssetDatabase.GetAssetPath(Selection.activeObject);
             //nowSelectPath = nowSelectPath.Replace("Assets", "");
             areaName = nowSelectPath.Substring(nowSelectPath.LastIndexOf("/") + 1);

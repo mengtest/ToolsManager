@@ -55,8 +55,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="ThrityTools">
-      <HintPath>E:\DWWork\app_10002\DWWork\Assets\Plugins\ThrityTools.dll</HintPath>
+    <Reference Include="ThrityTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DWWork\Assets\Plugins\ThrityTools.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>E:\DWWork\app_10002\DWWork\Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -69,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editor\AreaAB\GenAreaAB.cs" />
     <Compile Include="Editor\AreaAB\GenAreaPack.cs" />
     <Compile Include="Editor\DWFileUtil.cs" />
     <Compile Include="Editor\AssetBundles\ABAssetData.cs" />
