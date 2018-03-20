@@ -313,6 +313,35 @@ public class ResourceManager
 
     public bool m_initLoginDone { get { return m_initDone; } }
 
+
+    private bool m_isInitResourceMap = false;
+    public void InitResourceMap()
+    {
+        if (!m_isInitResourceMap)
+        {
+            m_isInitResourceMap = true;
+
+            var resources = Application.streamingAssetsPath + "/Resources.json";
+            if (m_readFileCallback != null)
+            {
+                var jbytes = m_readFileCallback(resources);
+                var strText = System.Text.Encoding.UTF8.GetString(jbytes);
+                JsonData pa = JsonMapper.ToObject(strText);
+                if (pa.IsArray)
+                {
+                    for (int i = 0; i < pa.Count; i++)
+                    {
+                        var str = (string)pa[i];
+                        if (!m_fileSet.Contains(str))
+                        {
+                            m_fileSet.Add(str);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void Init()
     {
 #if UNITY_EDITOR
@@ -333,25 +362,9 @@ public class ResourceManager
         }
         //DaemonSys.Instance.AddDaemonTask(() =>
         //{
-        var resources = Application.streamingAssetsPath + "/Resources.json";
-        if (m_readFileCallback != null)
-        {
-            var jbytes = m_readFileCallback(resources);
-            var strText = System.Text.Encoding.UTF8.GetString(jbytes);
-            JsonData pa = JsonMapper.ToObject(strText);
-            if (pa.IsArray)
-            {
-                for (int i = 0; i < pa.Count; i++)
-                {
-                    var str = (string)pa[i];
-                    if (!m_fileSet.Contains(str))
-                    {
-                        m_fileSet.Add(str);
-                    }
-                }
-            }
-        }
-        var tempStreamPath = streamPath + "ABDatabase.abMap";
+        InitResourceMap();
+
+         var tempStreamPath = streamPath + "ABDatabase.abMap";
         if (m_UseAssetBundle && m_readFileCallback != null && !m_abInfoMapSet.Contains(tempStreamPath))
         {
             m_abInfoMapSet.Add(tempStreamPath);

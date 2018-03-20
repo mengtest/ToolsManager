@@ -368,6 +368,8 @@ public class GameStart : MonoBehaviour
     {
         GlobalCrypto.InitCry(IV, Key);
 
+        ResourceManager.Instance.Init();
+
         Type t = m_xgameData.GetType("Constants");
         var pp = t.GetField("FORCE_LOAD_AB");
         pp.SetValue(System.Activator.CreateInstance(t), RUN_WITH_AB);

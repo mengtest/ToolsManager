@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWWork.Plugins", "DWWork.Plugins.csproj", "{5C05AAB2-86B6-C7D9-0C90-743DFFB9D770}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWWork", "DWWork.csproj", "{D5FDC64C-6D8F-7C5A-3488-B9C169EEDC83}"
@@ -12,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWWork.Editor", "DWWork.Editor.csproj", "{BB52AD89-66BA-8AE2-B910-3CBBC2A8BB46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrityTools", "..\ThrityTools\ThrityTools\ThrityTools.csproj", "{D2417BCE-62F4-48C2-8916-DCF25F12976B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCore", "..\GameCore\GameCore\GameCore.csproj", "{BBCEC836-E076-4656-A05F-CE08B0CE6B82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +39,10 @@ Global
 		{D2417BCE-62F4-48C2-8916-DCF25F12976B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2417BCE-62F4-48C2-8916-DCF25F12976B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2417BCE-62F4-48C2-8916-DCF25F12976B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBCEC836-E076-4656-A05F-CE08B0CE6B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBCEC836-E076-4656-A05F-CE08B0CE6B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBCEC836-E076-4656-A05F-CE08B0CE6B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBCEC836-E076-4656-A05F-CE08B0CE6B82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
