@@ -66,3 +66,32 @@
 [LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000000002206D418
 [LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000000002206D418
 [LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000000002206D418
+[LOG] SoundI::release                          : backMusic (000000002206CF08)
+[LOG] SoundI::release                          : remove stream samples. (000000002206CF08)
+[LOG] SoundI::release                          :     backMusic (00000000221D8588)
+[LOG] SoundI::release                          :     done
+[LOG] SoundI::release                          : release subsounds. (000000002206CF08)
+[LOG] SoundI::release                          :     backMusic (000000002206D418)
+[LOG] SoundI::release                          :     done
+[LOG] SoundI::release                          : release codec. (000000002206CF08)
+[LOG] SoundI::release                          : done
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] SystemI::close                           : 
+[LOG] SystemI::close                           : Stop all sounds
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] SystemI::close                           : Stream thread destroyed
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::close                           : Free master channel group.
+[LOG] SystemI::close                           : Remove 'master' sound group.
+[LOG] SystemI::close                           : Free software output.
+[LOG] SystemI::close                           : Free emulated output.
+[LOG] SystemI::close                           : Free channel pool.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
+[LOG] SystemI::close                           : done.
+
