@@ -99,11 +99,11 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
 
 
 
-        GameUpdateSys.UPDATE_URL = Constants.UPDATE_URL;
-        GameUpdateSys.UPDATE_CONFIG_FILE = Constants.UPDATE_CONFIG_FILE;
-        GameUpdateSys.RELEASE = Constants.RELEASE;
+        BaseUpdateSys.UPDATE_URL = Constants.UPDATE_URL;
+        BaseUpdateSys.UPDATE_CONFIG_FILE = Constants.UPDATE_CONFIG_FILE;
+        BaseUpdateSys.RELEASE = Constants.RELEASE;
 
-    m_reloadDLLExecutor = new DLLUpdateExecutor();
+        m_reloadDLLExecutor = new DLLUpdateExecutor();
         m_updateSys.RegisterUpdateExecutor(m_reloadDLLExecutor);
         m_updateSys.RegisterUpdateExecutor(new AssetsBundleUpdateExecutor());
         m_updateSys.RegisterUpdateExecutor(new MapFileUpdateExecutor());

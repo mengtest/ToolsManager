@@ -53,12 +53,12 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
             m_updateGb = new GameObject("AreaUpdateRoot");
         }
 
-        //test
-        ResourceManager.Instance.Init();
-        //在更新系统初始化之前 给系统可能的值修改
-        GameRoot.PrintConfig();
-        X2UpdateSys.InitUpdateJson();
-        //--------
+        ////test
+        //ResourceManager.Instance.Init();
+        ////在更新系统初始化之前 给系统可能的值修改
+        //GameRoot.PrintConfig();
+        //X2UpdateSys.InitUpdateJson();
+        ////--------
         var updateSys = m_updateGb.AddComponent<AreaUpdateSys>();
         EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.update_ui_window, RessType.RT_LoadingUI, true);
         updateSys.InitUpdate(aciton);

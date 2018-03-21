@@ -23,6 +23,13 @@ public class ParentUpdateChecker :BaseUpdateChecker
         m_filter = filter;
     }
 
+    protected override string GetUpdateConfigUrl()
+    {
+        string url = BaseUpdateSys.UPDATE_URL +  BaseUpdateSys.UPDATE_CONFIG_FILE + "?" + Random.Range(0, 9999999);
+        Debug.LogError(url);
+        return url;
+    }
+
     protected override IEnumerator GetVersionInfoFile(System.Action<BaseUpdateCheckResult> callback)
     {
         var result = new BaseUpdateCheckResult();
