@@ -6,7 +6,7 @@
 --   copyright  : Copyright 2017 DW Inc.
 --------------------------------------------------------------------------------
 
-local AnalysisStruct = require "CommonProduct.DouDiZhu.NormalDDZ.Container.Module.AnalysisStruct.DDZCardAnalysisStruct"
+local AnalysisStruct = require "Area.DouDiZhu.NormalDDZ.Container.Module.AnalysisStruct.DDZCardAnalysisStruct"
 
 local DDZCardPlayRuleHelperModule = class("DDZCardPlayRuleHelperModule")
 

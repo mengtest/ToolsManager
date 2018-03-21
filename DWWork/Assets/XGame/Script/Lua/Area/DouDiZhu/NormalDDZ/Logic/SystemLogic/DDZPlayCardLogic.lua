@@ -11,11 +11,11 @@ require "Logic.RoomLogic.BaseObjectState"
 require "CommonProduct.CommonBase.NewCardTypeEnum"
 require "Logic.CardLogic.CCard"
 require "Logic.RoomLogic.CPlayer"
-require "CommonProduct.DouDiZhu.Base.Logic.Room.DDZRoom"
+require "Area.DouDiZhu.Base.Logic.Room.DDZRoom"
 require "Logic.SystemLogic.BasePlayCardLogic"
 require	"LuaSys.AnimManager"
 
-local DDZContainer = require "CommonProduct.DouDiZhu.NormalDDZ.Container.NormalDiZhuContainer"
+local DDZContainer = require "Area.DouDiZhu.NormalDDZ.Container.NormalDiZhuContainer"
 
 DDZPlayCardLogic = class("DDZPlayCardLogic", BasePlayCardLogic)
 

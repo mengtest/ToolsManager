@@ -59,11 +59,11 @@ _s.PlayMap =
         },
 		[PlayLogicTypeEnum.DDZ_Normal] = 
 		{
-			[Common_PlayID.DW_DouDiZhu] = "CommonProduct.DouDiZhu.NormalDDZ.Logic.SystemLogic.DDZNormalPlayCardLogic",
+			[Common_PlayID.DW_DouDiZhu] = "Area.DouDiZhu.NormalDDZ.Logic.SystemLogic.DDZNormalPlayCardLogic",
 		},
 		[PlayLogicTypeEnum.DDZ_Normal_Record] = 
 		{
-			[Common_PlayID.DW_DouDiZhu] = "CommonProduct.DouDiZhu.NormalDDZ.Logic.SystemLogic.DDZRecordLogic",
+			[Common_PlayID.DW_DouDiZhu] = "Area.DouDiZhu.NormalDDZ.Logic.SystemLogic.DDZRecordLogic",
 		},
     }
     

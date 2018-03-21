@@ -7,12 +7,12 @@
 --------------------------------------------------------------------------------
 require "Logic.SystemLogic.BaseRecordPlayCardLogic"
 require "CommonProduct.CommonBase.NewCardTypeEnum"
-require "CommonProduct.DouDiZhu.Base.Logic.Room.DDZRoom"
+require "Area.DouDiZhu.Base.Logic.Room.DDZRoom"
 require "Logic.RoomLogic.CPlayer"
 require "Logic.CardLogic.CCard"
 require "LuaSys.AnimManager"
 
-local DDZContainer = require "CommonProduct.DouDiZhu.NormalDDZ.Container.NormalDiZhuContainer"
+local DDZContainer = require "Area.DouDiZhu.NormalDDZ.Container.NormalDiZhuContainer"
 
 DDZRecordLogic = class("DDZRecordLogic", BaseRecordPlayCardLogic)
 

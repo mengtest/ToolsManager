@@ -5,8 +5,8 @@
 --   date       : 2018-01-22
 --   copyright  : Copyright 2018 DW Inc.P
 --------------------------------------------------------------------------------
---path : CommonProduct.DouDiZhu.NormalDDZ.Container.Test.DDZTest
-local DDZContainer = require "CommonProduct.DouDiZhu.NormalDDZ.Container.NormalDiZhuContainer"
+--path : Area.DouDiZhu.NormalDDZ.Container.Test.DDZTest
+local DDZContainer = require "Area.DouDiZhu.NormalDDZ.Container.NormalDiZhuContainer"
 require "Logic.CardLogic.CCard"
 require "CommonProduct.CommonBase.NewCardTypeEnum"
 

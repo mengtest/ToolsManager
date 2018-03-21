@@ -7,7 +7,7 @@
 --------------------------------------------------------------------------------
 
 require "Logic.RoomLogic.Room.CBaseRoom"
-require "CommonProduct.DouDiZhu.Base.Logic.Room.RoomStateMgr.DDZRoomStateMgrModule"
+require "Area.DouDiZhu.Base.Logic.Room.RoomStateMgr.DDZRoomStateMgrModule"
 
 DDZRoom = class("DDZRoom", CBaseRoom)
 

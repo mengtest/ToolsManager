@@ -6,7 +6,7 @@
 --   copyright  : Copyright 2017 DW Inc.
 --------------------------------------------------------------------------------
 
-require "CommonProduct.DouDiZhu.NormalDDZ.Logic.SystemLogic.DDZPlayCardLogic"
+require "Area.DouDiZhu.NormalDDZ.Logic.SystemLogic.DDZPlayCardLogic"
 
 DDZNormalPlayCardLogic = class("DDZNormalPlayCardLogic", DDZPlayCardLogic)
 

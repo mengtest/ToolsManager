@@ -6,7 +6,7 @@
 --   copyright  : Copyright 2018 DW Inc.
 --------------------------------------------------------------------------------
 
-local BaseAIStruct = require "CommonProduct.DouDiZhu.Base.AI.BaseDouDiZhuCardAIResultStruct"
+local BaseAIStruct = require "Area.DouDiZhu.Base.AI.BaseDouDiZhuCardAIResultStruct"
 
 local DDZCardAIResultStruct = class("DDZCardAIResultStruct", BaseAIStruct)
 

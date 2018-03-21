@@ -8,7 +8,7 @@
 LogicUtil = {}
 local _s = LogicUtil
 require "Logic.MJCardLogic.CMJCard"
-local CardAnalysisHelper = require "CommonProduct.DouDiZhu.NormalDDZ.Container.Module.DDZCardAnalysisHelperModule"
+local CardAnalysisHelper = require "Area.DouDiZhu.NormalDDZ.Container.Module.DDZCardAnalysisHelperModule"
 _s.DDZCardAnalysisHelper = CardAnalysisHelper.New()
 
 _s.MJCardSize =

@@ -12,12 +12,12 @@ require "Logic.UICtrlLogic.UIPlayerHeadCtrl"
 require "Logic.UICtrlLogic.UICardAnimationCtrl"
 require "Logic.UICtrlLogic.UICommonOtherInfoCtrl"
 
-local AddDoubleCtrl = require "CommonProduct.DouDiZhu.UIWindow.UICtrl.UIDDZAddDoubleCtrl"
-local BaseCardsCtrl = require "CommonProduct.DouDiZhu.UIWindow.UICtrl.UIDDZBaseCardsCtrl"
-local LordPlayCtrl = require "CommonProduct.DouDiZhu.UIWindow.UICtrl.UIDDZLordOpenPlayCtrl"
-local WantLordCtrl = require "CommonProduct.DouDiZhu.UIWindow.UICtrl.UIDDZWantLordCtrl"
-local LightCtrl = require "CommonProduct.DouDiZhu.UIWindow.UICtrl.UIDDZLightCtrl"
-local DoubleShowCtrl = require "CommonProduct.DouDiZhu.UIWindow.UICtrl.UIDDZDoubleShowCtrl"
+local AddDoubleCtrl = require "Area.DouDiZhu.UIWindow.UICtrl.UIDDZAddDoubleCtrl"
+local BaseCardsCtrl = require "Area.DouDiZhu.UIWindow.UICtrl.UIDDZBaseCardsCtrl"
+local LordPlayCtrl = require "Area.DouDiZhu.UIWindow.UICtrl.UIDDZLordOpenPlayCtrl"
+local WantLordCtrl = require "Area.DouDiZhu.UIWindow.UICtrl.UIDDZWantLordCtrl"
+local LightCtrl = require "Area.DouDiZhu.UIWindow.UICtrl.UIDDZLightCtrl"
+local DoubleShowCtrl = require "Area.DouDiZhu.UIWindow.UICtrl.UIDDZDoubleShowCtrl"
 
 local m_luaWindowRoot
 local m_state

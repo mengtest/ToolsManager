@@ -6,7 +6,7 @@
 --   copyright  : Copyright 2018 DW Inc.
 --------------------------------------------------------------------------------
 
-local CardAIResultStruct = require "CommonProduct.DouDiZhu.NormalDDZ.Container.Module.AI.DDZCardAIResultStruct"
+local CardAIResultStruct = require "Area.DouDiZhu.NormalDDZ.Container.Module.AI.DDZCardAIResultStruct"
 
 local DDZCardPlayAIModule = class("DDZCardPlayAIModule")
 

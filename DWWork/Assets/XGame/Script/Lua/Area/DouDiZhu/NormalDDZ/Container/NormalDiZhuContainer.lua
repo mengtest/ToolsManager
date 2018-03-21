@@ -10,9 +10,9 @@ require "CommonProduct.CommonBase.NewCardTypeEnum"
 require "Logic.CardLogic.CCard"
 
 require "Logic.CardLogic.Module.WSK.CardPlayOneTurnModule"
-local CardAnalysisHelper = require "CommonProduct.DouDiZhu.NormalDDZ.Container.Module.DDZCardAnalysisHelperModule"
-local CardRuleHelper = require "CommonProduct.DouDiZhu.NormalDDZ.Container.Module.DDZCardPlayRuleHelperModule"
-local CardPlayAIModule = require "CommonProduct.DouDiZhu.NormalDDZ.Container.Module.DDZCardPlayAIModule"
+local CardAnalysisHelper = require "Area.DouDiZhu.NormalDDZ.Container.Module.DDZCardAnalysisHelperModule"
+local CardRuleHelper = require "Area.DouDiZhu.NormalDDZ.Container.Module.DDZCardPlayRuleHelperModule"
+local CardPlayAIModule = require "Area.DouDiZhu.NormalDDZ.Container.Module.DDZCardPlayAIModule"
 
 local NormalDiZhuContainer = class("NormalDiZhuContainer")
 
