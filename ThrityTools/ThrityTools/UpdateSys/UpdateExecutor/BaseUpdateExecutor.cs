@@ -29,7 +29,7 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
         return "";
     }
 
-    protected virtual string GetUnzipDir()
+    protected virtual string GetUnzipDir(BaseUpdateContext context)
     {
         return DWTools.CachePath +"/" + GetUpdateType();
     }
@@ -39,9 +39,9 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
         return false;
     }
 
-    public void CleanCachedResource ()
+    public void CleanCachedResource(BaseUpdateContext context)
 	{
-		var path = GetUnzipDir();
+		var path = GetUnzipDir(context);
 		var dir = new System.IO.DirectoryInfo(path);
 		if(dir.Exists)
 		{
@@ -124,7 +124,7 @@ public abstract class BaseUpdateExecutor : IUpdateExecutor {
 				downLoadSucc = true;
 			}
 
-			var unzipDir = GetUnzipDir();
+			var unzipDir = GetUnzipDir(context);
 			Debug.Log("begin unzip, to dir:" + unzipDir);
 			CUnzipFile unzip = new CUnzipFile(unzipDir, path, downLoadFile.m_hasDownLoadBits);
             if (del != null)

@@ -18,10 +18,17 @@ public class ChildUpdateExecutor : BaseUpdateExecutor
         return "Child";
     }
 
+    protected override string GetUnzipDir(BaseUpdateContext context)
+    {
+        ChildUpdateContext cuContext = context as ChildUpdateContext;
+        return DWTools.CachePath + "/" + "Area/" + cuContext.localName + "/" + GetUpdateType();
+    }
+
 
     protected override string GetDownloadUrl(BaseResInfo info, BaseUpdateContext context)
     {
         ChildResInfo pInfo = info as ChildResInfo;
+        ChildUpdateContext cuContext = context as ChildUpdateContext;
         if (pInfo == null)
             return "";
         string version = context.BaseVersion;
@@ -29,14 +36,14 @@ public class ChildUpdateExecutor : BaseUpdateExecutor
         var url = "";
         if (!string.IsNullOrEmpty(pInfo.packageName))
         {
-            url = ChildPackageUpdateSys.UPDATE_URL + pInfo + "/" + ((int)pInfo.versionInfo.basePlatform) + "/" + pInfo.versionInfo.resVersion + "/" + pInfo.packageName + ".zip";
+            url = BaseUpdateSys.LOCAL_UPDATE_URL + cuContext.areaID + "/" + ((int)pInfo.versionInfo.basePlatform) + "/"  + pInfo.packageName + ".zip";
         }
         else
         {
-            url = ChildPackageUpdateSys.UPDATE_URL + version + "/" + ((int)pInfo.versionInfo.basePlatform) + "/" + pInfo.versionInfo.resVersion + "/" + pInfo.type + ".zip";
+            url = BaseUpdateSys.LOCAL_UPDATE_URL + cuContext.areaID + "/" + ((int)pInfo.versionInfo.basePlatform)  + "/" + pInfo.type + ".zip";
         }
 
-        if (!ChildPackageUpdateSys.RELEASE)
+        if (!BaseUpdateSys.RELEASE)
             url += "?" + Random.Range(0, 9999999);
 
         return url;
@@ -44,15 +51,16 @@ public class ChildUpdateExecutor : BaseUpdateExecutor
     protected override string GetDownloadPath(BaseResInfo info, BaseUpdateContext context)
     {
         ChildResInfo pInfo = info as ChildResInfo;
+        ChildUpdateContext cuContext = context as ChildUpdateContext;
         if (pInfo == null)
             return "";
         if (!string.IsNullOrEmpty(pInfo.packageName))
         {
-            return DWTools.CachePath + "/" + pInfo.packageName + ".zip";
+            return DWTools.CachePath + "/"+"Area/" + cuContext.localName +"/" + pInfo.packageName + ".zip";
         }
         else
         {
-            return DWTools.CachePath + "/" + pInfo.type + ".zip";
+            return DWTools.CachePath + "/" + "Area/" + cuContext.localName + "/" + pInfo.type + ".zip";
         }
     }
 }

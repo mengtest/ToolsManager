@@ -344,6 +344,8 @@ public class ResourceManager
 
     public void Init()
     {
+        if (m_initDone)
+            return;
 #if UNITY_EDITOR
         m_UseAssetBundle = Constants.FORCE_LOAD_AB;
 #endif
@@ -378,7 +380,7 @@ public class ResourceManager
             }
         }
         InitUpdateAbDatas();
-        m_initDone = true;
+        
         // });
         if (m_CoroutineJobQueue.m_jobCoroutineState == CoroutineJobQueue.EJobCoroutineState.NotRunning)
         {
@@ -388,6 +390,7 @@ public class ResourceManager
         {
             m_AssetBundlePool.Initialize(m_AssetBundlePoolNum, _LoadAssetBundleCallback, _UnloadAssetBundleCallback);
         }
+        m_initDone = true;
     }
 
 

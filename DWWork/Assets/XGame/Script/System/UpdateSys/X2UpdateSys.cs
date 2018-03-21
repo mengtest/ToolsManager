@@ -217,6 +217,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         //EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, RessType.RT_CommonWindow, true, 2);
 
         //开始检查小包更新
+        AreaUpdateSys.SetAreaPlay(10002, "DouDiZhu");
         AreaUpdateSys.StartUpdate((bool needReload) =>
         {
             if (m_endAction != null)
@@ -462,7 +463,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     }
 
 
-    private static void InitUpdateJson()
+    public static void InitUpdateJson()
     {
         string update_path = Application.persistentDataPath + "/Table/ResUpdateTxtList.json";
         if (!System.IO.File.Exists(update_path))

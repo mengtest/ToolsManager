@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UpdateDefineSpace;
+using System.IO;
 
 public class ChildPackageUpdateSys : BaseUpdateSys
 {
@@ -25,12 +26,26 @@ public class ChildPackageUpdateSys : BaseUpdateSys
         m_context = new ChildUpdateContext();
     }
 
+    protected void CheckCacheDir(string localName)
+    {
+        DirectoryInfo dir = new DirectoryInfo(DWTools.CachePath + "/Area");
+        if (!dir.Exists)
+        {
+            dir.Create();
+        }
+        dir = new DirectoryInfo(DWTools.CachePath + "/Area/" +localName);
+        if (!dir.Exists)
+        {
+            dir.Create();
+        }
+    }
+
     protected override IEnumerator _DoCheckUpdate(IUpdateSysDelegate del, BaseUpdateResFilter filter, MonoBehaviour mono, BaseUpdateContext updateContext)
     {
         SetState(State.CheckUpgrade);
 
         //set context
-        var ref_m_context = updateContext as ChildUpdateContext;
+        var ref_m_context = m_context as ChildUpdateContext;
         var childUpdateContext = updateContext as ChildUpdateContext;
 
         ref_m_context.BaseVersion = childUpdateContext.BaseVersion;
@@ -48,6 +63,8 @@ public class ChildPackageUpdateSys : BaseUpdateSys
         Debug.LogError("Res.areaID: " + ref_m_context.areaID + " Res.localName: " + ref_m_context.localName + "  pack.Version:" + ref_m_context.ResVersion + " baseplatform:" + ref_m_context.BasePlatform + " platform:" + ref_m_context.Platform);
         //do check
         //bool checkFinish = false;
+
+        CheckCacheDir(ref_m_context.localName);
 
         ChildPackageUpdateChecker checker = new ChildPackageUpdateChecker(ref_m_context, filter);
         checker.StartCheck((result) =>
