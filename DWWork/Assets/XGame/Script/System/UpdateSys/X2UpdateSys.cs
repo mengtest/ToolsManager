@@ -217,6 +217,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
         //EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, RessType.RT_CommonWindow, true, 2);
 
         //开始检查小包更新
+        AreaUpdateSys.SetAreaPlay(10002, "DouDiZhu");
         AreaUpdateSys.StartUpdate((bool needReload) =>
         {
             if (m_endAction != null)

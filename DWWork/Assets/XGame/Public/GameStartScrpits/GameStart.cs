@@ -210,9 +210,8 @@ public class GameStart : MonoBehaviour
 			OnEndUpdate(needRestart);
 		});
 
-        //        CallMethod("StartUpdate", "X2UpdateSys", null, new object[] { a });
-        AreaUpdateSys.SetAreaPlay(10002, "DouDiZhu");
-        CallMethod("StartUpdate", "AreaUpdateSys", null, new object[] { a });
+        CallMethod("StartUpdate", "X2UpdateSys", null, new object[] { a });
+        //CallMethod("StartUpdate", "AreaUpdateSys", null, new object[] { a });
 #endif
     }
 
