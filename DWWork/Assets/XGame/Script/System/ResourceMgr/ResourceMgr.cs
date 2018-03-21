@@ -258,10 +258,9 @@ public class ResourceMgr
     {
         var assetPath = GetAssetPathByType(rt);
         var fullAssetPath = CommonStringBuilder.BuildString("Assets/XGame/Resources/", assetPath, rn, ".prefab");
-        if(!ResourceManager.Instance.ContaintsResources(fullAssetPath))
+        if (!ResourceManager.Instance.ContaintsResources(fullAssetPath))
         {
-            assetPath = "Area/" + assetPath;
-            fullAssetPath = CommonStringBuilder.BuildString("Assets/XGame/Resources/", assetPath, rn, ".prefab");
+            fullAssetPath = CommonStringBuilder.BuildString("Assets/XGame/Resources/", rn, ".prefab");
         }
         return fullAssetPath;
     }

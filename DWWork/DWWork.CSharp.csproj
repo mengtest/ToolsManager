@@ -17,7 +17,8 @@
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.4.5f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -352,9 +353,6 @@
     <Compile Include="Assets\XGame\Script\System\PlatformInterface\PlatInterface.cs" />
     <Compile Include="Assets\XGame\Script\System\PlatformInterface\RBDViewController.cs" />
     <Compile Include="Assets\XGame\Script\System\PlatformInterface\UserLocation.cs" />
-    <Compile Include="Assets\XGame\Script\System\ResourceMgr\CABLoadSys.cs" />
-    <Compile Include="Assets\XGame\Script\System\ResourceMgr\CSceneRessLoadSys.cs" />
-    <Compile Include="Assets\XGame\Script\System\ResourceMgr\CUIRessLoadSys.cs" />
     <Compile Include="Assets\XGame\Script\System\ResourceMgr\ResourceChecker.cs" />
     <Compile Include="Assets\XGame\Script\System\ResourceMgr\ResourceMgr.cs" />
     <Compile Include="Assets\XGame\Script\System\ResourceMgr\UnZipFloClass.cs" />

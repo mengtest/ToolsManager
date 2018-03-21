@@ -50,7 +50,7 @@ namespace ThirtyEditor.Editor.AreaAB
             m_abbuildDic.Clear();
             m_dependsDic.Clear();
             m_currentCache = new ABAssetDataList();
-            m_curretBundleID = new BundleID(newVersion, EnumAB.ui_ab);
+            m_curretBundleID = new BundleID(newVersion, EnumAB.area_ab);
             //nowSelectPath = AssetDatabase.GetAssetPath(Selection.activeObject);
             //nowSelectPath = nowSelectPath.Replace("Assets", "");
             areaName = nowSelectPath.Substring(nowSelectPath.LastIndexOf("/") + 1);

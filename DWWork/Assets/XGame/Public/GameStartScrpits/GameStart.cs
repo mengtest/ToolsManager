@@ -86,7 +86,7 @@ public class GameStart : MonoBehaviour
 
     private void StartABLoadSys()
     {
-        CallMethod("InitUpdateSys", "CABLoadSys", null, new object[] { RUN_WITH_AB });
+        //CallMethod("InitUpdateSys", "CABLoadSys", null, new object[] { RUN_WITH_AB });
         InitVersion();
         CheckUpdate();
     }

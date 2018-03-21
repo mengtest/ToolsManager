@@ -476,6 +476,12 @@ public class ResourceManager
                 {
                     m_AreaPathToAssetBundle.Add(desc.m_gbName, desc);
                 }
+
+                //添加到文件目录
+                if (!m_fileSet.Contains(desc.m_gbName))
+                {
+                    m_fileSet.Add(desc.m_gbName);
+                }
             }
         }
 
