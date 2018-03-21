@@ -46,7 +46,7 @@ function RoomSmallRoundOverState:Enter(data)
         -- 机器人有可能已经准备了
         -- 玩家切换到准备
         play_logic.roomObj.playerMgr:AllPlayerIdle()
-		WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 1, "CommonProduct.DouDiZhu.UIWindow.ddz_small_summary_ui_window", false, nil)
+		WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 1, "Area.DouDiZhu.UIWindow.ddz_small_summary_ui_window", false, nil)
 		return
 	end
     -- 获取房间类型

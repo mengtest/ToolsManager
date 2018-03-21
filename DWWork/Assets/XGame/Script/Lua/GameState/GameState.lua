@@ -58,13 +58,13 @@ function GameState.Enter()
 		elseif logicCtrlType == PlayLogicTypeEnum.DDZ_Normal then    -- 斗地主
 			WrapSys.AudioSys_LoadBanks("DouDiZhu")
 			WrapSys.AudioSys_LoadBanks("50K")
-			WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 1, "CommonProduct.DouDiZhu.UIWindow.play_ddz_ui_window", false , nil)
+			WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 1, "Area.DouDiZhu.UIWindow.play_ddz_ui_window", false , nil)
 			--渲染完成
 			logicCtrl:SendUIReady()
 		elseif logicCtrlType == PlayLogicTypeEnum.DDZ_Normal_Record then    -- 斗地主回放
 			WrapSys.AudioSys_LoadBanks("DouDiZhu")
 			WrapSys.AudioSys_LoadBanks("50K")
-			WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 1, "CommonProduct.DouDiZhu.UIWindow.ddz_record_play_ui_window", false , nil)
+			WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 1, "Area.DouDiZhu.UIWindow.ddz_record_play_ui_window", false , nil)
 			LuaEvent.AddEventNow(EEventType.RecordUIReady)
 		end
 	end
