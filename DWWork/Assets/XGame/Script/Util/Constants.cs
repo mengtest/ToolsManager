@@ -144,8 +144,8 @@ public class Constants
                 SetValue(12, ref RUN_WITH_EN_LUA);
             }
             SetValue(13, ref FORCE_DEBUG_PLATFORM);
-            SetValue(14, ref UPDATE_URL);
-            SetValue(15, ref UPDATE_CONFIG_FILE);
+            SetValue(14, ref LOCAL_UPDATE_URL);
+            SetValue(15, ref LOCAL_UPDATE_CONFIG_FILE);
         }
     }
     public static bool TEMP_CLOSE = true; // CGG临时关闭的功能开关

@@ -17,7 +17,7 @@ using LitJson;
 public class ResourceTools
 {
 
-    //[MenuItem("EZFun/Resource/GenResourceList")]
+    [MenuItem("EZFun/Resource/GenResourceList")]
     public static void GenResourceList()
     {
         var path = Application.dataPath + "/XGame/Resources/";

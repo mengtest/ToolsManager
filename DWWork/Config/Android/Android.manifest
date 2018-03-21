@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 2211525334
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: shaders_ab
+      Dependencies: {}
+    Info_1:
+      Name: 10000_uialtas_ab
+      Dependencies:
+        Dependency_0: shaders_ab
+    Info_2:
+      Name: 10000_ui_ab
+      Dependencies:
+        Dependency_0: shaders_ab
+        Dependency_1: 10000_uialtas_ab
+    Info_3:
+      Name: 10000_model_ab
+      Dependencies:
+        Dependency_0: 10000_uialtas_ab
+        Dependency_1: 10000_ui_ab
+    Info_4:
+      Name: 10000_scene_ab_empty
+      Dependencies: {}
+    Info_5:
+      Name: 10000_scene_ab_gamescene
+      Dependencies: {}
+    Info_6:
+      Name: 10000_scene_ab_loading
+      Dependencies: {}
+    Info_7:
+      Name: 10000_scene_ab_login
+      Dependencies: {}
+    Info_8:
+      Name: 10000_scene_ab_mainscene
+      Dependencies: {}
