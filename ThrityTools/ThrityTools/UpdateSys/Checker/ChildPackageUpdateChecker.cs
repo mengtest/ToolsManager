@@ -26,7 +26,8 @@ public class ChildPackageUpdateChecker :BaseUpdateChecker
 
     protected override string GetUpdateConfigUrl()
     {
-        string url = BaseUpdateSys.UPDATE_URL + m_childContext.areaID + "/"+ BaseUpdateSys.UPDATE_CONFIG_FILE + "?" + Random.Range(0, 9999999);
+        string url = BaseUpdateSys.LOCAL_UPDATE_URL + m_childContext.areaID  + "/"+ BaseUpdateSys.LOCAL_UPDATE_CONFIG_FILE + "?" + Random.Range(0, 9999999);
+        Debug.LogError(url);
         return url;
     }
 
@@ -125,6 +126,9 @@ public class ChildPackageUpdateChecker :BaseUpdateChecker
 
             return result;
         }
+
+        result.Success = true;
+        result.PublishedVersion = child_cfg.localUpdateInfo.baseVersion;
         var tmpResInfoList = new List<ChildResInfo>();
         for (int i = 0; i < child_cfg.localUpdateInfo.dynamicUpdateInfo.Count; i++)
         {
@@ -132,8 +136,9 @@ public class ChildPackageUpdateChecker :BaseUpdateChecker
             if (info.basePlatform == (int)m_context.BasePlatform || info.basePlatform == (int)EnumAppName.general)
                 for (int j = 0; j < info.resInfo.Count; j++)
                 {
-                    var versionInfo = info.resInfo[j];
-                    bool _added = AddResInfo(tmpResInfoList, versionInfo);
+                    var resInfo = info.resInfo[j];
+                    resInfo.versionInfo = info;
+                    bool _added = AddResInfo(tmpResInfoList, resInfo);
                 }
         }
 

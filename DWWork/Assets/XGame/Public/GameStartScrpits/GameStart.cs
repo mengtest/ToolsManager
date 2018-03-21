@@ -1,4 +1,4 @@
-//#define TEST_UPDATE
+#define TEST_UPDATE
 //#define RELEASE
 using UnityEngine;
 using System;
@@ -210,7 +210,9 @@ public class GameStart : MonoBehaviour
 			OnEndUpdate(needRestart);
 		});
 
-        CallMethod("StartUpdate", "X2UpdateSys", null, new object[] { a });
+        //        CallMethod("StartUpdate", "X2UpdateSys", null, new object[] { a });
+        AreaUpdateSys.SetAreaPlay(10002, "DouDiZhu");
+        CallMethod("StartUpdate", "AreaUpdateSys", null, new object[] { a });
 #endif
     }
 

@@ -16,7 +16,7 @@ public interface IUpdateExecutor {
 
 	string GetUpdateType();
 
-	void CleanCachedResource();
+	void CleanCachedResource(BaseUpdateContext context);
 
 	IEnumerator GetUpdateCoroutine(BaseResInfo info, BaseUpdateContext context, IUpdateExecutorDelegate del);
 

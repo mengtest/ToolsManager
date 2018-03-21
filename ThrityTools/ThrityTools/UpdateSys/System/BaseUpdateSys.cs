@@ -202,7 +202,7 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
             var kvp = ite.Current;
             var executor = kvp.Value;
 
-            executor.CleanCachedResource();
+            executor.CleanCachedResource(m_context);
         }
 
         m_context.ResMd5Mgr.Clean();
@@ -285,7 +285,7 @@ public class BaseUpdateSys : IUpdateExecutorDelegate
         }
     }
 
-    protected void _StartUpdate()
+    protected virtual void _StartUpdate()
     {
         SetState(State.Upgrading);
     }

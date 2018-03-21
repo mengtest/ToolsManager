@@ -52,8 +52,15 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         {
             m_updateGb = new GameObject("AreaUpdateRoot");
         }
-        var updateSys = m_updateGb.AddComponent<AreaUpdateSys>();
 
+        //test
+        ResourceManager.Instance.Init();
+        //在更新系统初始化之前 给系统可能的值修改
+        GameRoot.PrintConfig();
+        X2UpdateSys.InitUpdateJson();
+        //--------
+        var updateSys = m_updateGb.AddComponent<AreaUpdateSys>();
+        EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.update_ui_window, RessType.RT_LoadingUI, true);
         updateSys.InitUpdate(aciton);
     }
 
@@ -73,13 +80,13 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
 
 
         BaseUpdateSys.LOCAL_UPDATE_URL = Constants.LOCAL_UPDATE_URL;
-        BaseUpdateSys.LOCAL_UPDATE_CONFIG_FILE = Constants.UPDATE_CONFIG_FILE;
+        BaseUpdateSys.LOCAL_UPDATE_CONFIG_FILE = Constants.LOCAL_UPDATE_CONFIG_FILE;
 
         m_reloadDLLExecutor = new DLLUpdateExecutor();
 
-        m_updateSys.RegisterUpdateExecutor(new AssetsBundleUpdateExecutor());
-        m_updateSys.RegisterUpdateExecutor(new LuaUpdateExecutor());
-        m_updateSys.RegisterUpdateExecutor(new AudioUpdateExecutor());
+        m_updateSys.RegisterUpdateExecutor(new ChildAssetBundleUpdateExecutor());
+        m_updateSys.RegisterUpdateExecutor(new ChildLuaUpdateExecutor());
+        m_updateSys.RegisterUpdateExecutor(new ChildAudioUpdateExecutor());
 
         m_fsm.In(UpdateState.PreState)
             .On(UpdateEvent.StartCheckEvent)
@@ -121,7 +128,7 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         Debug.Log("EnterCheckErrorState");
         if (m_updateCheckResult != null)
         {
-            HandleErrorWindow.m_contentStr = GetUpdateTxt(10) + "(" + m_updateCheckResult.ErrorCode + ")";
+            HandleErrorWindow.m_contentStr = X2UpdateSys.GetUpdateTxt(10) + "(" + m_updateCheckResult.ErrorCode + ")";
             HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
             {
                 DWLoom.QueueOnMainThread(() =>
@@ -133,7 +140,7 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         }
         else
         {
-            HandleErrorWindow.m_contentStr = GetUpdateTxt(10) + "(0)";
+            HandleErrorWindow.m_contentStr = X2UpdateSys.GetUpdateTxt(10) + "(0)";
             HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
             {
                 DWLoom.QueueOnMainThread(() =>
@@ -151,7 +158,7 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         Debug.Log("Enter_PreEnter");
         //HandleErrorWindow.m_contentStr = GetUpdateTxt(8);
         //EZFunWindowMgr.Instance.SetWindowStatus(EZFunWindowEnum.error_ui_window, RessType.RT_CommonWindow, true, 2);
-        HandleUpdateWindow.Instance.ShowLogin(true, GetUpdateTxt(12));
+        HandleUpdateWindow.Instance.ShowLogin(true, X2UpdateSys.GetUpdateTxt(12));
         m_fsm.Fire(UpdateEvent.StartCheckEvent);
     }
 
@@ -163,7 +170,7 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         context.BasePlatform = ver.GetAppNameEnum();
         context.Platform = ver.GetPublishSDKPlatform();
         context.areaID = PlayerPrefs.GetInt("localPackage_areaID", 10002);
-        context.localName = PlayerPrefs.GetString("localPackage_localName","FuZhou");
+        context.localName = PlayerPrefs.GetString("localPackage_localName","DouDiZhu");
 
         m_updateSys.CheckUpdate(this, new ChildUpdateResFilter(this.m_reloadDLLExecutor), this, context);
         Debug.Log("EnterCheck");
@@ -173,7 +180,7 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
     void EnterDownLoad()
     {
         //HandleUpdateWindow.Instance.ShowUI(true);
-        HandleUpdateWindow.Instance.ShowLogin(false, GetUpdateTxt(12));
+        HandleUpdateWindow.Instance.ShowLogin(false, X2UpdateSys.GetUpdateTxt(12));
         Debug.Log("EnterDownLoad");
         m_updateSys.StartResourceUpdate(m_updateCheckResult, this);
     }
@@ -242,7 +249,7 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         if (m_updateCheckResult.IsResourceForceUpdate)
         {
             // 弹框提示更新资源
-            string str = GetUpdateTxt(2);
+            string str = X2UpdateSys.GetUpdateTxt(2);
             str = TextData.GetText(str, maxVersion, sizeTxt);
             HandleErrorWindow.m_contentStr = str;
             HandleErrorWindow.m_okCallBack = (object p1, object p2) =>
@@ -276,11 +283,11 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
         {
             if (info.phase == UpdateProgressInfo.Phase.Downloading)
             {
-                headStr = GetUpdateTxt(4);
+                headStr = X2UpdateSys.GetUpdateTxt(4);
             }
             else
             {
-                headStr = GetUpdateTxt(11);
+                headStr = X2UpdateSys.GetUpdateTxt(11);
             }
 
             if (info.totalSize < 1024 * 1024)
@@ -328,30 +335,6 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
 
     #endregion
 
-    #region tools
-
-    public static string GetUpdateTxt(int id)
-    {
-        if (m_updateJson == null)
-        {
-            return "";
-        }
-        for (int i = 0; i < m_updateJson.Count; i++)
-        {
-            JsonData item = m_updateJson[i];
-            if (item["ID"].ToString() == id.ToString())
-            {
-                string str = item["text"].ToString();
-                str = str.Replace("\\n", "\n");
-                return str;
-            }
-        }
-
-        return "";
-    }
-
-
-    #endregion
 
     private void ShowText(string text, float process)
     {

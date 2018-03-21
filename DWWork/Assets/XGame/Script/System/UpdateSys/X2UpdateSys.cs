@@ -462,7 +462,7 @@ public class X2UpdateSys : MonoBehaviour, IUpdateSysDelegate
     }
 
 
-    private static void InitUpdateJson()
+    public static void InitUpdateJson()
     {
         string update_path = Application.persistentDataPath + "/Table/ResUpdateTxtList.json";
         if (!System.IO.File.Exists(update_path))
