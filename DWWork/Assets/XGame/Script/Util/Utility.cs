@@ -1200,18 +1200,6 @@ public class EZFunTools
         return sbuild.ToString();
     }
 
-    public static UnityEngine.Object GetLightMap(string path, string name)
-    {
-        UnityEngine.Object ob = CABLoadSys.Instance.GetOB(name);
-        if (ob == null)
-        {
-            return Resources.Load(path + name);
-        }
-        else
-        {
-            return ob;
-        }
-    }
 
     public static void SetMainCityLightingMap(Texture2D targetTexture)
     {

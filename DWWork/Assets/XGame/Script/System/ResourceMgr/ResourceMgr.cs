@@ -256,13 +256,16 @@ public class ResourceMgr
 
     public static string GetRessTypePath(RessType rt, string rn)
     {
-        return CommonStringBuilder.BuildString("Assets/XGame/Resources/", GetAssetPathByType(rt), rn, ".prefab");
+        var assetPath = GetAssetPathByType(rt);
+        var fullAssetPath = CommonStringBuilder.BuildString("Assets/XGame/Resources/", assetPath, rn, ".prefab");
+        if(!ResourceManager.Instance.ContaintsResources(fullAssetPath))
+        {
+            assetPath = "Area/" + assetPath;
+            fullAssetPath = CommonStringBuilder.BuildString("Assets/XGame/Resources/", assetPath, rn, ".prefab");
+        }
+        return fullAssetPath;
     }
 
-    public static string GetRessPath(RessKey rk)
-    {
-        return CommonStringBuilder.BuildString(GetAssetPathByType(rk.m_type), rk.m_ressName);
-    }
 
     public static Object GetInstantiateAsset(RessType ressType, string ressName,
         RessStorgeType ressStorgeType = RessStorgeType.RST_Never, System.Action<UnityEngine.Object> callback = null)
