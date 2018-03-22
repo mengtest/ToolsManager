@@ -211,7 +211,6 @@ public class GameStart : MonoBehaviour
 		});
 
         CallMethod("StartUpdate", "X2UpdateSys", null, new object[] { a });
-        //CallMethod("StartUpdate", "AreaUpdateSys", null, new object[] { a });
 #endif
     }
 

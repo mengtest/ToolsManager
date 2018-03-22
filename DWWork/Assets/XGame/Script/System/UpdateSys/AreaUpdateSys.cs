@@ -38,6 +38,23 @@ public class AreaUpdateSys : MonoBehaviour, IUpdateSysDelegate
     "lua",
     "mapFile"};
 
+    //先拉取远端配置
+    //再展示窗口
+    //开始检查小包更新
+
+    //外部调用接口，绑定lua下
+    public static void StartWork(LuaInterface.LuaFunction luaFunc)
+    {
+        StartUpdate((bool needReload) =>
+        {
+            if (luaFunc != null)
+            {
+                luaFunc.Call();
+                luaFunc = null;
+            }
+        });
+
+    }
     //设置地区玩法
     public static void SetAreaPlay(int areaID,string localName)
     {

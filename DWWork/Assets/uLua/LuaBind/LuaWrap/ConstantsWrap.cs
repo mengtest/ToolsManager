@@ -31,6 +31,8 @@ public class ConstantsWrap
 		new LuaField("RUN_WITH_EN_LUA", get_RUN_WITH_EN_LUA, set_RUN_WITH_EN_LUA),
 		new LuaField("FORCE_DEBUG_PLATFORM", get_FORCE_DEBUG_PLATFORM, set_FORCE_DEBUG_PLATFORM),
 		new LuaField("EnableIM", get_EnableIM, set_EnableIM),
+		new LuaField("LOCAL_UPDATE_URL", get_LOCAL_UPDATE_URL, set_LOCAL_UPDATE_URL),
+		new LuaField("LOCAL_UPDATE_CONFIG_FILE", get_LOCAL_UPDATE_CONFIG_FILE, set_LOCAL_UPDATE_CONFIG_FILE),
 		new LuaField("TEMP_CLOSE", get_TEMP_CLOSE, set_TEMP_CLOSE),
 	};
 
@@ -199,6 +201,20 @@ public class ConstantsWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LOCAL_UPDATE_URL(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, Constants.LOCAL_UPDATE_URL);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LOCAL_UPDATE_CONFIG_FILE(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, Constants.LOCAL_UPDATE_CONFIG_FILE);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_TEMP_CLOSE(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, Constants.TEMP_CLOSE);
@@ -328,6 +344,20 @@ public class ConstantsWrap
 	static int set_EnableIM(IntPtr L)
 	{
 		Constants.EnableIM = LuaScriptMgr.GetBoolean(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_LOCAL_UPDATE_URL(IntPtr L)
+	{
+		Constants.LOCAL_UPDATE_URL = LuaScriptMgr.GetString(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_LOCAL_UPDATE_CONFIG_FILE(IntPtr L)
+	{
+		Constants.LOCAL_UPDATE_CONFIG_FILE = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 

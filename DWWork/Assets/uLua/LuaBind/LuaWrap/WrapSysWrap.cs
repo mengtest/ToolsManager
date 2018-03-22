@@ -149,6 +149,8 @@ public class WrapSysWrap
 		new LuaMethod("Reflection_SetField", Reflection_SetField),
 		new LuaMethod("TestReflect", TestReflect),
 		new LuaMethod("StringSafeConvert", StringSafeConvert),
+		new LuaMethod("AreaUpdateSys_SetAreaPlay", AreaUpdateSys_SetAreaPlay),
+		new LuaMethod("AreaUpdateSys_StartWork", AreaUpdateSys_StartWork),
 		new LuaMethod("New", _CreateWrapSys),
 		new LuaMethod("GetClassType", GetClassType),
 	};
@@ -1812,6 +1814,25 @@ public class WrapSysWrap
 		string o = WrapSys.StringSafeConvert(arg0);
 		LuaScriptMgr.Push(L, o);
 		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AreaUpdateSys_SetAreaPlay(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		int arg0 = (int)LuaScriptMgr.GetNumber(L, 1);
+		string arg1 = LuaScriptMgr.GetLuaString(L, 2);
+		WrapSys.AreaUpdateSys_SetAreaPlay(arg0,arg1);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AreaUpdateSys_StartWork(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 1);
+		WrapSys.AreaUpdateSys_StartWork(arg0);
+		return 0;
 	}
 }
 

@@ -1182,4 +1182,19 @@ public static class WrapSys
         return str;
     }
     #endregion
+
+
+    #region AreaUpdateSys
+
+    public static void AreaUpdateSys_SetAreaPlay(int areaID, string localName)
+    {
+        AreaUpdateSys.SetAreaPlay(areaID,localName);
+    }
+
+    public static void AreaUpdateSys_StartWork(LuaFunction luaFunc)
+    {
+        AreaUpdateSys.StartWork(luaFunc);
+    }
+
+    #endregion
 }
