@@ -15,6 +15,7 @@ end
 
 function LoginState.Enter()
 	--小包测试
+	WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 0, "login_ui_window", false , nil)
 	WrapSys.AreaUpdateSys_SetAreaPlay(10002,"DouDiZhu")
 	WrapSys.AreaUpdateSys_StartWork(function()
 		_s.NormalEnter()

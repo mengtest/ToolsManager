@@ -14,16 +14,21 @@ local function ChangeAgreement()
 end
 
 local function InitWindowDetail()
-	isAgree = LoginSys.GetAgreement()
-	ChangeAgreement()
-
-	m_luaWindowRoot:SetLabel(VersionLabel,"当前版本：" .. Version.Instance:GetVersion(1))
-	if DataManager.isPrePublish then
-		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("loginBtn"),false)
-		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("vistorLoginBtn"),true)
+	if m_state == 0 then
+		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("animation_ui_rootTmp"),false)
 	else
-		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("loginBtn"),true)
-		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("vistorLoginBtn"),false)
+		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("animation_ui_rootTmp"),true)
+		isAgree = LoginSys.GetAgreement()
+		ChangeAgreement()
+
+		m_luaWindowRoot:SetLabel(VersionLabel,"当前版本：" .. Version.Instance:GetVersion(1))
+		if DataManager.isPrePublish then
+			m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("loginBtn"),false)
+			m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("vistorLoginBtn"),true)
+		else
+			m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("loginBtn"),true)
+			m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("vistorLoginBtn"),false)
+		end
 	end
 end
 
