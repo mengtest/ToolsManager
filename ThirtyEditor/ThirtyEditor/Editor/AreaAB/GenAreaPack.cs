@@ -21,7 +21,7 @@ namespace ThirtyEditor.Editor.AreaAB
     public class GenAreaPack : EditorWindow 
     {
         private string m_jsonFilePath;
-        private ChildUpdateInfo m_versionInfo = null;
+        private ChildUpdateConfigInfo m_versionInfo = null;
 
         [MenuItem("EZFun/制作地区包")]
         static void ShowWindow()
@@ -43,8 +43,8 @@ namespace ThirtyEditor.Editor.AreaAB
             var js = JsonMapper.ToJson(m_versionInfo);
             if (string.IsNullOrEmpty(m_jsonFilePath))
             {
-                m_jsonFilePath = OpenFolderPanel("选择保存area_config.json文件路径", "", "");
-                m_jsonFilePath += "/area_config.json";
+                m_jsonFilePath = OpenFolderPanel("选择保存localUpdate_config.json文件路径", "", "");
+                m_jsonFilePath += "/localUpdate_config.json";
             }
             File.WriteAllText(m_jsonFilePath, js);
         }
@@ -54,11 +54,11 @@ namespace ThirtyEditor.Editor.AreaAB
             try
             {
                 var s = File.ReadAllText(path);
-                m_versionInfo = JsonMapper.ToObject<ChildUpdateInfo>(s);
+                m_versionInfo = JsonMapper.ToObject<ChildUpdateConfigInfo>(s);
             }
             catch (System.Exception)
             {
-                m_versionInfo = new ChildUpdateInfo();
+                m_versionInfo = new ChildUpdateConfigInfo();
             }
         }
 
@@ -69,19 +69,20 @@ namespace ThirtyEditor.Editor.AreaAB
             m_ScrollViewPos = EditorGUILayout.BeginScrollView(m_ScrollViewPos, false, false, GUILayout.Height(Screen.height - 30));
 
             GUILayout.Label("当前游戏程序版本号:" + UnityEditor.PlayerSettings.bundleVersion);
-            if (GUILayout.Button("选择area_config文件路径"))
+            if (GUILayout.Button("选择localUpdate_config文件路径"))
             {
-                m_jsonFilePath = EditorUtility.OpenFilePanel("选择area_config文件路径", "", "json");
+                m_jsonFilePath = EditorUtility.OpenFilePanel("选择localUpdate_config文件路径", "", "json");
                 LoadVUFile(m_jsonFilePath);
             }
 
             if (m_versionInfo == null) 
             {
-                m_versionInfo = new ChildUpdateInfo();
-                m_versionInfo.dynamicUpdateInfo = new List<ChildeDynamicUpdateInfo>();
+                m_versionInfo = new ChildUpdateConfigInfo();
+                m_versionInfo.localUpdateInfo = new ChildUpdateInfo();
+                m_versionInfo.localUpdateInfo.dynamicUpdateInfo = new List<ChildeDynamicUpdateInfo>();
                 ChildeDynamicUpdateInfo childeDynamicUpdateInfo = new ChildeDynamicUpdateInfo();
                 childeDynamicUpdateInfo.resInfo = new List<ChildResInfo>();
-                m_versionInfo.dynamicUpdateInfo.Add(childeDynamicUpdateInfo);
+                m_versionInfo.localUpdateInfo.dynamicUpdateInfo.Add(childeDynamicUpdateInfo);
             }
 
             var s = new GUIStyle();
@@ -89,18 +90,18 @@ namespace ThirtyEditor.Editor.AreaAB
             GUILayout.Label("");
 
             int areaID;
-            if (int.TryParse(EditorGUILayout.TextField("    areaID:", m_versionInfo.areaID.ToString()), out areaID))
+            if (int.TryParse(EditorGUILayout.TextField("    areaID:", m_versionInfo.localUpdateInfo.areaID.ToString()), out areaID))
             {
-                m_versionInfo.areaID = areaID;
+                m_versionInfo.localUpdateInfo.areaID = areaID;
             }
-            m_versionInfo.localName = EditorGUILayout.TextField("  localName：", m_versionInfo.localName);
-            m_versionInfo.baseVersion = EditorGUILayout.TextField("  baseVersion：", m_versionInfo.baseVersion);
+            m_versionInfo.localUpdateInfo.localName = EditorGUILayout.TextField("  localName：", m_versionInfo.localUpdateInfo.localName);
+            m_versionInfo.localUpdateInfo.baseVersion = EditorGUILayout.TextField("  baseVersion：", m_versionInfo.localUpdateInfo.baseVersion);
 
             GUILayout.Label("---------更新包------------");
             var delGameVerIndex = new List<int>();
-            for (int i = 0; m_versionInfo != null && m_versionInfo.dynamicUpdateInfo != null && i < m_versionInfo.dynamicUpdateInfo.Count; ++i)
+            for (int i = 0; m_versionInfo != null && m_versionInfo.localUpdateInfo.dynamicUpdateInfo != null && i < m_versionInfo.localUpdateInfo.dynamicUpdateInfo.Count; ++i)
             {
-                var vui = m_versionInfo.dynamicUpdateInfo[i];
+                var vui = m_versionInfo.localUpdateInfo.dynamicUpdateInfo[i];
      
                 int platform;
                 vui.resVersion = EditorGUILayout.TextField("  兼容资源版本：", vui.resVersion);
