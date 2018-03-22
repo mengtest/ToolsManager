@@ -35,9 +35,9 @@ public class Constants
     //是否使用提审服2,默认情况为false,只有当前打包时，外网还有一些渠道正在审核时，才置为true
     public static bool USE_PRE_VERSION_2 = false;
     //程序版本号 DLL 版本号
-    public static string APP_VERSION = "1.3.0";
+    public static string APP_VERSION = "1.4.0";
     //资源版本号
-    public static string RESS_VERSION = "1.3.0";
+    public static string RESS_VERSION = "1.4.0";
     //DataEye ID
     public static string DATAEYE_ID = "442BC4D556B13607EC6217FB1308CC0D";
     // 客服系统key

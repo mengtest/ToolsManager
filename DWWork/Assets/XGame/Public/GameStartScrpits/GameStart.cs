@@ -12,7 +12,7 @@ using UnityEngine.Profiling;
 
 public class GameStart : MonoBehaviour
 {
-    public const string PACKAGE_VERSION = "1.3.0";
+    public const string PACKAGE_VERSION = "1.4.0";
 
     public bool RUN_WITH_DLL = false;
     public bool RUN_WITH_DE_LUA = true;
