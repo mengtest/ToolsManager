@@ -20,7 +20,8 @@ end
 
 --当前区域名称
 function AreaLuaSys.GetNowAreaName()
-    return AreaSys.Instance.NowAreaName
+    return ""
+    --return AreaSys.Instance.NowAreaName
 end
 
 return AreaLuaSys
