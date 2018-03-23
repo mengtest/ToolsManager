@@ -1,4 +1,4 @@
-#define TEST_UPDATE
+//#define TEST_UPDATE
 //#define RELEASE
 using UnityEngine;
 using System;

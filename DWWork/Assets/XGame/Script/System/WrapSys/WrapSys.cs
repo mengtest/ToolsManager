@@ -1193,7 +1193,11 @@ public static class WrapSys
 
     public static void AreaUpdateSys_StartWork(LuaFunction luaFunc)
     {
-        AreaUpdateSys.StartWork(luaFunc);
+#if UNITY_EDITOR && !TEST_UPDATE
+        luaFunc.Call();
+#else
+         AreaUpdateSys.StartWork(luaFunc);
+#endif
     }
 
     #endregion
