@@ -350,4 +350,59 @@ namespace ezfun_resource
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResAreaInfo")]
+  public partial class ResAreaInfo : global::ProtoBuf.IExtensible
+  {
+    public ResAreaInfo() {}
+    
+    private int _ID;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private int _AreaID;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"AreaID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int AreaID
+    {
+      get { return _AreaID; }
+      set { _AreaID = value; }
+    }
+    private string _AreaName;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"AreaName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string AreaName
+    {
+      get { return _AreaName; }
+      set { _AreaName = value; }
+    }
+    private string _AreaShowName;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"AreaShowName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string AreaShowName
+    {
+      get { return _AreaShowName; }
+      set { _AreaShowName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResAreaInfoList")]
+  public partial class ResAreaInfoList : global::ProtoBuf.IExtensible
+  {
+    public ResAreaInfoList() {}
+    
+    private readonly global::System.Collections.Generic.List<ezfun_resource.ResAreaInfo> _list = new global::System.Collections.Generic.List<ezfun_resource.ResAreaInfo>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"list", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ezfun_resource.ResAreaInfo> list
+    {
+      get { return _list; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

@@ -36,17 +36,16 @@ public class AreaSys : TCoreSystem<AreaSys>, IInitializeable
                 ResourceManager.Instance.AddAreaAbDatas(_NowAreaName);
             }
 
-            //PlayerPrefs.SetString("NowAreaName", _NowAreaName);
+            PlayerPrefs.SetString("NowAreaName", _NowAreaName);
         }
     }
 
     public void Init()
     {
-        //string preNowAreaName = PlayerPrefs.GetString("NowAreaName", "");
-        //NowAreaName = preNowAreaName;
-
+        string preNowAreaName = PlayerPrefs.GetString("NowAreaName", "");
+        NowAreaName = preNowAreaName;
         //先测试
-        NowAreaName = "DouDiZhu";
+        //NowAreaName = "DouDiZhu";
     }
 
     public void Release() 

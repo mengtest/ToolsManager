@@ -5,6 +5,7 @@
 --   date      : 2017-11-11
 --   copyright : Copyright 2017 DW Inc.
 --------------------------------------------------------------------------------
+require "LuaSys.AreaSys"
 
 LoginState = {}
 local _s = LoginState
@@ -14,12 +15,16 @@ function LoginState.Init()
 end
 
 function LoginState.Enter()
+	local areaName = AreaLuaSys.GetNowAreaName()
 	--小包测试
-	WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 0, "login_ui_window", false , nil)
-	WrapSys.AreaUpdateSys_SetAreaPlay(10002,"DouDiZhu")
-	WrapSys.AreaUpdateSys_StartWork(function()
-		_s.NormalEnter()
-	end)
+	if areaName ~= nil and areaName ~= "" then
+		WrapSys.EZFunWindowMgr_SetWindowStatus(EZFunWindowEnum.luaWindow, true, 0, "login_ui_window", false , nil)
+	else
+		WrapSys.AreaUpdateSys_SetAreaPlay(10002,"DouDiZhu")
+		WrapSys.AreaUpdateSys_StartWork(function()
+			_s.NormalEnter()
+		end)
+	end
 end
 
 

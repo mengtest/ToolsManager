@@ -20,15 +20,6 @@ local txt_horn
 
 local img_headIcon
 
--- [[去除广告列表相关]]
--- local scrollContent
--- local icon_1
--- local icon_2
--- local icon_3
--- local nowIndex2Url = {}
--- local adUrlLen = 0
--- local scrollIcos = {}
-
 local itemWide = 192
 local isPlaying = false
 local isPlaying_SysHorn = false
@@ -49,7 +40,6 @@ local bottomCfg = {
 	btn_record = {isShow = true, sortOrder = 3},
 	btn_share = {isShow = not DataManager.isPrePublish, sortOrder = 2},
 	btn_set = {isShow = true, sortOrder = 1}
-	-- btn_store = { isShow = true, sortOrder = 5},
 }
 
 function hall_ui_window.Init(LuaWindowRoot)
@@ -62,14 +52,10 @@ function hall_ui_window.InitWindow(open, state)
 	m_open = open
 	if open then
 		m_state = state
-		-- [[去除广告列表相关]]
-		-- _s.ResetScroll()
-		-- UpdateSecond:Add(_s.UpdateSecond)
 		_s.InitWindowDetail()
 		UpdateSecond:Add(_s.UpdateSysHorn)
 		_s.UpdateSysHorn()
 	else
-		-- UpdateSecond:Remove(_s.UpdateSecond)
 		isPlaying_SysHorn = false
 		UpdateSecond:Remove(_s.UpdateSysHorn)
 	end
@@ -80,26 +66,12 @@ function hall_ui_window.CreateWindow()
 	txt_userId = m_luaWindowRoot:GetTrans("txt_userId")
 	txt_horn = m_luaWindowRoot:GetTrans("txt_horn")
 	txt_roomNum = m_luaWindowRoot:GetTrans("txt_roomNum")
-	-- [[去除广告列表相关]]
-	-- scrollContent = m_luaWindowRoot:GetTrans("scrollContent")
-	-- icon_1 = m_luaWindowRoot:GetTrans("icon_1")
-	-- icon_2 = m_luaWindowRoot:GetTrans("icon_2")
-	-- icon_3 = m_luaWindowRoot:GetTrans("icon_3")
 	if DataManager.isPrePublish then
 		m_luaWindowRoot:SetActive(m_luaWindowRoot:GetTrans("btn_add"), false)
 	end
 	_s.Register()
 end
 
--- function hall_ui_window.ResetScroll()
---  isPlaying = false
---  nowIndex = 0
---  scrollIcos = {}
---  local childCount = scrollContent.childCount
---  for i=1,childCount do
---      table.insert(scrollIcos,scrollContent:GetChild(i-1))
---  end
--- end
 
 function hall_ui_window.InitWindowDetail()
 	m_luaWindowRoot:SetLabel(txt_userId, "ID:" .. DataManager.GetUserID())
@@ -129,94 +101,6 @@ function hall_ui_window.InitSysHorn()
 		m_luaWindowRoot:SetLabel(txt_horn, list[1].content)
 	end
 end
-
-function hall_ui_window.InitSysAd()
-	-- local list = DataManager.GetSysAdData()
-	-- if not list then return end
-	-- adUrlLen = #list
-	-- if list and adUrlLen >0 then
-	--  local url
-	--  local _next = list[2] and 2 or adUrlLen
-	--  url = list[adUrlLen].img_url
-	--  m_luaWindowRoot:LoadUISprite(icon_1,"anti_gambling")
-	--  m_luaWindowRoot:LoadImag(icon_1, url, "anti_gambling",false,RessStorgeType.RST_Never)
-	--  url = list[1].img_url
-	--  m_luaWindowRoot:LoadUISprite(icon_2,"anti_gambling")
-	--  m_luaWindowRoot:LoadImag(icon_2, url, "anti_gambling",false,RessStorgeType.RST_Never)
-	--  url = list[_next].img_url
-	--  m_luaWindowRoot:LoadUISprite(icon_3,"anti_gambling")
-	--  m_luaWindowRoot:LoadImag(icon_3, url, "anti_gambling",false,RessStorgeType.RST_Never)
-	--  for i=1, adUrlLen do
-	--      nowIndex2Url[i] = list[i].img_url
-	--  end
-	-- end
-end
-
--- [[去除广告列表相关]]
---播放列表滑动动画
--- local function PlayTween(isAdd)
---  if isPlaying or scrollIcos == nil or #scrollIcos == 0 then
---      return
---  end
---  local posX = itemWide*nowIndex
---  if isAdd then
---      nowIndex = nowIndex + 1
---  else
---      nowIndex = nowIndex - 1
---  end
---  toPosX = itemWide*nowIndex
-
---  m_luaWindowRoot:PlayTweenPos(scrollContent,0.8,true,posX,toPosX)
---  isPlaying = true
-
---  WrapSys.AddTimerEVentByLeftTime(0.8, function ()
---      if m_open then
---          isPlaying = false
---          if isAdd then
---              scrollIcos[#scrollIcos].localPosition = UnityEngine.Vector3.New(scrollIcos[1].localPosition.x - itemWide,0,0)
-
---              local temp = scrollIcos[#scrollIcos]
-
---              table.remove(scrollIcos,#scrollIcos)
---              table.insert(scrollIcos,1,temp)
-
---              local fmt_index = -(nowIndex-2)
---              local target_index = fmt_index%adUrlLen
---              if target_index == 0 then
---                  target_index = adUrlLen
---              end
---              local url = nowIndex2Url[target_index]
---              m_luaWindowRoot:LoadImag(temp, url, "", false, RessStorgeType.RST_Never)
-
---          else
---              scrollIcos[1].localPosition = UnityEngine.Vector3.New(scrollIcos[#scrollIcos].localPosition.x + itemWide,0,0)
-
---              local temp = scrollIcos[1]
---              table.remove(scrollIcos,1)
---              table.insert(scrollIcos,temp)
-
---              local fmt_index = -(nowIndex+2)
---              local target_index = fmt_index%adUrlLen
---              if target_index == 0 then
---                  target_index = adUrlLen
---              end
---              local url = nowIndex2Url[target_index]
---              m_luaWindowRoot:LoadImag(temp, url, "", false, RessStorgeType.RST_Never)
---          end
-
---          -- print("nowIndex "..nowIndex)
---      end
---  end)
-
---  tickTime = 0
--- end
-
--- function hall_ui_window.UpdateSecond()
---  tickTime = tickTime + 1
---  if tickTime > 5 then
---      PlayTween(false)
---  end
--- end
 
 function hall_ui_window.UpdateSysHorn()
 	local function whenPlayEnd()
