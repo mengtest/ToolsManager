@@ -20,8 +20,12 @@ end
 
 --当前区域名称
 function AreaLuaSys.GetNowAreaName()
-    return ""
-    --return AreaSys.Instance.NowAreaName
+    return PlayerDataRefUtil.GetString("NowAreaName", "")
+end
+
+--设置当前选择区域名称
+function AreaLuaSys.SetNowAreaName(nowAreaName)
+    PlayerDataRefUtil.SetString("NowAreaName", nowAreaName)
 end
 
 return AreaLuaSys
