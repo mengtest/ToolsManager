@@ -47,7 +47,7 @@ public class ParentUpdateChecker :BaseUpdateChecker
             bool timeOut = false;
             while (!w.isDone && !timeOut)
             {
-                timeOut = (Time.realtimeSinceStartup - beginTime) >= 3;
+                timeOut = (Time.realtimeSinceStartup - beginTime) >= 8;
                 yield return null;
             }
 
