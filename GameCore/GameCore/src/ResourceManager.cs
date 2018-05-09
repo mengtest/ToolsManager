@@ -61,7 +61,7 @@ public enum EnumAB
     model_ab,
     scenemodle_ab,
     scene_ab,
-    area_ab,
+    play_ab,
 }
 
 public class ResourceLoader
@@ -288,6 +288,7 @@ public class ResourceManager
     private HashSet<string> m_fileSet = new HashSet<string>();
 
     private Dictionary<string, ABFileDesc> m_AreaPathToAssetBundle = new Dictionary<string, ABFileDesc>();//地区包
+    public static string AreaRootName = "PlayPack";
 
     #region single
 
@@ -441,7 +442,7 @@ public class ResourceManager
     /// </summary>
     public void AddAreaAbDatas(string AreaName)
     {
-        var abParentPersistentPath = Application.persistentDataPath + "/Area/" + AreaName + "/AssetBundles/";
+        var abParentPersistentPath = Application.persistentDataPath + "/ " + AreaName + " /" + AreaName + "/AssetBundles/";
         var dir = new DirectoryInfo(abParentPersistentPath);
         if (dir.Exists && m_readFileCallback != null)
         {
@@ -510,7 +511,7 @@ public class ResourceManager
     public void RemoveAreaAbDatas() 
     {
         m_AreaPathToAssetBundle.Clear();
-        this.m_AssetBundlePool.UnLoadAllObject(EnumAB.area_ab.ToString());
+        this.m_AssetBundlePool.UnLoadAllObject(EnumAB.play_ab.ToString());
     }
 
     public bool ContaintsResources(string fileName)
@@ -641,7 +642,7 @@ public class ResourceManager
             if (!string.IsNullOrEmpty(abd.m_areaName))
             {
                 ResourceManager.m_StringBuilder.Append(Application.persistentDataPath);
-                ResourceManager.m_StringBuilder.Append("/Area/");
+                ResourceManager.m_StringBuilder.Append("/ " + AreaRootName + " /");
                 ResourceManager.m_StringBuilder.Append(abd.m_areaName);
                 ResourceManager.m_StringBuilder.Append("/AssetBundles/");
 
