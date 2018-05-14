@@ -442,7 +442,7 @@ public class ResourceManager
     /// </summary>
     public void AddAreaAbDatas(string AreaName)
     {
-        var abParentPersistentPath = Application.persistentDataPath + "/ " + AreaName + " /" + AreaName + "/AssetBundles/";
+        var abParentPersistentPath = Application.persistentDataPath + "/" + AreaRootName + "/" + AreaName + "/AssetBundles/";
         var dir = new DirectoryInfo(abParentPersistentPath);
         if (dir.Exists && m_readFileCallback != null)
         {
@@ -642,7 +642,7 @@ public class ResourceManager
             if (!string.IsNullOrEmpty(abd.m_areaName))
             {
                 ResourceManager.m_StringBuilder.Append(Application.persistentDataPath);
-                ResourceManager.m_StringBuilder.Append("/ " + AreaRootName + " /");
+                ResourceManager.m_StringBuilder.Append("/" + AreaRootName + "/");
                 ResourceManager.m_StringBuilder.Append(abd.m_areaName);
                 ResourceManager.m_StringBuilder.Append("/AssetBundles/");
 
@@ -948,6 +948,23 @@ public class ResourceManager
 #if RES_LOG
             Debug.Log("LoadResource.resourcePath:" + resourcePath);
 #endif
+            if (resourceBundleSet == null 
+                || resourceBundleSet.m_MainAssetBundle == null 
+                || resourceBundleSet.m_MainAssetBundle.m_Bundle == null 
+                || resourceBundleSet.m_MainAssetBundle.m_Bundle.m_AssetBundle == null) 
+            {
+                if (resourceBundleSet == null)
+                    Debug.LogError("resourceBundleSet == null");
+                if (resourceBundleSet.m_MainAssetBundle == null)
+                    Debug.LogError("resourceBundleSet.m_MainAssetBundle == null");
+                if (resourceBundleSet.m_MainAssetBundle.m_Bundle == null)
+                    Debug.LogError("resourceBundleSet.m_MainAssetBundle.m_Bundle == null");
+                if (resourceBundleSet.m_MainAssetBundle.m_Bundle.m_AssetBundle == null)
+                    Debug.LogError("esourceBundleSet.m_MainAssetBundle.m_Bundle.m_AssetBundle == null");
+
+                return null;
+            }
+
             resource = resourceBundleSet.m_MainAssetBundle.m_Bundle.m_AssetBundle.LoadAsset(resourcePath, resourceType);
             _UnloadResourceBundleSet(resourceBundleSet);
         }
